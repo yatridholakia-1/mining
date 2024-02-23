@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:batch_code",
+ "creation": "2024-02-22 09:44:51.290175",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_sdor",
+  "batch_code",
+  "order_date",
+  "product_code",
+  "quantity_per_container",
+  "expected_dispatch_date",
+  "column_break_dftq",
+  "date",
+  "party",
+  "product_quantity",
+  "expected_production_completion_date",
+  "batch_state",
+  "ready_made_product",
+  "materials_required_section",
+  "batch_materials_required",
+  "section_break_pjjl",
+  "is_label_required",
+  "remarks",
+  "section_break_mgit",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_sdor",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Batch",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "batch_code",
+   "fieldtype": "Data",
+   "label": "Batch Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "label": "Order Date"
+  },
+  {
+   "fieldname": "product_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Product Code",
+   "options": "Material",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantity_per_container",
+   "fieldtype": "Data",
+   "label": "Quantity Per Container"
+  },
+  {
+   "fieldname": "expected_dispatch_date",
+   "fieldtype": "Date",
+   "label": "Expected Dispatch Date"
+  },
+  {
+   "fieldname": "column_break_dftq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Link",
+   "label": "Party",
+   "options": "Party"
+  },
+  {
+   "fieldname": "product_quantity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Product Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expected_production_completion_date",
+   "fieldtype": "Date",
+   "label": "Expected Production Completion Date"
+  },
+  {
+   "default": "Created",
+   "fieldname": "batch_state",
+   "fieldtype": "Select",
+   "label": "Batch State",
+   "options": "Created\nBlend Assigned\nProduction\nDelivered\nCancelled"
+  },
+  {
+   "fieldname": "section_break_mgit",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "ready_made_product",
+   "fieldtype": "Check",
+   "label": "Ready-Made Product?"
+  },
+  {
+   "fieldname": "materials_required_section",
+   "fieldtype": "Section Break",
+   "label": "Materials Required"
+  },
+  {
+   "fieldname": "batch_materials_required",
+   "fieldtype": "Table",
+   "label": "Batch Materials Required",
+   "options": "Batch Materials Required"
+  },
+  {
+   "fieldname": "section_break_pjjl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_label_required",
+   "fieldtype": "Check",
+   "label": "Is Label Required?"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-22 10:50:50.434830",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Batch",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

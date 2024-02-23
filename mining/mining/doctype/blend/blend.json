@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:blend_code",
+ "creation": "2024-02-22 11:44:41.847933",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_u9pm",
+  "blend_code",
+  "total_percentage",
+  "column_break_fvml",
+  "date",
+  "amended_from",
+  "section_break_fjnu",
+  "lumps",
+  "select_blend_section",
+  "blend",
+  "select_polymer_section",
+  "polymer"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_u9pm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Blend",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "blend_code",
+   "fieldtype": "Data",
+   "label": "Blend Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_fvml",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_fjnu",
+   "fieldtype": "Section Break",
+   "label": "Select Lumps"
+  },
+  {
+   "fieldname": "lumps",
+   "fieldtype": "Table",
+   "label": "Lumps",
+   "options": "Blend Lumps"
+  },
+  {
+   "fieldname": "select_blend_section",
+   "fieldtype": "Section Break",
+   "label": "Select Blend"
+  },
+  {
+   "fieldname": "blend",
+   "fieldtype": "Table",
+   "label": "Blend",
+   "options": "Blend Child"
+  },
+  {
+   "fieldname": "select_polymer_section",
+   "fieldtype": "Section Break",
+   "label": "Select Polymer"
+  },
+  {
+   "fieldname": "polymer",
+   "fieldtype": "Table",
+   "label": "Polymer",
+   "options": "Blend Polymer"
+  },
+  {
+   "fieldname": "total_percentage",
+   "fieldtype": "Percent",
+   "label": "Total Percentage",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-22 12:33:32.463275",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Blend",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

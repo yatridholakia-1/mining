@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-02-21 14:23:28.084571",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "column_break_rozv",
+  "date",
+  "section_break_xadj",
+  "material_type",
+  "supplier",
+  "truck_number",
+  "quantity",
+  "column_break_czcu",
+  "material",
+  "warehouse",
+  "remarks",
+  "section_break_xkno",
+  "royalty_holder_name",
+  "royalty_weight",
+  "swell_well_weight",
+  "column_break_plcq",
+  "royalty_holder_number",
+  "supplier_weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_rozv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_xadj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "truck_number",
+   "fieldtype": "Data",
+   "label": "Truck Number"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Data",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "column_break_czcu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "material",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material",
+   "options": "Material"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "depends_on": "eval:doc.material_type === \"Lumps\"",
+   "fieldname": "section_break_xkno",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "royalty_holder_name",
+   "fieldtype": "Link",
+   "label": "Royalty Holder Name",
+   "options": "Royalty Holder"
+  },
+  {
+   "fieldname": "royalty_weight",
+   "fieldtype": "Data",
+   "label": "Royalty Weight"
+  },
+  {
+   "fieldname": "swell_well_weight",
+   "fieldtype": "Data",
+   "label": "Swell Well Weight"
+  },
+  {
+   "fieldname": "column_break_plcq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "royalty_holder_number",
+   "fieldtype": "Data",
+   "label": "Royalty Holder Number"
+  },
+  {
+   "fieldname": "supplier_weight",
+   "fieldtype": "Data",
+   "label": "Supplier Weight"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-02-21 14:45:51.850398",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Material Receipt",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

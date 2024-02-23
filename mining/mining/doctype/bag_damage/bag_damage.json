@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-02-22 15:04:00.601487",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_rt2m",
+  "batch",
+  "production_warehouse",
+  "quantity_in_warehouse",
+  "amended_from",
+  "column_break_agke",
+  "date",
+  "bag",
+  "damaged_quantity",
+  "naming_series",
+  "section_break_vogr",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_rt2m",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Bag Damage",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantity_in_warehouse",
+   "fieldtype": "Data",
+   "label": "Quantity in Warehouse",
+   "read_only": 1
+  },
+  {
+   "fieldname": "damaged_quantity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Damaged Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_agke",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bag",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bag",
+   "options": "Material",
+   "reqd": 1
+  },
+  {
+   "fieldname": "production_warehouse",
+   "fieldtype": "Link",
+   "label": "Production Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_vogr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-22 15:12:01.763416",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Bag Damage",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
