@@ -12,6 +12,7 @@
   "product_code",
   "quantity_per_container",
   "expected_dispatch_date",
+  "batch_stock",
   "column_break_dftq",
   "date",
   "party",
@@ -142,12 +143,20 @@
    "fieldname": "remarks",
    "fieldtype": "Small Text",
    "label": "Remarks"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.batch_stock > 0",
+   "fieldname": "batch_stock",
+   "fieldtype": "Data",
+   "label": "Batch Stock",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-22 10:50:50.434830",
+ "modified": "2024-02-23 12:21:44.810865",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
