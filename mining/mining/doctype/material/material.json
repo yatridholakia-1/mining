@@ -34,12 +34,6 @@
    "label": "Material Name"
   },
   {
-   "fieldname": "bag_size",
-   "fieldtype": "Float",
-   "label": "Bag Size (In KG)",
-   "read_only_depends_on": "eval:doc.material_type !== \"Bag\""
-  },
-  {
    "fieldname": "column_break_hnho",
    "fieldtype": "Column Break"
   },
