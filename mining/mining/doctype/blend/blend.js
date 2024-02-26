@@ -36,7 +36,7 @@ frappe.ui.form.on("Blend", {
             });
 	},
 
-    after_save: function(frm){
+    before_save: function(frm){
         update_total_percentage(frm);
     }
 
