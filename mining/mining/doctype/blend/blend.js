@@ -1,6 +1,19 @@
 // Copyright (c) 2024, ArkayApps and contributors
 // For license information, please see license.txt
 
+const update_total_percentage = (frm) => {
+    let total_cents = flt(0)
+    $.each(frm.doc.lumps, function(i, row) {
+        total_cents += flt(row.percentage)
+    });
+
+    $.each(frm.doc.blend, function(i, row) {
+        total_cents += flt(row.percentage)
+    });
+
+    frm.set_value("total_percentage", total_cents)
+}
+
 frappe.ui.form.on("Blend", {
        
     refresh: function(frm){
@@ -21,5 +34,10 @@ frappe.ui.form.on("Blend", {
                     ]
                 }
             });
-	}
+	},
+
+    after_save: function(frm){
+        update_total_percentage(frm);
+    }
+
 });
