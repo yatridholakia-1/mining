@@ -17,6 +17,15 @@ const update_total_percentage = (frm) => {
 frappe.ui.form.on("Blend", {
        
     refresh: function(frm){
+         //Add "Assign Blend" Custom Button
+         if (frm.doc.docstatus === 1) {
+            frm.add_custom_button(__("Assign To Batch"), function(){
+                frappe.new_doc('Assign Blend', {
+                    'blend': frm.doc.blend_code
+                });
+              });
+        }
+
          //Filter in Lumps Table
             frm.set_query("lumps", "lumps", function(doc, cdt, cdn) {
                 return {

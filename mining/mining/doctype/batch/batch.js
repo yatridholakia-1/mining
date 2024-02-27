@@ -4,8 +4,9 @@
 const KILO_TO_MT_CONVERSTION_FACTOR = parseFloat("1000")
 
 frappe.ui.form.on("Batch", {
-    //Filter in Child Table Materils Required
+    
         refresh: function(frm){
+            //Filter in Child Table Materils Required
             frm.set_query("material", "batch_materials_required", function(doc, cdt, cdn) {
                 return {
                     filters: [
@@ -23,13 +24,24 @@ frappe.ui.form.on("Batch", {
                 }
             });
 
+            //Add "Assign Blend" Custom Button
+            if (frm.doc.docstatus === 1 && frm.doc.batch_state === "Created") {
+                frm.add_custom_button(__("Assign Blend"), function(){
+                    frappe.new_doc('Assign Blend', {
+                        'batch': frm.doc.batch_code
+                    });
+                  });
+            }
+
             //Set Validations in Date Picker
-            frm.fields_dict.expected_production_completion_date.datepicker.update({
-                minDate: new Date(frappe.datetime.get_today())
-            });
-            frm.fields_dict.expected_dispatch_date.datepicker.update({
-                minDate: new Date(frappe.datetime.get_today())
-            });
+            if (frm.doc.docstatus !== 1) {
+                frm.fields_dict.expected_production_completion_date.datepicker.update({
+                    minDate: new Date(frappe.datetime.get_today())
+                });
+                frm.fields_dict.expected_dispatch_date.datepicker.update({
+                    minDate: new Date(frappe.datetime.get_today())
+                });
+        }
     }
 });
 

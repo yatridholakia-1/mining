@@ -103,11 +103,13 @@
    "label": "Expected Production Completion Date"
   },
   {
+   "allow_on_submit": 1,
    "default": "Created",
    "fieldname": "batch_state",
    "fieldtype": "Select",
    "label": "Batch State",
-   "options": "Created\nBlend Assigned\nProduction\nDelivered\nCancelled"
+   "options": "Created\nBlend Assigned\nProduction\nDelivered\nCancelled",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_mgit",
@@ -157,7 +159,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-23 15:50:55.162043",
+ "modified": "2024-02-26 17:15:09.682983",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
