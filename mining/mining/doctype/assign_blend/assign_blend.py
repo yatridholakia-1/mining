@@ -27,9 +27,34 @@ class AssignBlend(Document):
 		if batch.batch_state == "Created":
 			batch.batch_state = "Blend Assigned"
 			batch.save()
+
+		#Disable Old Blend 
+		if self.reassigned_from:
+			old_blend_assignment = frappe.get_doc("Assign Blend", self.reassigned_from)
+			old_blend_assignment.enabled = 0
+			old_blend_assignment.save()
 		
 	def before_cancel(self):
 		batch = frappe.get_doc('Batch', self.batch)
 		if batch.batch_state == "Blend Assigned":
 			batch.batch_state = "Created"
 			batch.save()
+
+		#Enable Old Blend 
+		if self.reassigned_from:
+			old_blend_assignment = frappe.get_doc("Assign Blend", self.reassigned_from)
+			old_blend_assignment.enabled = 1
+			old_blend_assignment.save()
+
+		# #Disable current blend
+		# self.enabled = 0
+		# self.save()
+				
+	def after_submit(self):
+		frappe.msgprint("After Submit Triggered")
+	
+	def after_cancel(self):
+		frappe.msgprint("After Cancel Triggered")
+	
+			
+		

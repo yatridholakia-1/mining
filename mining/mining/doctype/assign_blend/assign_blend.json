@@ -10,10 +10,12 @@
   "batch",
   "sieve",
   "enabled",
+  "date",
   "column_break_qpda",
   "blend",
   "mesh",
-  "amended_from"
+  "amended_from",
+  "reassigned_from"
  ],
  "fields": [
   {
@@ -34,8 +36,10 @@
    "fieldname": "batch",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Batch",
    "options": "Batch",
+   "read_only_depends_on": "reassigned_from",
    "reqd": 1
   },
   {
@@ -52,6 +56,7 @@
    "fieldname": "blend",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Blend",
    "options": "Blend",
    "reqd": 1
@@ -62,17 +67,33 @@
    "label": "Mesh"
   },
   {
+   "allow_on_submit": 1,
    "default": "1",
    "fieldname": "enabled",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Enabled",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reassigned_from",
+   "fieldtype": "Link",
+   "label": "Re-Assigned From",
+   "options": "Assign Blend",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-27 11:49:48.441996",
+ "modified": "2024-02-28 12:26:17.683787",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Assign Blend",
