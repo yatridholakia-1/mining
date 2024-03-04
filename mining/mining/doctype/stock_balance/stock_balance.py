@@ -3,11 +3,8 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils import nowdate
 
 
-class Batch(Document):
-	def after_insert(self):
-		self.batch_state = "Created"
-		self.date = nowdate()
-		self.save()
+class StockBalance(Document):
+    pass
+

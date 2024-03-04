@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-02-29 15:11:57.382018",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_o9vn",
+  "stock_entry_for",
+  "stock_entry_item",
+  "source_warehouse",
+  "quantity",
+  "amended_from",
+  "column_break_pyhs",
+  "stock_entry_type",
+  "stock_entry_purpose",
+  "target_warehouse",
+  "date",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_o9vn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Stock Management",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "stock_entry_for",
+   "fieldtype": "Link",
+   "label": "Stock Entry For",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Select",
+   "label": "Stock Entry Type",
+   "options": "\nStock In\nStock Out\nStock Transfer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stock_entry_purpose",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stock Entry Purpose",
+   "options": "Stock Entry Purpose",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stock_entry_item",
+   "fieldtype": "Dynamic Link",
+   "label": "Stock Entry Item",
+   "options": "stock_entry_for",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pyhs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.stock_entry_type === \"Stock Out\" || doc.stock_entry_type === \"Stock Transfer\"",
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "label": "Source Warehouse",
+   "mandatory_depends_on": "eval:doc.stock_entry_type === \"Stock Out\" || doc.stock_entry_type === \"Stock Transfer\"",
+   "options": "Warehouse",
+   "read_only_depends_on": "eval:((doc.stock_entry_for === \"Batch\" || doc.stock_entry_for === \"Blend\") && doc.stock_entry_type === \"Stock Out\")"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "label": "Quantity"
+  },
+  {
+   "depends_on": "eval:doc.stock_entry_type === \"Stock In\" || doc.stock_entry_type === \"Stock Transfer\"",
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "label": "Target Warehouse",
+   "mandatory_depends_on": "eval:doc.stock_entry_type === \"Stock In\" || doc.stock_entry_type === \"Stock Transfer\"",
+   "options": "Warehouse",
+   "read_only_depends_on": "eval:((doc.stock_entry_for === \"Batch\" || doc.stock_entry_for === \"Blend\") && doc.stock_entry_type === \"Stock In\")"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Stock Management",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-03-02 11:37:21.610932",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Stock Management",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
