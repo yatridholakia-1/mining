@@ -43,7 +43,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Type",
-   "options": "Material Issue\nMaterial Return",
+   "options": "\nMaterial Issue\nMaterial Return",
    "reqd": 1
   },
   {
@@ -76,10 +76,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-22 14:23:43.103485",
+ "modified": "2024-03-04 11:55:01.210729",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material Transfer",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

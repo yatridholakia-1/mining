@@ -11,5 +11,8 @@ class Stock_Purpose(Enum):
     MANUFACTURE = "Manufacture"
     MATERIAL_CONSUMED = "Material Consumed"
     MATERIAL_INWARD = "Material Inward"
+    MATERIAL_TRANSFER = "Material Transfer For Manufacture"
+    MATERIAL_RETURN = "Material Returned To Store"
+
 
     
