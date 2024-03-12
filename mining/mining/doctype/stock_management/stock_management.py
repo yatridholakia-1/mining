@@ -35,6 +35,9 @@ class StockManagement(Document):
              )
 
     def on_cancel(self):
+         #Restrict cancellation of linked documents
+        if self.doc_link:
+            frappe.throw("Cannot Cancel Linked Stock Entries!")
         if self.stock_entry_type == Stock.STOCK_IN.value:
             manageStock(
                 self.stock_entry_for,

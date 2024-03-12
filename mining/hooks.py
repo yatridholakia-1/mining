@@ -228,6 +228,8 @@ app_license = "mit"
 # }
 
 fixtures = [
-    "Stock Entry Purpose"
+    "Stock Entry Purpose",
+    "Shift",
+    "Machine"
 ]
 

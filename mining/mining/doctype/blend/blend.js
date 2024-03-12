@@ -23,7 +23,13 @@ frappe.ui.form.on("Blend", {
                 frappe.new_doc('Assign Blend', {
                     'blend': frm.doc.blend_code
                 });
-              });
+              },__("Actions"));
+
+              frm.add_custom_button(__("Blend Formulation"), function(){
+                frappe.new_doc('Blend Formulation', {
+                    'blend': frm.doc.blend_code
+                });
+              },__("Actions"));
         }
 
          //Filter in Lumps Table
