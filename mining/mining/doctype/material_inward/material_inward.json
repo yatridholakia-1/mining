@@ -74,7 +74,7 @@
   {
    "depends_on": "eval:doc.material_type !== \"Lumps\"",
    "fieldname": "quantity",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Quantity",
    "mandatory_depends_on": "eval:doc.material_type !== \"Lumps\""
   },
@@ -116,12 +116,12 @@
   },
   {
    "fieldname": "royalty_weight",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Royalty Weight"
   },
   {
    "fieldname": "swell_well_weight",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Swell Well Weight",
    "mandatory_depends_on": "eval:doc.material_type === \"Lumps\""
   },
@@ -136,7 +136,7 @@
   },
   {
    "fieldname": "supplier_weight",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Supplier Weight"
   },
   {
@@ -157,7 +157,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-21 14:41:24.794500",
+ "modified": "2024-03-21 14:53:08.065265",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material Inward",

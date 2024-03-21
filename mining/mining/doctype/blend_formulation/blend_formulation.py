@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import nowdate
-from ..api import check_stock_balance, create_stock_entry, update_blend_stock
+from ..api import check_stock_balance, create_stock_entry
 from ..enums import Stock, Stock_Purpose
 
 
