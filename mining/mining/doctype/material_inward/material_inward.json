@@ -6,30 +6,33 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "naming_series",
-  "column_break_rozv",
-  "date",
-  "section_break_xadj",
   "material_type",
-  "supplier",
-  "truck_number",
-  "quantity",
-  "column_break_czcu",
-  "material",
   "warehouse",
-  "remarks",
+  "column_break_rozv",
+  "material",
+  "quantity",
+  "date",
+  "naming_series",
   "section_break_xkno",
   "royalty_holder_name",
   "royalty_weight",
   "swell_well_weight",
   "column_break_plcq",
   "royalty_holder_number",
-  "supplier_weight"
+  "supplier_weight",
+  "section_break_xadj",
+  "supplier",
+  "column_break_czcu",
+  "truck_number",
+  "section_break_zlvf",
+  "remarks",
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Naming Series"
   },
   {
@@ -37,6 +40,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
@@ -51,7 +55,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Material Type",
-   "options": "Material Type"
+   "options": "Material Type",
+   "reqd": 1
   },
   {
    "fieldname": "supplier",
@@ -67,9 +72,11 @@
    "label": "Truck Number"
   },
   {
+   "depends_on": "eval:doc.material_type !== \"Lumps\"",
    "fieldname": "quantity",
-   "fieldtype": "Data",
-   "label": "Quantity"
+   "fieldtype": "Int",
+   "label": "Quantity",
+   "mandatory_depends_on": "eval:doc.material_type !== \"Lumps\""
   },
   {
    "fieldname": "column_break_czcu",
@@ -80,13 +87,16 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Material",
-   "options": "Material"
+   "options": "Material",
+   "reqd": 1
   },
   {
+   "default": "Store",
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "label": "Warehouse",
-   "options": "Warehouse"
+   "options": "Warehouse",
+   "reqd": 1
   },
   {
    "fieldname": "remarks",
@@ -106,13 +116,14 @@
   },
   {
    "fieldname": "royalty_weight",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Royalty Weight"
   },
   {
    "fieldname": "swell_well_weight",
-   "fieldtype": "Data",
-   "label": "Swell Well Weight"
+   "fieldtype": "Int",
+   "label": "Swell Well Weight",
+   "mandatory_depends_on": "eval:doc.material_type === \"Lumps\""
   },
   {
    "fieldname": "column_break_plcq",
@@ -125,16 +136,31 @@
   },
   {
    "fieldname": "supplier_weight",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Supplier Weight"
+  },
+  {
+   "fieldname": "section_break_zlvf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Material Inward",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-02-21 14:45:51.850398",
+ "modified": "2024-03-21 14:41:24.794500",
  "modified_by": "Administrator",
  "module": "Mining",
- "name": "Material Receipt",
+ "name": "Material Inward",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
