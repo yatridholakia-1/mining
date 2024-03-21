@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-03-14 16:25:11.699629",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date_time",
+  "qty_produced",
+  "warehouse",
+  "shift",
+  "blend_used"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "date_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Date Time"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "qty_produced",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Produced"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "blend_used",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Blend Used",
+   "options": "Blend"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-03-14 17:19:31.965117",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Batch Internal Production Insights",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -28,12 +28,22 @@ frappe.ui.form.on("Material Transfer", {
             }
         });
 
-        frm.set_query("material", "material_transfer", function(doc, cdt, cdn) {
+         //Filter in Child Table Materils Required
+         frm.set_query("material_type", "material_transfer", function(doc, cdt, cdn) {
             return {
                 filters: [
-                    ["Material", "material_type", "in", ["Bag", "Pallet", "Polymer"]]
+                    ["Material Type", "name", "in", ["Bag", "Pallet", "Polymer"]]
                 ]
             }
+        });
+
+        frm.set_query('material', 'material_transfer', function(doc, cdt, cdn) {
+            const row = locals[cdt][cdn];
+            return {
+                filters: [
+                    ["Material", "material_type", "=", row.material_type]
+                ]
+            };
         });
 	},
 
@@ -50,25 +60,25 @@ frappe.ui.form.on("Material Transfer", {
 
     batch: function(frm) {
         clear_child_table(frm)
-        if (frm.doc.batch) {
-            frappe.model.with_doc('Batch', frm.doc.batch, function() {
-                let batch_doc = locals['Batch'][frm.doc.batch]
+        // if (frm.doc.batch) {
+        //     frappe.model.with_doc('Batch', frm.doc.batch, function() {
+        //         let batch_doc = locals['Batch'][frm.doc.batch]
         
-                if (batch_doc && batch_doc.batch_materials_required) {
-                    let materials_required = batch_doc.batch_materials_required.map(function(row) {
-                        return row.material;
-                    });
+        //         if (batch_doc && batch_doc.batch_materials_required) {
+        //             let materials_required = batch_doc.batch_materials_required.map(function(row) {
+        //                 return row.material;
+        //             });
         
-                    frm.set_query("material", "material_transfer", function(doc, cdt, cdn) {
-                        return {
-                            filters: [
-                                ["Material", "material_code", "in", materials_required]
-                            ]
-                        };
-                    });
-                }
-            });
-        }
+        //             frm.set_query("material", "material_transfer", function(doc, cdt, cdn) {
+        //                 return {
+        //                     filters: [
+        //                         ["Material", "material_code", "in", materials_required]
+        //                     ]
+        //                 };
+        //             });
+        //         }
+        //     });
+        // }
 
 
     }
@@ -78,6 +88,20 @@ frappe.ui.form.on('Material Transfer Child', {
 	refresh(frm) {
 		
 	},
+    material_type: function(frm, cdt, cdn) {
+      
+    const row = locals[cdt][cdn];
+    console.log(row)
+       frm.fields_dict['material_transfer'].get_query = function(doc, cdt, cdn) {
+           return {
+               filters: [
+                           ["Material", "material_type", "=", row.material_type]
+                        ]
+           };
+       };
+       
+   },
+
     material_transfer_add(frm, cdt, cdn){
         if (!frm.doc.type){
             frappe.throw("Please Select Material Transfer Type To Continue.")

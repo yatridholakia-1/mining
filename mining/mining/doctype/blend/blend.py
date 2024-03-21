@@ -14,3 +14,4 @@ class Blend(Document):
 	def after_insert(self):
 		self.date = nowdate()
 		self.save()
+

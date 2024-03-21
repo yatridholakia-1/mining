@@ -26,7 +26,36 @@
   "is_label_required",
   "remarks",
   "section_break_mgit",
-  "amended_from"
+  "amended_from",
+  "batch_insights_tab",
+  "batch_overview_section",
+  "total_required_qty",
+  "column_break_wncr",
+  "total_produced_qty",
+  "column_break_njyg",
+  "total_delivered_qty",
+  "bag_insights_section",
+  "batch_bag_insights",
+  "polymer_section",
+  "batch_polymer_insights",
+  "blend_section",
+  "blend_insights",
+  "pallet_section",
+  "pallet_code",
+  "pallet_consumed_qty",
+  "column_break_ypcd",
+  "pallet_required_qty",
+  "pallet_remaining_qty",
+  "column_break_qgqd",
+  "pallet_issued_qty",
+  "internal_production_section",
+  "internal_production_insights",
+  "external_production_section",
+  "external_production_insights",
+  "quality_section",
+  "quality_insights",
+  "delivery_section",
+  "delivery_insights"
  ],
  "fields": [
   {
@@ -154,12 +183,191 @@
    "fieldtype": "Data",
    "label": "Batch Stock",
    "read_only": 1
+  },
+  {
+   "fieldname": "batch_insights_tab",
+   "fieldtype": "Tab Break",
+   "label": "Batch Insights"
+  },
+  {
+   "fieldname": "bag_insights_section",
+   "fieldtype": "Section Break",
+   "label": "Bag"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "batch_bag_insights",
+   "fieldtype": "Table",
+   "label": "Batch Bag Insights",
+   "options": "Batch Bag Insights",
+   "read_only": 1
+  },
+  {
+   "fieldname": "polymer_section",
+   "fieldtype": "Section Break",
+   "label": "Polymer"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "batch_polymer_insights",
+   "fieldtype": "Table",
+   "label": "Batch Polymer Insights",
+   "options": "Batch Polymer Insights",
+   "read_only": 1
+  },
+  {
+   "fieldname": "batch_overview_section",
+   "fieldtype": "Section Break",
+   "label": "Batch Overview"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_required_qty",
+   "fieldtype": "Float",
+   "label": "Total Required Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wncr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_produced_qty",
+   "fieldtype": "Float",
+   "label": "Total Produced Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_njyg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_delivered_qty",
+   "fieldtype": "Float",
+   "label": "Total Delivered Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "blend_section",
+   "fieldtype": "Section Break",
+   "label": "Blend"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "blend_insights",
+   "fieldtype": "Table",
+   "label": "Blend Insights",
+   "options": "Blend Insights",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pallet_section",
+   "fieldtype": "Section Break",
+   "label": "Pallet"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "pallet_code",
+   "fieldtype": "Link",
+   "label": "Pallet Code",
+   "options": "Material",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "pallet_consumed_qty",
+   "fieldtype": "Int",
+   "label": "Pallet Consumed Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ypcd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "pallet_required_qty",
+   "fieldtype": "Int",
+   "label": "Pallet Required Qty",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "pallet_remaining_qty",
+   "fieldtype": "Int",
+   "label": "Pallet Remaining Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qgqd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "pallet_issued_qty",
+   "fieldtype": "Int",
+   "label": "Pallet Issued Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "internal_production_section",
+   "fieldtype": "Section Break",
+   "label": "Internal Production"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "internal_production_insights",
+   "fieldtype": "Table",
+   "label": "Internal Production Insights",
+   "options": "Batch Internal Production Insights",
+   "read_only": 1
+  },
+  {
+   "fieldname": "external_production_section",
+   "fieldtype": "Section Break",
+   "label": "External Production"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "external_production_insights",
+   "fieldtype": "Table",
+   "label": "External Production Insights",
+   "options": "Batch External Production Insights",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quality_section",
+   "fieldtype": "Section Break",
+   "label": "Quality"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "quality_insights",
+   "fieldtype": "Table",
+   "label": "Quality Insights",
+   "options": "Batch Quality Test",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "delivery_insights",
+   "fieldtype": "Table",
+   "label": "Delivery Insights",
+   "options": "Batch Delivery Insights",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-26 17:15:09.682983",
+ "modified": "2024-03-15 12:43:23.873376",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",

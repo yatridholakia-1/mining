@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-03-14 16:01:47.392278",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "polymer",
+  "required_qty",
+  "issued_qty",
+  "consumed_qty",
+  "remaning_qty",
+  "enabled"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "polymer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Polymer",
+   "options": "Material"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "issued_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Issued Qty"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "consumed_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Consumed Qty"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "remaning_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Remaning Qty"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "required_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Required Qty"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-03-20 11:55:25.665368",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Batch Polymer Insights",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

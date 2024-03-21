@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import nowdate
-
+from ..api import update_blend_insigts, delete_blend_insigts
 
 
 class AssignBlend(Document):
@@ -35,6 +35,7 @@ class AssignBlend(Document):
 		if self.reassigned_from:
 			old_blend_assignment = frappe.get_doc("Assign Blend", self.reassigned_from)
 			old_blend_assignment.enabled = 0
+			update_blend_insigts(batch=old_blend_assignment.batch, blend=old_blend_assignment.blend, enabled=old_blend_assignment.enabled)
 			old_blend_assignment.save()
 		
 	def before_cancel(self):
@@ -47,7 +48,13 @@ class AssignBlend(Document):
 		if self.reassigned_from:
 				old_blend_assignment = frappe.get_doc("Assign Blend", self.reassigned_from)
 				old_blend_assignment.enabled = 1
+				update_blend_insigts(batch=old_blend_assignment.batch, blend=old_blend_assignment.blend, enabled=old_blend_assignment.enabled)
 				old_blend_assignment.save()
+
+		delete_blend_insigts(self.batch, self.blend)
+
+	def on_submit(self):
+		update_blend_insigts(batch=self.batch, blend=self.blend, enabled=self.enabled)
 
 	def after_insert(self):
 		self.date=nowdate()

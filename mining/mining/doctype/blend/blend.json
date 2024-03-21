@@ -12,6 +12,7 @@
   "column_break_fvml",
   "date",
   "amended_from",
+  "blend_stock",
   "section_break_fjnu",
   "lumps",
   "select_blend_section",
@@ -90,12 +91,19 @@
    "fieldtype": "Percent",
    "label": "Total Percentage",
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "blend_stock",
+   "fieldtype": "Float",
+   "label": "Blend Stock",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-26 12:13:02.311296",
+ "modified": "2024-03-19 12:59:23.226351",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Blend",

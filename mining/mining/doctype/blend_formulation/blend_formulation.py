@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import nowdate
-from ..api import check_stock_balance, create_stock_entry
+from ..api import check_stock_balance, create_stock_entry, update_blend_stock
 from ..enums import Stock, Stock_Purpose
 
 
@@ -50,18 +50,6 @@ class BlendFormulation(Document):
             created_from_doc = "Blend Formulation",
             doc_link = self.name
         )
-		
-	#def on_cancel(self):
-		#Revert Stock Entries
-		# docs = frappe.db.get_list('Stock Management', filters={
-        #     'created_from_doc': ['=', 'Blend Formulation'],
-		# 	'doc_link': ['=', self.name]
-        # })
-		# for doc in docs:
-		# 	try:
-		# 		doc.cancel()
-		# 	except Exception as e:
-		# 		frappe.throw(f"Failed to cancel Stock Management Document: {e}")
 	
         
 

@@ -6,13 +6,25 @@ const KILO_TO_MT_CONVERSTION_FACTOR = parseFloat("1000")
 frappe.ui.form.on("Batch", {
     
         refresh: function(frm){
+
             //Filter in Child Table Materils Required
-            frm.set_query("material", "batch_materials_required", function(doc, cdt, cdn) {
+            frm.set_query("material_type", "batch_materials_required", function(doc, cdt, cdn) {
                 return {
                     filters: [
-                        ["Material", "material_type", "in", ["Bag", "Pallet"]]
+                        ["Material Type", "name", "in", ["Bag", "Pallet"]]
                     ]
                 }
+            });
+            
+            //Filter based on material type selected
+            
+            frm.set_query('material', 'batch_materials_required', function(doc, cdt, cdn) {
+                const row = locals[cdt][cdn];
+                return {
+                    filters: [
+                        ["Material", "material_type", "=", row.material_type]
+                    ]
+                };
             });
 
             //Filter in Product Code Field
@@ -47,6 +59,27 @@ frappe.ui.form.on("Batch", {
 
 
 frappe.ui.form.on('Batch Materials Required', {
+    material_type: function(frm, cdt, cdn) {
+      
+         const row = locals[cdt][cdn];
+        // frm.set_query('material', 'batch_materials_required', function() {
+        //     return {
+        //         filters: [
+        //             ["Material", "material_type", "=", row.material_type]
+        //         ]
+        //     };
+        // });
+        // frm.refresh_field("batch_materials_required")
+        frm.fields_dict['batch_materials_required'].get_query = function(doc, cdt, cdn) {
+            return {
+                filters: [
+                            ["Material", "material_type", "=", row.material_type]
+                         ]
+            };
+        };
+        
+    },
+
 	material: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
 		if(row.bag_size && frm.doc.product_quantity){

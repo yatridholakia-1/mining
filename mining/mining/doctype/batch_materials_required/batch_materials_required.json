@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "material_type",
   "material",
   "quantity",
   "bag_size"
@@ -29,12 +30,19 @@
    "fieldname": "bag_size",
    "fieldtype": "Float",
    "label": "Bag Size"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "Material Type"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-02-23 15:36:20.620426",
+ "modified": "2024-03-15 10:21:35.801586",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Materials Required",
