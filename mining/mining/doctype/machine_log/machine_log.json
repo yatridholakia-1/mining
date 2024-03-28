@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-03-28 10:50:12.891083",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_fqba",
+  "date",
+  "machine",
+  "naming_series",
+  "reference_doc_name",
+  "column_break_oege",
+  "log_type",
+  "hours",
+  "amended_from",
+  "reference_doc_link",
+  "production_section",
+  "batch",
+  "column_break_vasm",
+  "quantity",
+  "downtime_section",
+  "downtime_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_fqba",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Machine Log",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "machine",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Machine",
+   "options": "Machine",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "label": "Hours",
+   "reqd": 1
+  },
+  {
+   "fieldname": "log_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Log Type",
+   "options": "\nProduction\nDowntime",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_oege",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.log_type === \"Production\"",
+   "fieldname": "production_section",
+   "fieldtype": "Section Break",
+   "label": "Production"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "column_break_vasm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity"
+  },
+  {
+   "depends_on": "eval:doc.log_type === \"Downtime\"",
+   "fieldname": "downtime_section",
+   "fieldtype": "Section Break",
+   "label": "Downtime"
+  },
+  {
+   "fieldname": "downtime_reason",
+   "fieldtype": "Link",
+   "label": "Downtime Reason",
+   "options": "Downtime Reason"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "reference_doc_name",
+   "fieldtype": "Link",
+   "label": "Reference Doc Name",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_doc_link",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Doc Link",
+   "options": "reference_doc_name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-03-28 11:29:26.494312",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Machine Log",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

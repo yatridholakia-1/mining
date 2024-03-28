@@ -38,7 +38,8 @@ class Batch(Document):
 			if material.material_type == "Bag":
 				self.append("batch_bag_insights", {
                     "bag": material.material,  
-                    "required_qty": material.quantity
+                    "required_qty": material.quantity,
+					"bag_size": material.bag_size
                 })
 
 			if material.material_type == "Pallet":

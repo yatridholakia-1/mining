@@ -23,7 +23,7 @@ frappe.ui.form.on("Material Transfer", {
         frm.set_query("batch", function() {
             return {
                 filters: [
-                    ["batch_state", "in", ["Created", "Production"]]
+                    ["batch_state", "in", ["Created", "Production", "Blend Assigned"]]
                 ]
             }
         });

@@ -50,13 +50,13 @@
   },
   {
    "fieldname": "expected_hours",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Expected Hours",
    "read_only_depends_on": "eval:doc.status === \"Finished\";"
   },
   {
    "fieldname": "expected_quantity",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Expected Quantity",
    "read_only_depends_on": "eval:doc.status === \"Finished\";"
   },
@@ -106,13 +106,13 @@
   },
   {
    "fieldname": "actual_hours",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Actual Hours",
    "mandatory_depends_on": "eval:doc.status === \"Finished\""
   },
   {
    "fieldname": "actual_quantity",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Actual Quantity",
    "mandatory_depends_on": "eval:doc.status === \"Finished\""
   },
@@ -149,7 +149,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-05 16:45:52.711011",
+ "modified": "2024-03-28 10:52:04.003344",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Production",

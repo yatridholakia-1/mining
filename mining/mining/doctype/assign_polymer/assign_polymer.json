@@ -1,25 +1,25 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{batch}-{blend}-{###} ",
- "creation": "2024-02-22 12:43:41.034865",
+ "autoname": "naming_series:",
+ "creation": "2024-03-22 11:42:16.154078",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_drzl",
+  "section_break_3wvi",
   "batch",
-  "sieve",
   "enabled",
+  "naming_series",
+  "column_break_umlo",
   "date",
-  "column_break_qpda",
-  "blend",
-  "mesh",
   "amended_from",
-  "reassigned_from"
+  "reassigned_from",
+  "section_break_jqvk",
+  "polymers"
  ],
  "fields": [
   {
-   "fieldname": "section_break_drzl",
+   "fieldname": "section_break_3wvi",
    "fieldtype": "Section Break"
   },
   {
@@ -27,7 +27,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Assign Blend",
+   "options": "Assign Polymer",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -36,36 +36,8 @@
    "fieldname": "batch",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Batch",
    "options": "Batch",
-   "read_only_depends_on": "reassigned_from",
-   "reqd": 1
-  },
-  {
-   "fieldname": "sieve",
-   "fieldtype": "Select",
-   "label": "Sieve",
-   "options": "100\n200\n350",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_qpda",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "blend",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Blend",
-   "options": "Blend",
-   "reqd": 1
-  },
-  {
-   "fieldname": "mesh",
-   "fieldtype": "Percent",
-   "label": "Mesh",
    "reqd": 1
   },
   {
@@ -78,6 +50,10 @@
    "read_only": 1
   },
   {
+   "fieldname": "column_break_umlo",
+   "fieldtype": "Column Break"
+  },
+  {
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
@@ -85,21 +61,37 @@
    "read_only": 1
   },
   {
+   "fieldname": "section_break_jqvk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "polymers",
+   "fieldtype": "Table",
+   "label": "Polymers",
+   "options": "Blend Polymer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series"
+  },
+  {
    "fieldname": "reassigned_from",
    "fieldtype": "Link",
    "label": "Re-Assigned From",
-   "options": "Assign Blend",
+   "options": "Assign Polymer",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-26 14:20:38.575400",
+ "modified": "2024-03-22 14:28:51.364499",
  "modified_by": "Administrator",
  "module": "Mining",
- "name": "Assign Blend",
- "naming_rule": "Expression",
+ "name": "Assign Polymer",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

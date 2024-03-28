@@ -12,9 +12,6 @@ class MaterialTransfer(Document):
 	def after_insert(self):
 		self.date = nowdate()
 		self.save()
-	
-	# def validate(self):
-	# 	self.update_batch_insights()
 
 	def on_submit(self):
 		#Validate Stock is present in source warehosue
@@ -41,9 +38,8 @@ class MaterialTransfer(Document):
 				created_from_doc = "Material Transfer",
 				doc_link = self.name
 			)
-				row.stock_entry = stock_transfer_entry
+				row.stock_entry = stock_transfer_entry.name
 				self.save()
-				self.update_batch_insights()
 
 
 	

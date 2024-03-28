@@ -13,7 +13,7 @@ def create_stock_entry(**kwargs):
     stock_management.doc_link = kwargs.get('doc_link')
     stock_management.save()
     stock_management.submit()
-    return stock_management.name
+    return stock_management
 
 def check_stock_balance(entry_for, entry_item, warehouse, check_for_quantity=None):
     exists = frappe.db.exists(
@@ -75,6 +75,24 @@ def update_blend_insigts(batch, blend, enabled=True, consumed_qty=None):
     
     batch_doc.save()
 
+def add_polymer_insigts(batch, doc):
+    batch_doc = frappe.get_doc("Batch", batch)
+    for doc_item in doc.polymers:
+        found = False
+        for polymer_insight in batch_doc.batch_polymer_insights: 
+            if (doc_item.polymer == polymer_insight.polymer and doc_item.quantity == polymer_insight.required_qty):
+                found = True
+                break
+
+        if not found:
+            batch_doc.append("batch_polymer_insights", {
+                    "polymer": doc_item.polymer,
+                    "required_qty": doc_item.quantity,  
+                    "enabled": doc.enabled
+                })
+    
+    batch_doc.save()
+
 def delete_blend_insigts(batch, blend):
     batch_doc = frappe.get_doc("Batch", batch)
     for blend_insight in batch_doc.blend_insights:
@@ -82,6 +100,15 @@ def delete_blend_insigts(batch, blend):
             batch_doc.blend_insights.remove(blend_insight)
             break
     batch_doc.save()
+
+# def delete_polymer_insigts(batch, doc):
+#     batch_doc = frappe.get_doc("Batch", batch)
+#     for doc_item in doc.polymers:
+#         for polymer_insight in batch_doc.batch_polymer_insights: 
+#             if (doc_item.polymer == polymer_insight.polymer and doc_item.quantity == polymer_insight.required_qty):
+#                 batch_doc.batch_polymer_insights.remove(polymer_insight)
+    
+#     batch_doc.save()
 
 def update_batch_insights_from_material_transfer(doc, method=None):
     batch_doc = frappe.get_doc("Batch", doc.batch)
@@ -94,6 +121,10 @@ def update_batch_insights_from_material_transfer(doc, method=None):
             elif material.material_type == "Pallet":
                 if batch_doc.pallet_code == material.material:
                     batch_doc.pallet_issued_qty += material.quantity
+            elif material.material_type == "Polymer":
+                for polymer_row in batch_doc.batch_polymer_insights:
+                     if polymer_row.polymer == material.material:
+                         polymer_row.issued_qty += material.quantity
          elif doc.type == "Material Return":
              if material.material_type == "Bag":
                 for bag_row in batch_doc.batch_bag_insights:
@@ -102,6 +133,11 @@ def update_batch_insights_from_material_transfer(doc, method=None):
              elif material.material_type == "Pallet":
                 if batch_doc.pallet_code == material.material:
                     batch_doc.pallet_issued_qty -= material.quantity
+
+             elif material.material_type == "Polymer":
+                for polymer_row in batch_doc.batch_polymer_insights:
+                     if polymer_row.polymer == material.material:
+                         polymer_row.issued_qty -= material.quantity
     
     batch_doc.save()
 
@@ -111,17 +147,37 @@ def stock_management_update_batch_insights(doc, method=None):
         blend_doc.blend_stock = get_stock_balance("Blend", doc.stock_entry_item, "Blend Warehouse")
         blend_doc.save()
 		
-def assign_blend_batch_insight(doc, method=None):
-    blend_doc = frappe.get_doc("Blend", doc.blend)
-    batch_doc = frappe.get_doc("Batch", doc.batch)
-    for polymer_item in blend_doc.select_polymer_section:
-        found = False
-        for polymer_insight in batch_doc.batch_polymer_insights:
-                if polymer_insight.polymer == polymer_item.polymer:
-                    found = True
-                    polymer_insight.enabled = doc.enabled
-        if not found:
-            batch_doc.append("batch_polymer_insights", {
-                    "polymer": polymer_item.polymer,  
-                    "enabled": doc.enabled
-                })
+# def assign_blend_batch_insight(doc, method=None):
+#     blend_doc = frappe.get_doc("Blend", doc.blend)
+#     batch_doc = frappe.get_doc("Batch", doc.batch)
+#     for polymer_item in blend_doc.select_polymer_section:
+#         found = False
+#         for polymer_insight in batch_doc.batch_polymer_insights:
+#                 if polymer_insight.polymer == polymer_item.polymer:
+#                     found = True
+#                     polymer_insight.enabled = doc.enabled
+#         if not found:
+#             batch_doc.append("batch_polymer_insights", {
+#                     "polymer": polymer_item.polymer,  
+#                     "enabled": doc.enabled
+#                 })
+
+def generate_machine_log(machine, log_type, hours, ref_doc_name, ref_doc_link, batch=None, quantity=None, downtime_reason=None):
+    machine_log = frappe.new_doc("Machine Log")
+    machine_log.machine = machine
+    machine_log.log_type = log_type
+    machine_log.hours = hours
+    machine_log.reference_doc_name = ref_doc_name
+    machine_log.reference_doc_link = ref_doc_link
+    if batch:
+        machine_log.batch = batch
+    if quantity:
+        machine_log.quantity = quantity
+    if downtime_reason:
+        machine_log.downtime_reason = downtime_reason
+    
+    machine_log.save()
+    machine_log.submit()
+
+    return machine_log
+    

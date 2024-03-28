@@ -36,8 +36,8 @@ class StockManagement(Document):
 
     def on_cancel(self):
          #Restrict cancellation of linked documents
-        if self.doc_link:
-            frappe.throw("Cannot Cancel Linked Stock Entries!")
+        # if self.doc_link:
+        #     frappe.throw("Cannot Cancel Linked Stock Entries!")
             
         if self.stock_entry_type == Stock.STOCK_IN.value:
             manageStock(
@@ -115,7 +115,7 @@ def update_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
        new_quantity = quantity + stock_balance.quantity
        
        if new_quantity < 0:
-           frappe.throw("ERROR: Stock Out Quantity Exceeding Current Stock Available.")
+           frappe.throw(f"ERROR: Stock Out Quantity for {entry_item} Exceeding Current Stock Available.")
            new_quantity = 0
            
        stock_balance.quantity = new_quantity

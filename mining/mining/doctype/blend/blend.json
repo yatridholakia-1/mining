@@ -16,9 +16,7 @@
   "section_break_fjnu",
   "lumps",
   "select_blend_section",
-  "blend",
-  "select_polymer_section",
-  "polymer"
+  "blend"
  ],
  "fields": [
   {
@@ -75,17 +73,6 @@
    "options": "Blend Child"
   },
   {
-   "fieldname": "select_polymer_section",
-   "fieldtype": "Section Break",
-   "label": "Select Polymer"
-  },
-  {
-   "fieldname": "polymer",
-   "fieldtype": "Table",
-   "label": "Polymer",
-   "options": "Blend Polymer"
-  },
-  {
    "default": "0",
    "fieldname": "total_percentage",
    "fieldtype": "Percent",
@@ -103,7 +90,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-19 12:59:23.226351",
+ "modified": "2024-03-22 11:27:17.267040",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Blend",

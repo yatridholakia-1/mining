@@ -240,9 +240,10 @@ doc_events = {
     "Stock Management": {
         "on_submit": "mining.mining.doctype.api.stock_management_update_batch_insights",
         "on_cancel": "mining.mining.doctype.api.stock_management_update_batch_insights"
+    },
+    "Production": {
+        "on_submit": "mining.mining.doctype.batch_insights_api.consume_material_for_production",
+        "on_cancel": "mining.mining.doctype.batch_insights_api.consume_material_for_production"
     }
-    # "Assign Blend": {
-    #     "on_submit":  "mining.mining.doctype.api.assign_blend_batch_insight"
-    # }
 }
 
