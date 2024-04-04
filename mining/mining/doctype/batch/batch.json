@@ -367,7 +367,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-15 12:43:23.873376",
+ "modified": "2024-03-28 15:38:34.194801",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
@@ -390,5 +390,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

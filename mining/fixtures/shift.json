@@ -1,0 +1,18 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Shift",
+  "modified": "2024-03-05 15:34:06.534228",
+  "name": "Night",
+  "shift_hours": "6",
+  "shift_name": "Night"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Shift",
+  "modified": "2024-03-05 15:33:57.568632",
+  "name": "Day",
+  "shift_hours": "8",
+  "shift_name": "Day"
+ }
+]

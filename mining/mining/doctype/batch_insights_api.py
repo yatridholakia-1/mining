@@ -143,11 +143,12 @@ def consume_material_for_production(doc, method):
     batch = doc.batch
     production_qty = doc.actual_quantity
     batch_doc = frappe.get_doc("Batch", batch)
-    stock_entries_list = []
-
+    blend_used = ""
+    
     #Consume Blend
     for blend in batch_doc.blend_insights:
         if blend.enabled:
+            blend_used = blend.blend
             blend_qty_to_consume = calculate_blend_consumed(production_qty)
             #check blend stock
             is_stock_available = check_stock_balance(Material_Type.BLEND.value, 
@@ -156,22 +157,24 @@ def consume_material_for_production(doc, method):
             if not is_stock_available:
                 frappe.throw(f"Stock for Blend {blend.blend} Not Available in Warehouse.")
 
-            #Create Stock Out Entry for Blend 
-            st1 = create_stock_entry(
-				stock_entry_for = Material_Type.BLEND.value,
-				stock_entry_item = blend.blend,
-				stock_entry_type = Stock.STOCK_OUT.value,
-				stock_entry_purpose = Stock_Purpose.MATERIAL_CONSUMED.value,
-				source_warehouse = Warehouse.BLEND_WAREHOUSE.value,
-				quantity = blend_qty_to_consume,
-				created_from_doc = "Production",
-				doc_link = doc.name
-			)
-            stock_entries_list.append(st1)
-
-            #Update Blend Consumption
             if method == "on_submit":
+                #Create Stock Out Entry for Blend 
+                create_stock_entry(
+                    stock_entry_for = Material_Type.BLEND.value,
+                    stock_entry_item = blend.blend,
+                    stock_entry_type = Stock.STOCK_OUT.value,
+                    stock_entry_purpose = Stock_Purpose.MATERIAL_CONSUMED.value,
+                    source_warehouse = Warehouse.BLEND_WAREHOUSE.value,
+                    quantity = blend_qty_to_consume,
+                    created_from_doc = "Production",
+                    doc_link = doc.name
+                )
+                
+
+                #Update Blend Consumption
                 blend.consumed_qty += blend_qty_to_consume
+            
+                
             elif method == "on_cancel":
                 blend.consumed_qty -= blend_qty_to_consume
 				
@@ -183,23 +186,23 @@ def consume_material_for_production(doc, method):
             if polymer.issued_qty < polymer_qty_to_consume:
                 frappe.throw(f"Not enough quantity of Polymer: {polymer.polymer} is issued for consumption!")
             
-            #Create stock out entry of polymer from production warehouse
-            st2  = create_stock_entry(
-				stock_entry_for = "Material",
-				stock_entry_item = polymer.polymer,
-				stock_entry_type = Stock.STOCK_OUT.value,
-				stock_entry_purpose = Stock_Purpose.MATERIAL_CONSUMED.value,
-				source_warehouse = doc.production_warehouse,
-				quantity = polymer_qty_to_consume,
-				created_from_doc = "Production",
-				doc_link = doc.name
-			)
-
-            stock_entries_list.append(st2)
-
-            #Update Polymer Batch Insights
             if method == "on_submit":
+            #Create stock out entry of polymer from production warehouse
+                create_stock_entry(
+                    stock_entry_for = "Material",
+                    stock_entry_item = polymer.polymer,
+                    stock_entry_type = Stock.STOCK_OUT.value,
+                    stock_entry_purpose = Stock_Purpose.MATERIAL_CONSUMED.value,
+                    source_warehouse = doc.production_warehouse,
+                    quantity = polymer_qty_to_consume,
+                    created_from_doc = "Production",
+                    doc_link = doc.name
+                )
+
+                
+                #Update Polymer Batch Insights
                 polymer.consumed_qty += polymer_qty_to_consume
+            
             elif method == "on_cancel":
                 polymer.consumed_qty -= polymer_qty_to_consume    
     
@@ -209,74 +212,94 @@ def consume_material_for_production(doc, method):
         if bag.issued_qty < bag_qty_to_consume:
             frappe.throw(f"Not enough quantity of material: {bag.bag} is issued for consumption!")
         
-        #Create stock out entry of polymer from production warehouse
-        st3 = create_stock_entry(
-				stock_entry_for = "Material",
-				stock_entry_item = bag.bag,
-				stock_entry_type = Stock.STOCK_OUT.value,
-				stock_entry_purpose = Stock_Purpose.MATERIAL_CONSUMED.value,
-				source_warehouse = doc.production_warehouse,
-				quantity = bag_qty_to_consume,
-				created_from_doc = "Production",
-				doc_link = doc.name
-			)
-        stock_entries_list.append(st3)
+        if method == "on_submit":
+            #Create stock out entry of polymer from production warehouse
+            create_stock_entry(
+                    stock_entry_for = "Material",
+                    stock_entry_item = bag.bag,
+                    stock_entry_type = Stock.STOCK_OUT.value,
+                    stock_entry_purpose = Stock_Purpose.MATERIAL_CONSUMED.value,
+                    source_warehouse = doc.production_warehouse,
+                    quantity = bag_qty_to_consume,
+                    created_from_doc = "Production",
+                    doc_link = doc.name
+                )
+            
 
         #Update Polymer Batch Insights
-        if method == "on_submit":
             bag.consumed_qty += bag_qty_to_consume
+
         elif method == "on_cancel":
             bag.consumed_qty -= bag_qty_to_consume
     
-    #Stock In Batch Warehouse
-    st4 = create_stock_entry(
-		stock_entry_for = "Batch",
-				stock_entry_item = doc.batch,
-				stock_entry_type = Stock.STOCK_IN.value,
-				stock_entry_purpose = Stock_Purpose.MANUFACTURE.value,
-				target_warehouse = Warehouse.BATCH_WAREHOUSE.value,
-				quantity = production_qty,
-				created_from_doc = "Production",
-				doc_link = doc.name
-			)
-    stock_entries_list.append(st4)
-    machine_log_list = []
+    if method == "on_submit":
+        #Stock In Batch Warehouse
+        create_stock_entry(
+            stock_entry_for = "Batch",
+                    stock_entry_item = doc.batch,
+                    stock_entry_type = Stock.STOCK_IN.value,
+                    stock_entry_purpose = Stock_Purpose.MANUFACTURE.value,
+                    target_warehouse = Warehouse.BATCH_WAREHOUSE.value,
+                    quantity = production_qty,
+                    created_from_doc = "Production",
+                    doc_link = doc.name
+                )
+        
+
     if method == "on_submit":
         batch_doc.total_produced_qty += production_qty
-        #Generate Machine Logs
-        for machine in doc.machines_used:
-            machine_log_list.append(generate_machine_log(
-                machine=machine.machine,
-                log_type=Machine_Log_Type.PRODUCTION.value,
-                hours=doc.actual_hours,
-                ref_doc_name=Machine_Log_Type.PRODUCTION.value,
-                ref_doc_link=doc,
-                batch=doc.batch,
-                quantity=production_qty
-            ))
-
+        if not doc.external:
+            #Generate Machine Logs
+            for machine in doc.machines_used:
+                generate_machine_log(
+                    machine=machine.machine,
+                    log_type=Machine_Log_Type.PRODUCTION.value,
+                    hours=doc.actual_hours,
+                    ref_doc_name=Machine_Log_Type.PRODUCTION.value,
+                    ref_doc_link=doc,
+                    batch=doc.batch,
+                    quantity=production_qty
+                )
+            #Generate Batch Insights
+            doc.batch_insights_row = batchInternalProdInsights(batch_doc, doc.date, production_qty, doc.production_warehouse, doc.shift, blend_used)
+            doc.save()
+        elif doc.external:
+            doc.batch_insights_row = batchExternalProdInsights(batch_doc, doc.date, production_qty, doc.production_warehouse, blend_used)
+            frappe.msgprint(f"{doc.batch_insights_row}")
+            doc.save()
+            frappe.msgprint(f"{doc.batch_insights_row}")
+        
     elif method == "on_cancel":
         batch_doc.total_produced_qty -= production_qty
+        if not doc.external:
+            #remove prod_insights
+            for prod_entry in batch_doc.internal_production_insights:
+                if prod_entry.name == doc.batch_insights_row:
+                    batch_doc.internal_production_insights.remove(prod_entry)
+                    break
+        elif doc.external:
+            for prod_entry in batch_doc.external_production_insights:
+                if prod_entry.name == doc.batch_insights_row:
+                    batch_doc.external_production_insights.remove(prod_entry)
+                    break
 
-    if method == "on_cancel":
-        #Cancel Stock Entries
-        for stock_entry_list in stock_entries_list:
-            try:
-                stock_entry_list.cancel()
-            except Exception as e:
-                frappe.throw(f"Failed to cancel Stock Management Document: {e}")
+    # if method == "on_cancel":
+    #     #Cancel Stock Entries
+    #     for stock_entry_list in stock_entries_list:
+    #         try:
+    #             stock_entry_list.cancel()
+    #         except Exception as e:
+    #             frappe.throw(f"Failed to cancel Stock Management Document: {e}")
 
-        #Cancel Machine Logs
-        for machine_log in machine_log_list:
-            try:
-                machine_log.cancel()
-            except Exception as e:
-                frappe.throw(f"Failed to cancel Stock Management Document: {e}")
+    #     #Cancel Machine Logs
+    #     for machine_log in machine_log_list:
+    #         try:
+    #             machine_log.cancel()
+    #         except Exception as e:
+    #             frappe.throw(f"Failed to cancel Stock Management Document: {e}")
     
     batch_doc.save()
-
-
-
+    
 def calculate_blend_consumed(product_quantity):
     blend_consumed = product_quantity * (1 + LOSS_PERCENTAGE / 100)
     return round(blend_consumed, 2)
@@ -287,3 +310,24 @@ def calculate_polymer_consumption(required_qty_per_mt, product_quantity):
 def calulate_bag_consumption(product_quantity, bag_size):
     return (product_quantity * 1000) / (bag_size)
 
+def batchInternalProdInsights(batch_doc, date, qty, warehouse, shift, blend):
+    row =  batch_doc.append("internal_production_insights", {})
+    row.date =  date
+    row.qty_produced= qty
+    row.warehouse = warehouse  
+    row.shift =  shift
+    row.blend_used =  blend
+    row.save()
+    return row
+
+def batchExternalProdInsights(batch_doc, date, qty, warehouse, blend):
+    frappe.msgprint(f"External Prod")
+    row =  batch_doc.append("external_production_insights", {})
+    row.date =  date
+    row.qty_produced= qty
+    row.warehouse = warehouse  
+    row.blend_used =  blend
+    row.save()
+    frappe.msgprint(f"row: {row}")
+    return row.name
+    

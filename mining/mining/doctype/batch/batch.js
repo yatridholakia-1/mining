@@ -2,6 +2,17 @@
 // For license information, please see license.txt
 
 const KILO_TO_MT_CONVERSTION_FACTOR = parseFloat("1000")
+const change_batch_state = (frm, state) => {
+    frm.set_value("batch_state", state)
+}
+const update_batch_state = (frm) => {
+    if (frm.doc.total_produced_qty > 0) {
+        change_batch_state(frm, "Production")
+    }
+    if (frm.doc.total_delivered_qty > total_required_qty) {
+        change_batch_state(frm, "Delivered")
+    }
+}
 
 frappe.ui.form.on("Batch", {
     
@@ -37,12 +48,21 @@ frappe.ui.form.on("Batch", {
             });
 
             //Add "Assign Blend" Custom Button
-            if (frm.doc.docstatus === 1 && frm.doc.batch_state === "Created") {
+            if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length === 0) {
                 frm.add_custom_button(__("Assign Blend"), function(){
                     frappe.new_doc('Assign Blend', {
                         'batch': frm.doc.batch_code
                     });
                   });
+            }
+
+            //Add "Assign Polymer" Custom Button
+            if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0 && frm.doc.batch_polymer_insights.length === 0) {
+                frm.add_custom_button(__("Assign Polymer"), function(){
+                    frappe.new_doc('Assign Polymer', {
+                        'batch': frm.doc.batch_code
+                    });
+                    });
             }
 
             //Set Validations in Date Picker

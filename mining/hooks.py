@@ -230,7 +230,8 @@ app_license = "mit"
 fixtures = [
     "Stock Entry Purpose",
     "Shift",
-    "Machine"
+    "Machine",
+    {"dt":"Property Setter","filters": [["module", "=", "Mining"]]},
 ]
 
 doc_events = {

@@ -81,7 +81,7 @@ def reverseTransferStock(entry_for: str, entry_item: str, s_warehouse: str, t_wa
 def create_stock_balance(entry_for: str, entry_item: str, warehouse: str, quantity: int):
     
     if quantity < 0:
-        frappe.throw("Creating Stock Balance: Quantity Cannot Be Less Than 0!")
+        frappe.throw(f"Creating Stock Balance: Quantity Cannot Be Less Than 0 for item {entry_item}!")
         
     else:
      stock_balance = frappe.new_doc("Stock Balance")

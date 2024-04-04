@@ -59,5 +59,5 @@ class AssignBlend(Document):
 	def after_insert(self):
 		self.date=nowdate()
 		self.save()
-			
+		
 		

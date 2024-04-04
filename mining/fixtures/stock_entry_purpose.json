@@ -2,13 +2,6 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
-  "modified": "2024-03-05 12:22:30.033994",
-  "name": "Material Transfer For Manufacture",
-  "stock_entry_purpose_name": "Material Transfer For Manufacture"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
   "modified": "2024-03-05 12:24:18.051602",
   "name": "Material Returned To Store",
   "stock_entry_purpose_name": "Material Returned To Store"
@@ -23,16 +16,23 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:55:54.401949",
-  "name": "Material Consumed",
-  "stock_entry_purpose_name": "Material Consumed"
+  "modified": "2024-02-29 10:57:35.508431",
+  "name": "Damage",
+  "stock_entry_purpose_name": "Damage"
  },
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:57:35.508431",
-  "name": "Damage",
-  "stock_entry_purpose_name": "Damage"
+  "modified": "2024-02-29 10:55:40.837382",
+  "name": "Material Inward",
+  "stock_entry_purpose_name": "Material Inward"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-03-05 12:22:30.033994",
+  "name": "Material Transfer For Manufacture",
+  "stock_entry_purpose_name": "Material Transfer For Manufacture"
  },
  {
   "docstatus": 0,
@@ -44,8 +44,8 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:55:40.837382",
-  "name": "Material Inward",
-  "stock_entry_purpose_name": "Material Inward"
+  "modified": "2024-02-29 10:55:54.401949",
+  "name": "Material Consumed",
+  "stock_entry_purpose_name": "Material Consumed"
  }
 ]

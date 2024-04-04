@@ -3,12 +3,12 @@
 
 import frappe
 from frappe.model.document import Document
-from ..batch_insights_api import consume_material_for_production
-from ..api import create_stock_entry
-from ..enums import Stock, Stock_Purpose, Warehouse
+from frappe.utils import nowdate
 
 class Production(Document):
-	pass
+		def after_insert(self):
+			self.date=nowdate()
+			self.save()
 
 
 				

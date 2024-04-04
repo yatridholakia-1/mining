@@ -5,20 +5,13 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "date_time",
+  "date",
   "qty_produced",
   "warehouse",
   "shift",
   "blend_used"
  ],
  "fields": [
-  {
-   "allow_on_submit": 1,
-   "fieldname": "date_time",
-   "fieldtype": "Datetime",
-   "in_list_view": 1,
-   "label": "Date Time"
-  },
   {
    "allow_on_submit": 1,
    "fieldname": "qty_produced",
@@ -49,12 +42,19 @@
    "in_list_view": 1,
    "label": "Blend Used",
    "options": "Blend"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Time"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-03-14 17:19:31.965117",
+ "modified": "2024-04-03 12:09:47.644151",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Internal Production Insights",

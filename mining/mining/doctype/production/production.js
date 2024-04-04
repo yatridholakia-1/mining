@@ -3,6 +3,9 @@
 
 frappe.ui.form.on("Production", {
 	refresh(frm) {
+        if(frm.is_new()){
+            frm.set_value("batch_insights_row", "")
+        }
         frm.set_query("production_warehouse", function() {
             return {
                 filters: [

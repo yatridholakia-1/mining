@@ -75,13 +75,15 @@ def update_blend_insigts(batch, blend, enabled=True, consumed_qty=None):
     
     batch_doc.save()
 
-def add_polymer_insigts(batch, doc):
+def update_polymer_insigts(batch, doc):
     batch_doc = frappe.get_doc("Batch", batch)
+    
     for doc_item in doc.polymers:
         found = False
         for polymer_insight in batch_doc.batch_polymer_insights: 
-            if (doc_item.polymer == polymer_insight.polymer and doc_item.quantity == polymer_insight.required_qty):
+            if ((doc_item.polymer == polymer_insight.polymer) and (doc_item.quantity == polymer_insight.required_qty)):
                 found = True
+                polymer_insight.enabled = doc.enabled
                 break
 
         if not found:
@@ -101,14 +103,16 @@ def delete_blend_insigts(batch, blend):
             break
     batch_doc.save()
 
-# def delete_polymer_insigts(batch, doc):
-#     batch_doc = frappe.get_doc("Batch", batch)
-#     for doc_item in doc.polymers:
-#         for polymer_insight in batch_doc.batch_polymer_insights: 
-#             if (doc_item.polymer == polymer_insight.polymer and doc_item.quantity == polymer_insight.required_qty):
-#                 batch_doc.batch_polymer_insights.remove(polymer_insight)
+def delete_polymer_insigts(batch, doc):
+    batch_doc = frappe.get_doc("Batch", batch)
+    for doc_item in doc.polymers:
+        for polymer_insight in batch_doc.batch_polymer_insights:
+            if doc_item.polymer == polymer_insight.polymer and doc_item.quantity == polymer_insight.required_qty:
+                #frappe.msgprint(f" doc_item {doc_item.polymer}, polymer_insight {polymer_insight.polymer}, {doc_item.quantity}, {polymer_insight.required_qty}")
+                batch_doc.batch_polymer_insights.remove(polymer_insight)
     
-#     batch_doc.save()
+    batch_doc.save()
+
 
 def update_batch_insights_from_material_transfer(doc, method=None):
     batch_doc = frappe.get_doc("Batch", doc.batch)

@@ -1,0 +1,65 @@
+[
+ {
+  "capacityin_hours": null,
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "R1",
+  "machine_name": "ROLLER M/C 1",
+  "modified": "2024-03-05 15:36:43.771972",
+  "name": "R1"
+ },
+ {
+  "capacityin_hours": null,
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "R2",
+  "machine_name": "ROLLER M/C 2",
+  "modified": "2024-03-05 15:37:04.519424",
+  "name": "R2"
+ },
+ {
+  "capacityin_hours": null,
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "B1",
+  "machine_name": "BETER M/C 1",
+  "modified": "2024-03-05 15:37:20.335685",
+  "name": "B1"
+ },
+ {
+  "capacityin_hours": null,
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "B2",
+  "machine_name": "BETER M/C 2",
+  "modified": "2024-03-05 15:37:34.677140",
+  "name": "B2"
+ },
+ {
+  "capacityin_hours": null,
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "R3",
+  "machine_name": "ROLLER M/C 3(5 ROLLER)",
+  "modified": "2024-03-05 15:37:46.637627",
+  "name": "R3"
+ },
+ {
+  "capacityin_hours": null,
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "3 R Packer",
+  "machine_name": "3 R Packer",
+  "modified": "2024-03-05 15:38:05.318235",
+  "name": "3 R Packer"
+ },
+ {
+  "capacityin_hours": null,
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "5 R Packer",
+  "machine_name": "5 R Packer",
+  "modified": "2024-03-05 15:37:56.947194",
+  "name": "5 R Packer"
+ }
+]

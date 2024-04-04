@@ -82,6 +82,7 @@
    "options": "Warehouse"
   },
   {
+   "depends_on": "eval: doc.material_type === \"Bag\"",
    "fieldname": "bag_size",
    "fieldtype": "Float",
    "label": "Bag Size (In KG)"
@@ -89,7 +90,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-02-26 14:54:02.682478",
+ "modified": "2024-03-28 12:30:33.165678",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material",

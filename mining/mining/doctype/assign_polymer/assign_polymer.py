@@ -4,7 +4,7 @@
 import frappe
 from frappe.utils import nowdate
 from frappe.model.document import Document
-from ..api import add_polymer_insigts
+from ..api import update_polymer_insigts, delete_polymer_insigts
 
 class AssignPolymer(Document):
 	def before_submit(self):
@@ -22,19 +22,33 @@ class AssignPolymer(Document):
 		if batch_assignment_exists:
 			frappe.throw("Polymer is already assided to this batch!")
 
+
 		#Disable Old Polymer Assignment 
 		if self.reassigned_from:
+			#Validate Re-Assign
+			for polymer_item in self.polymers:
+				if frappe.db.exists("Batch Polymer Insights", {"polymer": polymer_item.polymer, "required_qty": polymer_item.quantity, "parent": self.batch}):
+					frappe.throw(f"Combination Of Polymer and Quantity Must Be Unique For Batch: {self.batch}")
+
 			old_polymer_assignment = frappe.get_doc("Assign Polymer", self.reassigned_from)
 			old_polymer_assignment.enabled = 0
 			old_polymer_assignment.save()
+			update_polymer_insigts(batch=self.batch, doc=old_polymer_assignment)
+		
 	
 	def on_submit(self):
-		add_polymer_insigts(self.batch, self)
+		update_polymer_insigts(self.batch, self)
 
 	def before_cancel(self):
-		frappe.db.delete("Batch Polymer Insights", {
-    	"parent": self.batch
-		})
+		#Enable Old Polymer Assignment
+		if self.reassigned_from:
+			old_polymer_assignment = frappe.get_doc("Assign Polymer", self.reassigned_from)
+			old_polymer_assignment.enabled = 1
+			old_polymer_assignment.save()
+			update_polymer_insigts(batch=self.batch, doc=old_polymer_assignment)
+			
+		delete_polymer_insigts(self.batch, self)
+
 
 	def after_insert(self):
 		self.date=nowdate()
