@@ -13,8 +13,9 @@
   "naming_series",
   "amended_from",
   "column_break_atau",
-  "downtime_reason",
   "date",
+  "downtime_reason",
+  "section_break_fsbw",
   "remarks"
  ],
  "fields": [
@@ -36,6 +37,7 @@
    "fieldname": "machine",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Machine",
    "options": "Machine",
    "reqd": 1
@@ -67,9 +69,11 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Naming Series"
   },
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date",
@@ -79,13 +83,18 @@
    "fieldname": "shift",
    "fieldtype": "Link",
    "label": "Shift",
-   "options": "Shift"
+   "options": "Shift",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_fsbw",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-22 16:35:10.223235",
+ "modified": "2024-04-05 10:27:14.416070",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Machine Downtime",

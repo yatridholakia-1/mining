@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import nowdate
-from ..enums import Stock, Stock_Purpose
+from ..enums import Stock, Stock_Purpose, Material_Transfer_Type
 from ..api import create_stock_entry, check_stock_balance
 
 
@@ -16,7 +16,9 @@ class MaterialTransfer(Document):
 	def on_submit(self):
 		#Validate Stock is present in source warehosue
 		#Check if balance exists
-		
+		if self.type == Material_Transfer_Type.MATERIAL_ISSUE.value:
+			validate_transfer(self.batch, self)
+			
 		for row in self.material_transfer:
 				is_qty_available = check_stock_balance(
 					entry_for="Material",
@@ -49,6 +51,20 @@ class MaterialTransfer(Document):
 				frappe.get_doc("Stock Management", row.stock_entry).cancel()
 			except Exception as e:
 				frappe.throw(f"Failed to cancel Stock Management Document: {e}")
+	
+def validate_transfer(batch, doc):
+	"""
+	Check if the material being transfer is actually listed as required material against the batch.
+	"""
+	batch_doc = frappe.get_doc("Batch", batch)
+	for item in doc.material_transfer:
+		found = False
+		for batch_item in batch_doc.batch_materials_required:
+			if item.material_type == batch_item.material_type:
+				if item.material == batch_item.material:
+					found = True
+		if not found:
+			frappe.throw(f"Material: {item.material} is not listed as required material in batch: {batch}")
 
 
 
