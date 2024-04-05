@@ -1,4 +1,5 @@
 import frappe
+from .enums import Material_Type
 
 def create_stock_entry(**kwargs):
     stock_management = frappe.new_doc("Stock Management")
@@ -184,4 +185,20 @@ def generate_machine_log(machine, log_type, hours, ref_doc_name, ref_doc_link, b
     machine_log.submit()
 
     return machine_log
+
+def validate_issue(batch, material_type, material, qty_to_check):
+    batch_doc = frappe.get_doc("Batch", batch)
+    if material_type == Material_Type.BAG.value:
+        for bag_row in batch_doc.batch_bag_insights:
+            if bag_row.bag == material and bag_row.issued_qty < qty_to_check:
+                return False
+    elif material_type == Material_Type.POLYMER.value:
+        for polymer_row in batch_doc.batch_polymer_insights:
+            if polymer_row.polymer == material and polymer_row.issued_qty < qty_to_check:
+                return False
+    elif material_type == Material_Type.PALLET.value:
+        if batch_doc.pallet_issued_qty < qty_to_check:
+            return False
+    return True
+    
     

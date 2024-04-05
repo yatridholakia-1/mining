@@ -50,7 +50,7 @@
   },
   {
    "fieldname": "damaged_quantity",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Damaged Quantity",
    "reqd": 1
@@ -99,7 +99,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-22 15:12:01.763416",
+ "modified": "2024-04-05 12:02:14.051408",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Bag Damage",
