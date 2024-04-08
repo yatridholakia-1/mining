@@ -233,7 +233,9 @@ fixtures = [
     "Machine",
     {"dt":"Property Setter","filters": [["module", "=", "Mining"]]},
     "Downtime Reason",
-    "Workflow"
+    "Workflow",
+    "Workflow State",
+    "Workflow Action Master"
     
 ]
 

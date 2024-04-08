@@ -1,0 +1,51 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-02-23 10:37:54.168640",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-02-23 10:37:54.169366",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-02-23 10:37:54.169874",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-08 10:01:09.354997",
+  "name": "Finish",
+  "workflow_action_name": "Finish"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-08 10:03:21.793518",
+  "name": "Schedule",
+  "workflow_action_name": "Schedule"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-08 10:04:44.821407",
+  "name": "Cancel",
+  "workflow_action_name": "Cancel"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-08 10:56:14.880836",
+  "name": "Submit",
+  "workflow_action_name": "Submit"
+ }
+]
