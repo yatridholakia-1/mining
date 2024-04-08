@@ -1,6 +1,7 @@
 import frappe
 from .enums import Material_Type, Batch_Insight_Headers, Warehouse, Stock, Stock_Purpose, Machine_Log_Type
 from .api import check_stock_balance, create_stock_entry, generate_machine_log
+from frappe.utils import now_datetime
 
 
 def update_batch_insights(batch, material_type, header_name, quantity, material_code=None):
@@ -271,17 +272,24 @@ def consume_material_for_production(doc, method):
         
     elif method == "on_cancel":
         batch_doc.total_produced_qty -= production_qty
+         #cancel stock entries:
+        current_time = now_datetime()
+        frappe.db.sql("""UPDATE `tabStock Management` SET docstatus = 2, modified = %s, modified_by = %s WHERE doc_link = %s AND docstatus = 1""", (current_time, frappe.session.user_fullname, doc.name))
         if not doc.external:
             #remove prod_insights
             for prod_entry in batch_doc.internal_production_insights:
                 if prod_entry.name == doc.batch_insights_row:
                     batch_doc.internal_production_insights.remove(prod_entry)
                     break
+
+            #cancel machine logs
+            frappe.db.sql("""UPDATE `tabMachine Log` SET docstatus = 2, modified = %s, modified_by = %s WHERE reference_doc_link = %s AND docstatus = 1""", (current_time, frappe.session.user_fullname, doc.name))
         elif doc.external:
             for prod_entry in batch_doc.external_production_insights:
                 if prod_entry.name == doc.batch_insights_row:
                     batch_doc.external_production_insights.remove(prod_entry)
                     break
+        
 
     # if method == "on_cancel":
     #     #Cancel Stock Entries
@@ -318,7 +326,7 @@ def batchInternalProdInsights(batch_doc, date, qty, warehouse, shift, blend):
     row.shift =  shift
     row.blend_used =  blend
     row.save()
-    return row
+    return row.name
 
 def batchExternalProdInsights(batch_doc, date, qty, warehouse, blend):
     frappe.msgprint(f"External Prod")

@@ -21,5 +21,7 @@ frappe.ui.form.on("Production", {
                 });
               });
         }
-	},
+	}
+
+
 });

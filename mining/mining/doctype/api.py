@@ -200,5 +200,10 @@ def validate_issue(batch, material_type, material, qty_to_check):
         if batch_doc.pallet_issued_qty < qty_to_check:
             return False
     return True
-    
+
+# @frappe.whitelist()
+# def cancel_linked_prod_docs(prod):
+#     prod_doc = frappe.get_doc("Production", prod)
+#     stock_list = frappe.get_list("Stock Management", filters={"created_from_doc": "Production", "doc_link": prod_doc})
+#     frappe.throw(f"{stock_list}")
     

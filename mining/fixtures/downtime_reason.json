@@ -1,0 +1,44 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Downtime Reason",
+  "downtime_reason_name": "Breakdown",
+  "modified": "2024-04-05 10:19:29.300211",
+  "name": "Breakdown"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Downtime Reason",
+  "downtime_reason_name": "Electrical Maintance",
+  "modified": "2024-04-05 10:19:53.093815",
+  "name": "Electrical Maintance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Downtime Reason",
+  "downtime_reason_name": "Low/No Manpower",
+  "modified": "2024-04-05 10:20:14.046893",
+  "name": "Low/No Manpower"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Downtime Reason",
+  "downtime_reason_name": "Storage Capacity Full",
+  "modified": "2024-04-05 10:20:49.172292",
+  "name": "Storage Capacity Full"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Downtime Reason",
+  "downtime_reason_name": "Material Not Available",
+  "modified": "2024-04-05 10:21:16.897725",
+  "name": "Material Not Available"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Downtime Reason",
+  "downtime_reason_name": "Other",
+  "modified": "2024-04-05 10:21:24.060734",
+  "name": "Other"
+ }
+]
