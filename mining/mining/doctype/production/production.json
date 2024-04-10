@@ -164,6 +164,7 @@
    "allow_on_submit": 1,
    "fieldname": "batch_insights_row",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Batch Insights Row",
    "read_only": 1
   }
@@ -171,7 +172,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-08 11:50:44.991445",
+ "modified": "2024-04-09 09:16:26.209467",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Production",

@@ -64,7 +64,8 @@
   {
    "fieldname": "opening_stock",
    "fieldtype": "Data",
-   "label": "Opening Stock"
+   "label": "Opening Stock",
+   "set_only_once": 1
   },
   {
    "fieldname": "rol_quantity",
@@ -76,10 +77,12 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Store",
    "fieldname": "default_warehouse",
    "fieldtype": "Link",
    "label": "Default Warehouse",
-   "options": "Warehouse"
+   "options": "Warehouse",
+   "read_only": 1
   },
   {
    "depends_on": "eval: doc.material_type === \"Bag\"",
@@ -90,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-28 12:30:33.165678",
+ "modified": "2024-04-08 17:42:40.493118",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material",

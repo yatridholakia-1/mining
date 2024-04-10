@@ -1,5 +1,5 @@
 import frappe
-from .enums import Material_Type, Batch_Insight_Headers, Warehouse, Stock, Stock_Purpose, Machine_Log_Type
+from .enums import Material_Type, Batch_Insight_Headers, Warehouse, Stock, Stock_Purpose, Machine_Log_Type, Batch_State
 from .api import check_stock_balance, create_stock_entry, generate_machine_log
 from frappe.utils import now_datetime
 
@@ -249,6 +249,8 @@ def consume_material_for_production(doc, method):
 
     if method == "on_submit":
         batch_doc.total_produced_qty += production_qty
+        if batch_doc.batch_state != Batch_State.PRODUCTION.value:
+            batch_doc.batch_state = Batch_State.PRODUCTION.value
         if not doc.external:
             #Generate Machine Logs
             for machine in doc.machines_used:
@@ -272,6 +274,8 @@ def consume_material_for_production(doc, method):
         
     elif method == "on_cancel":
         batch_doc.total_produced_qty -= production_qty
+        if batch_doc.total_produced_qty == 0:
+            batch_doc.batch_state = Batch_State.BLEND_ASSIGNED.value
          #cancel stock entries:
         current_time = now_datetime()
         frappe.db.sql("""UPDATE `tabStock Management` SET docstatus = 2, modified = %s, modified_by = %s WHERE doc_link = %s AND docstatus = 1""", (current_time, frappe.session.user_fullname, doc.name))
@@ -337,5 +341,15 @@ def batchExternalProdInsights(batch_doc, date, qty, warehouse, blend):
     row.blend_used =  blend
     row.save()
     frappe.msgprint(f"row: {row}")
+    return row.name
+
+def batchTransferInsights(batch, stock_header, other_batch, date, qty):
+    batch_doc = frappe.get_doc("Batch", batch)
+    row =  batch_doc.append("batch_transfer_insights", {})
+    row.date =  date
+    row.quantity = qty
+    row.stock_in_out = stock_header
+    row.from_to_batch =  other_batch
+    row.save()
     return row.name
     

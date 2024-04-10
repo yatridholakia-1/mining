@@ -13,6 +13,7 @@ class Stock_Purpose(Enum):
     MATERIAL_INWARD = "Material Inward"
     MATERIAL_TRANSFER = "Material Transfer For Manufacture"
     MATERIAL_RETURN = "Material Returned To Store"
+    BATCH_TRANSFER = "Batch Transfer"
 
 class Warehouse(Enum):
     STORE = "Store"
@@ -58,5 +59,9 @@ class Batch_Insight_Headers(Enum):
 class Machine_Log_Type(Enum):
     PRODUCTION = "Production"
     DOWNTIME = "Downtime"
+
+class BatchTransferInsightsStock(Enum):
+    IN = "In (+)"
+    OUT = "Out (-)"
 
     

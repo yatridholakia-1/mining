@@ -21,7 +21,20 @@ frappe.ui.form.on("Production", {
                 });
               });
         }
-	}
+	},
+    before_workflow_action: function (frm) {
+        if (frm.selected_workflow_action === 'Cancel') {
+            frappe.confirm('Are you sure you want to cancel?',
+                () => {
+                    frm.doc.workflow_state = 'Cancelled';
+                    frm.save();
+                },
+                () => {
+                    frm.selected_workflow_action = null; 
+                    return false;
+                });
+        }
+    }
 
 
 });

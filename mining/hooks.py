@@ -251,5 +251,6 @@ doc_events = {
         "on_submit": "mining.mining.doctype.batch_insights_api.consume_material_for_production",
         "on_cancel": "mining.mining.doctype.batch_insights_api.consume_material_for_production"
     }
+   
 }
 

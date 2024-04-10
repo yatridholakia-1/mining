@@ -30,6 +30,7 @@
   "batch_insights_tab",
   "batch_overview_section",
   "total_required_qty",
+  "total_batch_stock",
   "column_break_wncr",
   "total_produced_qty",
   "column_break_njyg",
@@ -55,7 +56,9 @@
   "quality_section",
   "quality_insights",
   "delivery_section",
-  "delivery_insights"
+  "delivery_insights",
+  "batch_transfer_section",
+  "batch_transfer_insights"
  ],
  "fields": [
   {
@@ -362,12 +365,30 @@
    "label": "Delivery Insights",
    "options": "Batch Delivery Insights",
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_batch_stock",
+   "fieldtype": "Float",
+   "label": "Total Batch Stock",
+   "read_only": 1
+  },
+  {
+   "fieldname": "batch_transfer_section",
+   "fieldtype": "Section Break",
+   "label": "Batch Transfer"
+  },
+  {
+   "fieldname": "batch_transfer_insights",
+   "fieldtype": "Table",
+   "label": "Batch Transfer Insights",
+   "options": "Batch Transfer Insights"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-05 15:19:49.206363",
+ "modified": "2024-04-10 17:03:14.301343",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",

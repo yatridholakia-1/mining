@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-10 16:31:58.970146",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "column_break_kluc",
+  "stock_in_out",
+  "from_to_batch",
+  "quantity",
+  "date"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_kluc",
+   "fieldtype": "Column Break",
+   "options": "batch"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "stock_in_out",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Stock In/Out",
+   "options": "\nIn (+)\nOut (-)",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "from_to_batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "From/To Batch",
+   "options": "Batch",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-04-10 16:35:40.387719",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Batch Transfer Insights",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

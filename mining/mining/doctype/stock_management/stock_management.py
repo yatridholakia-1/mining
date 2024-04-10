@@ -115,7 +115,7 @@ def update_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
        new_quantity = quantity + stock_balance.quantity
        
        if new_quantity < 0:
-           frappe.throw(f"ERROR: Stock Out Quantity for {entry_item} Exceeding Current Stock Available.")
+           frappe.throw(f"Stock-out quantity for {entry_item} exceeding current stock available.", title="Stock Unavailable")
            new_quantity = 0
            
        stock_balance.quantity = new_quantity

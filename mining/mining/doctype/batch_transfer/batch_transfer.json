@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-04-10 14:51:40.597814",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tvvd",
+  "from_batch",
+  "quantity",
+  "amended_from",
+  "insights_row",
+  "column_break_hrfc",
+  "to_batch",
+  "date",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_tvvd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Batch Transfer",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "from_batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "From Batch",
+   "options": "Batch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hrfc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "To Batch",
+   "options": "Batch",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "insights_row",
+   "fieldtype": "Data",
+   "label": "Insights Row",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-04-10 18:41:58.176935",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Batch Transfer",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -16,8 +16,8 @@ class MaterialTransfer(Document):
 	def on_submit(self):
 		#Validate Stock is present in source warehosue
 		#Check if balance exists
-		if self.type == Material_Transfer_Type.MATERIAL_ISSUE.value:
-			validate_transfer(self.batch, self)
+		# if self.type == Material_Transfer_Type.MATERIAL_ISSUE.value:
+		# 	validate_transfer(self.batch, self)
 			
 		for row in self.material_transfer:
 				is_qty_available = check_stock_balance(

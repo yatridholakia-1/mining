@@ -1,9 +1,9 @@
 # Copyright (c) 2024, ArkayApps and contributors
 # For license information, please see license.txt
 
-import frappe
+# import frappe
 from frappe.model.document import Document
 
 
-class Material(Document):
+class BatchTransferInsights(Document):
 	pass
