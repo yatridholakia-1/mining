@@ -2,15 +2,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "question-sign",
-  "modified": "2024-04-08 10:49:11.130206",
-  "name": "Pending",
-  "style": "Warning",
-  "workflow_state_name": "Pending"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "ok-sign",
   "modified": "2024-02-23 10:37:54.159583",
   "name": "Approved",
@@ -38,11 +29,11 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-04-08 10:06:33.605180",
-  "name": "Finished",
-  "style": "Success",
-  "workflow_state_name": "Finished"
+  "icon": "question-sign",
+  "modified": "2024-04-08 10:49:11.130206",
+  "name": "Pending",
+  "style": "Warning",
+  "workflow_state_name": "Pending"
  },
  {
   "docstatus": 0,
@@ -52,5 +43,14 @@
   "name": "Cancelled",
   "style": "Danger",
   "workflow_state_name": "Cancelled"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-08 10:06:33.605180",
+  "name": "Finished",
+  "style": "Success",
+  "workflow_state_name": "Finished"
  }
 ]

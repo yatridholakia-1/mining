@@ -23,13 +23,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2024-04-08 10:01:09.354997",
-  "name": "Finish",
-  "workflow_action_name": "Finish"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow Action Master",
   "modified": "2024-04-08 10:03:21.793518",
   "name": "Schedule",
   "workflow_action_name": "Schedule"
@@ -47,5 +40,12 @@
   "modified": "2024-04-08 10:56:14.880836",
   "name": "Submit",
   "workflow_action_name": "Submit"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-08 10:01:09.354997",
+  "name": "Finish",
+  "workflow_action_name": "Finish"
  }
 ]
