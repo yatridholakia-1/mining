@@ -1,0 +1,129 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-04-16 15:33:25.158574",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_iosf",
+  "batch",
+  "accepted_quantity",
+  "date",
+  "amended_from",
+  "batch_insights_row",
+  "column_break_zner",
+  "for_quantity",
+  "rejected_quantity",
+  "quality_reject_reason",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_iosf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Batch Quality",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "batch.qc_remaining_stock",
+   "fieldname": "for_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "For Quantity",
+   "reqd": 1
+  },
+  {
+   "description": "This quantity will be sent ahead for packaging.",
+   "fieldname": "accepted_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Accepted Quantity",
+   "reqd": 1
+  },
+  {
+   "description": "This quantity will be transferred to dead-stock warehouse.",
+   "fieldname": "rejected_quantity",
+   "fieldtype": "Float",
+   "label": "Rejected Quantity",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.rejected_quantity > 0",
+   "fieldname": "quality_reject_reason",
+   "fieldtype": "Link",
+   "label": "Quality Reject Reason",
+   "mandatory_depends_on": "eval:doc.rejected_quantity > 0",
+   "options": "Quality Reject Reason"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_zner",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "batch_insights_row",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Batch Insights Row",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-04-19 09:20:26.295018",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Batch Quality",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

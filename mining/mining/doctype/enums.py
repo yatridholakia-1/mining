@@ -14,6 +14,7 @@ class Stock_Purpose(Enum):
     MATERIAL_TRANSFER = "Material Transfer For Manufacture"
     MATERIAL_RETURN = "Material Returned To Store"
     BATCH_TRANSFER = "Batch Transfer"
+    QUALITY_REJECTED = "Quality Rejected"
 
 class Warehouse(Enum):
     STORE = "Store"
@@ -63,5 +64,16 @@ class Machine_Log_Type(Enum):
 class BatchTransferInsightsStock(Enum):
     IN = "In (+)"
     OUT = "Out (-)"
+
+class BSB(Enum):
+    #Batch Stock Breakdown Enum
+    TOTAL_BATCH_STOCK = "total_batch_stock"
+    QC_REMAINING_STOCK = "qc_remaining_stock"
+    QC_ACCEPTED_STOCK = "qc_accepted_stock"
+    TOTAL_QC_REJECTED = "total_qc_rejected"
+    PACKED_STOCK = "packed_stock"
+    TOTAL_TRANSFERRED_STOCK = "total_transferred_stock"
+    TOTAL_PRODUCED_STOCK = "total_produced_qty"
+    TOTAL_DISPATCHED_STOCK = "total_delivered_qty"
 
     

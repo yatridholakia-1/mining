@@ -54,8 +54,8 @@ frappe.ui.form.on("Stock Management", {
         validation(frm)  
     },
     validate(frm){
-        if((frm.doc.stock_entry_type === "Stock Transfer") && (frm.doc.stock_entry_for === "Batch" || frm.doc.stock_entry_for === "Blend")){
-            frappe.throw("Stock Transfer Not Allowed in Batch Or Blend")
-        }
+        // if((frm.doc.stock_entry_type === "Stock Transfer") && (frm.doc.stock_entry_for === "Batch" || frm.doc.stock_entry_for === "Blend")){
+        //     frappe.throw("Stock Transfer Not Allowed in Batch Or Blend")
+        // }
     }
 });

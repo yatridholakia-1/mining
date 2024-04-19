@@ -1,5 +1,5 @@
 import frappe
-from .enums import Material_Type, Batch_Insight_Headers, Warehouse, Stock, Stock_Purpose, Machine_Log_Type, Batch_State
+from .enums import Material_Type, Batch_Insight_Headers, Warehouse, Stock, Stock_Purpose, Machine_Log_Type, Batch_State, BSB
 from .api import check_stock_balance, create_stock_entry, generate_machine_log
 from frappe.utils import now_datetime
 
@@ -248,7 +248,10 @@ def consume_material_for_production(doc, method):
         
 
     if method == "on_submit":
-        batch_doc.total_produced_qty += production_qty
+        #batch_doc.total_produced_qty += production_qty
+        update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCED_STOCK.value, production_qty)
+        update_batch_stock_breakdown(batch_doc, BSB.TOTAL_BATCH_STOCK.value, production_qty)
+        update_batch_stock_breakdown(batch_doc, BSB.QC_REMAINING_STOCK.value, production_qty)
         if batch_doc.batch_state != Batch_State.PRODUCTION.value:
             batch_doc.batch_state = Batch_State.PRODUCTION.value
         if not doc.external:
@@ -273,7 +276,8 @@ def consume_material_for_production(doc, method):
             frappe.msgprint(f"{doc.batch_insights_row}")
         
     elif method == "on_cancel":
-        batch_doc.total_produced_qty -= production_qty
+        #batch_doc.total_produced_qty -= production_qty
+        update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCED_STOCK.value, -production_qty)
         if batch_doc.total_produced_qty == 0:
             batch_doc.batch_state = Batch_State.BLEND_ASSIGNED.value
          #cancel stock entries:
@@ -353,3 +357,15 @@ def batchTransferInsights(batch, stock_header, other_batch, date, qty):
     row.save()
     return row.name
     
+def batchQualityInsights(batch, accepted_qty, rejected_qty, date, qty):
+
+    row =  batch.append("quality_insights", {})
+    row.date =  date
+    row.quantity = qty
+    row.accepted_qty = accepted_qty
+    row.rejected_qty =  rejected_qty
+    row.save()
+    return row.name
+
+def update_batch_stock_breakdown(batch, field_name, qty):
+    batch.set(field_name, batch.get(field_name) + qty)

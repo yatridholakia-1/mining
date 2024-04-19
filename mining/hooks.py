@@ -235,7 +235,8 @@ fixtures = [
     "Downtime Reason",
     "Workflow",
     "Workflow State",
-    "Workflow Action Master"
+    "Workflow Action Master",
+    "Quality Reject Reason"
     
 ]
 

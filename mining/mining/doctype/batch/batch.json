@@ -30,11 +30,18 @@
   "batch_insights_tab",
   "batch_overview_section",
   "total_required_qty",
-  "total_batch_stock",
   "column_break_wncr",
   "total_produced_qty",
   "column_break_njyg",
   "total_delivered_qty",
+  "batch_stock_breakdown_section",
+  "total_batch_stock",
+  "qc_accepted_stock",
+  "packed_stock",
+  "column_break_cmvl",
+  "qc_remaining_stock",
+  "total_qc_rejected",
+  "total_transferred_stock",
   "bag_insights_section",
   "batch_bag_insights",
   "polymer_section",
@@ -383,12 +390,56 @@
    "fieldtype": "Table",
    "label": "Batch Transfer Insights",
    "options": "Batch Transfer Insights"
+  },
+  {
+   "fieldname": "batch_stock_breakdown_section",
+   "fieldtype": "Section Break",
+   "label": "Batch Stock Breakdown"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "qc_accepted_stock",
+   "fieldtype": "Float",
+   "label": "QC Accepted Stock",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "packed_stock",
+   "fieldtype": "Float",
+   "label": "Packed Stock",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cmvl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "qc_remaining_stock",
+   "fieldtype": "Float",
+   "label": "QC Remaining Stock",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_qc_rejected",
+   "fieldtype": "Float",
+   "label": "Total QC Rejected ",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_transferred_stock",
+   "fieldtype": "Float",
+   "label": "Total Transferred Stock",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-10 17:03:14.301343",
+ "modified": "2024-04-18 15:04:46.130371",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
