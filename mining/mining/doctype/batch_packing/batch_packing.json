@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-04-19 09:44:17.980246",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_2yvd",
+  "batch",
+  "pallet_assigned",
+  "date",
+  "amended_from",
+  "column_break_vonl",
+  "packing_quantity",
+  "production_warehouse",
+  "pallet_quantity",
+  "naming_series",
+  "qc_accepted_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_2yvd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Batch Packing",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_vonl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": ".",
+   "fieldname": "pallet_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Pallet Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "packing_quantity",
+   "fieldtype": "Float",
+   "label": "Packing Quantity",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "batch.qc_accepted_stock",
+   "fieldname": "qc_accepted_qty",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "QC Accepted Qty",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "batch.pallet_code",
+   "fieldname": "pallet_assigned",
+   "fieldtype": "Data",
+   "label": "Pallet Assigned",
+   "reqd": 1
+  },
+  {
+   "fieldname": "production_warehouse",
+   "fieldtype": "Link",
+   "label": "Production Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-04-19 12:37:58.661499",
+ "modified_by": "Administrator",
+ "module": "Mining",
+ "name": "Batch Packing",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

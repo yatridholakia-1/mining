@@ -48,18 +48,18 @@
   "capacityin_hours": null,
   "docstatus": 0,
   "doctype": "Machine",
-  "machine_code": "3 R Packer",
-  "machine_name": "3 R Packer",
-  "modified": "2024-03-05 15:38:05.318235",
-  "name": "3 R Packer"
+  "machine_code": "5 R Packer",
+  "machine_name": "5 R Packer",
+  "modified": "2024-03-05 15:37:56.947194",
+  "name": "5 R Packer"
  },
  {
   "capacityin_hours": null,
   "docstatus": 0,
   "doctype": "Machine",
-  "machine_code": "5 R Packer",
-  "machine_name": "5 R Packer",
-  "modified": "2024-03-05 15:37:56.947194",
-  "name": "5 R Packer"
+  "machine_code": "3 R Packer",
+  "machine_name": "3 R Packer",
+  "modified": "2024-03-05 15:38:05.318235",
+  "name": "3 R Packer"
  }
 ]

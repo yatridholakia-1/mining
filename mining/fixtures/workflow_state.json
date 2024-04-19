@@ -21,6 +21,15 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2024-04-08 10:06:27.545014",
+  "name": "Cancelled",
+  "style": "Danger",
+  "workflow_state_name": "Cancelled"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2024-04-08 10:06:10.186684",
   "name": "Scheduled",
   "style": "Primary",
@@ -34,15 +43,6 @@
   "name": "Pending",
   "style": "Warning",
   "workflow_state_name": "Pending"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-04-08 10:06:27.545014",
-  "name": "Cancelled",
-  "style": "Danger",
-  "workflow_state_name": "Cancelled"
  },
  {
   "docstatus": 0,

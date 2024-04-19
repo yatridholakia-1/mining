@@ -30,6 +30,13 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
+  "modified": "2024-04-18 17:54:08.603734",
+  "name": "Quality Rejected",
+  "stock_entry_purpose_name": "Quality Rejected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
   "modified": "2024-02-29 10:55:40.837382",
   "name": "Material Inward",
   "stock_entry_purpose_name": "Material Inward"
