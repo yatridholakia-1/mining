@@ -52,6 +52,7 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Naming Series"
   },
   {
@@ -98,7 +99,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-19 12:37:58.661499",
+ "modified": "2024-04-19 15:36:02.175626",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Packing",

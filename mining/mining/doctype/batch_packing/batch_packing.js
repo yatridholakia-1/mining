@@ -20,6 +20,6 @@ frappe.ui.form.on("Batch Packing", {
         });
 	},
     qc_accepted_qty(frm){
-            frm.set_value("packing_quantity", frm.doc.qc_accepted_qty)
+        frm.set_value("packing_quantity", frm.doc.qc_accepted_qty)
     }
 });

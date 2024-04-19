@@ -13,7 +13,14 @@ frappe.ui.form.on("Production", {
                 ]
             }
         });
-
+        frm.set_query("batch", function() {
+            return {
+                filters: [
+                    ["batch_state", "in", ["Production", "Blend Assigned"]],
+                    ["batch_state", "!=", "Delivered"]
+                ]
+            }
+        });
         if (frm.doc.docstatus === 1) {
             frm.add_custom_button(__("Machine Downtime"), function(){
                 frappe.new_doc('Machine Downtime', {

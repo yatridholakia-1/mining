@@ -76,5 +76,6 @@ class BSB(Enum):
     TOTAL_PRODUCED_STOCK = "total_produced_qty"
     TOTAL_DISPATCHED_STOCK = "total_delivered_qty"
     PALLET_CONSUMED_QTY = "pallet_consumed_qty"
+    TOTAL_DISPATCHED_QTY = "total_delivered_qty"
 
     
