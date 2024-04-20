@@ -10,11 +10,12 @@
   "from_batch",
   "quantity",
   "amended_from",
-  "insights_row",
+  "from_insights_row",
   "column_break_hrfc",
   "to_batch",
   "date",
-  "naming_series"
+  "naming_series",
+  "to_insights_row"
  ],
  "fields": [
   {
@@ -72,16 +73,26 @@
    "label": "Naming Series"
   },
   {
-   "fieldname": "insights_row",
+   "allow_on_submit": 1,
+   "fieldname": "from_insights_row",
    "fieldtype": "Data",
-   "label": "Insights Row",
+   "hidden": 1,
+   "label": "From Insights Row",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "to_insights_row",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "To Insights Row",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-10 18:41:58.176935",
+ "modified": "2024-04-20 09:56:21.446997",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Transfer",

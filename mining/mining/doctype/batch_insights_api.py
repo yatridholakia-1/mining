@@ -348,8 +348,7 @@ def batchExternalProdInsights(batch_doc, date, qty, warehouse, blend):
     return row.name
 
 def batchTransferInsights(batch, stock_header, other_batch, date, qty):
-    batch_doc = frappe.get_doc("Batch", batch)
-    row =  batch_doc.append("batch_transfer_insights", {})
+    row =  batch.append("batch_transfer_insights", {})
     row.date =  date
     row.quantity = qty
     row.stock_in_out = stock_header

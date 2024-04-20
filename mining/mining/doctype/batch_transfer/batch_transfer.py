@@ -4,13 +4,15 @@ import frappe
 from frappe.model.document import Document
 from frappe.utils import nowdate
 from ..api import create_stock_entry
-from ..batch_insights_api import batchTransferInsights
-from ..enums import Material_Type, Warehouse, Stock, Stock_Purpose
+from ..batch_insights_api import update_batch_stock_breakdown, batchTransferInsights
+from ..enums import BatchTransferInsightsStock, Warehouse, Stock, Stock_Purpose, BSB
 
 
 class BatchTransfer(Document):
 	def after_insert(self):
 		self.date = nowdate()
+		self.from_insights_row = ""
+		self.to_insights_row = ""
 		self.save()
 	
 	def validate(self):
@@ -21,7 +23,47 @@ class BatchTransfer(Document):
 	
 	def on_submit(self):
 		create_stock_entries(self)
+		from_batch_doc = frappe.get_doc("Batch", self.from_batch)
+		to_batch_doc = frappe.get_doc("Batch", self.to_batch)
+		#Deduct Batch Stock from code in From Batch
+		update_batch_stock_breakdown(from_batch_doc, BSB.TOTAL_BATCH_STOCK.value, -self.quantity)
+		#Add Batch Stock in to Batch
+		update_batch_stock_breakdown(to_batch_doc, BSB.TOTAL_BATCH_STOCK.value, self.quantity)
+		#Total Transferred Stock in To Batch
+		update_batch_stock_breakdown(to_batch_doc, BSB.TOTAL_TRANSFERRED_STOCK.value, self.quantity)
+		#add qty to QC Remaining Stock in to_batch
+		update_batch_stock_breakdown(to_batch_doc, BSB.QC_REMAINING_STOCK.value, self.quantity)
+		#Batch Insights row in from Batch
+		self.from_insights_row = batchTransferInsights(from_batch_doc, BatchTransferInsightsStock.OUT.value, to_batch_doc.name, self.date, self.quantity)
+  		#Batch Insights row in To Batch
+		self.to_insights_row = batchTransferInsights(to_batch_doc, BatchTransferInsightsStock.IN.value, from_batch_doc.name, self.date, self.quantity)
+		self.save()
+		from_batch_doc.save()
+		to_batch_doc.save()
 
+	def on_cancel(self):
+		from_batch_doc = frappe.get_doc("Batch", self.from_batch)
+		to_batch_doc = frappe.get_doc("Batch", self.to_batch)
+		#Add Batch Stock from code in From Batch
+		update_batch_stock_breakdown(from_batch_doc, BSB.TOTAL_BATCH_STOCK.value, self.quantity)
+		#Deduct Batch Stock in to Batch
+		update_batch_stock_breakdown(to_batch_doc, BSB.TOTAL_BATCH_STOCK.value, -self.quantity)
+		#Deduct Total Transferred Stock in To Batch
+		update_batch_stock_breakdown(to_batch_doc, BSB.TOTAL_TRANSFERRED_STOCK.value, -self.quantity)
+		#Deduct qty to QC Remaining Stock in to_batch
+		update_batch_stock_breakdown(to_batch_doc, BSB.QC_REMAINING_STOCK.value, -self.quantity)
+		#Remove Batch Insights row in from Batch
+		for entry in from_batch_doc.batch_transfer_insights:
+				if entry.name == self.from_insights_row:
+					from_batch_doc.batch_transfer_insights.remove(entry)
+					break
+  		#Remove Batch Insights row in To Batch
+		for entry in to_batch_doc.batch_transfer_insights:
+				if entry.name == self.to_insights_row:
+					to_batch_doc.batch_transfer_insights.remove(entry)
+					break
+		from_batch_doc.save()
+		to_batch_doc.save()
 
 def create_stock_entries(doc):
 	#Stock Out Entry From from_batch
