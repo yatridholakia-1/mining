@@ -110,12 +110,18 @@ frappe.ui.form.on('Material Transfer Child', {
         else if(frm.doc.type == "Material Issue"){
             row = locals[cdt][cdn]
             row.source_warehouse = "Store"
+            if(frm.doc.readymade_production){
+                row.target_warehouse = "Ready-Made Warehouse"
+            }
             frm.refresh_field('material_transfer');
             
         }
         else if(frm.doc.type == "Material Return"){
             row = locals[cdt][cdn]
             row.target_warehouse = "Store"
+            if(frm.doc.readymade_production){
+                row.source_warehouse = "Ready-Made Warehouse"
+            }
             frm.refresh_field('material_transfer');
         }
 

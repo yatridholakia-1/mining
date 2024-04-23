@@ -11,6 +11,8 @@
   "pallet_assigned",
   "date",
   "amended_from",
+  "readymade_batch",
+  "pallet_required_qty",
   "column_break_vonl",
   "packing_quantity",
   "production_warehouse",
@@ -62,7 +64,7 @@
   {
    "fetch_from": ".",
    "fieldname": "pallet_quantity",
-   "fieldtype": "Float",
+   "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Pallet Quantity",
    "reqd": 1
@@ -93,13 +95,31 @@
    "fieldtype": "Link",
    "label": "Production Warehouse",
    "options": "Warehouse",
+   "read_only_depends_on": "readymade_batch",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "readymade_batch",
+   "fetch_from": "batch.ready_made_product",
+   "fieldname": "readymade_batch",
+   "fieldtype": "Check",
+   "label": "Ready-Made Batch",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "batch.pallet_required_qty",
+   "fieldname": "pallet_required_qty",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Pallet Required Qty",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-19 15:36:02.175626",
+ "modified": "2024-04-23 12:50:18.830588",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Packing",

@@ -37,6 +37,13 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
+  "modified": "2024-04-20 14:58:30.985885",
+  "name": "Ready-Made Production",
+  "stock_entry_purpose_name": "Ready-Made Production"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
   "modified": "2024-02-29 10:55:40.837382",
   "name": "Material Inward",
   "stock_entry_purpose_name": "Material Inward"

@@ -2,24 +2,21 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2024-02-22 14:15:32.705995",
+ "creation": "2024-04-20 12:09:06.457767",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_nbjl",
+  "section_break_qcbc",
   "batch",
-  "type",
-  "naming_series",
-  "column_break_vtgn",
   "date",
   "amended_from",
-  "readymade_production",
-  "section_break_pqjg",
-  "material_transfer"
+  "column_break_uwfi",
+  "quantity",
+  "naming_series"
  ],
  "fields": [
   {
-   "fieldname": "section_break_nbjl",
+   "fieldname": "section_break_qcbc",
    "fieldtype": "Section Break"
   },
   {
@@ -27,7 +24,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Material Transfer",
+   "options": "Ready-Made Production",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -35,38 +32,28 @@
   {
    "fieldname": "batch",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Batch",
    "options": "Batch",
    "reqd": 1
   },
   {
-   "fieldname": "type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Type",
-   "options": "\nMaterial Issue\nMaterial Return",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_vtgn",
-   "fieldtype": "Column Break"
-  },
-  {
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Date",
-   "read_only": 1
+   "reqd": 1
   },
   {
-   "fieldname": "section_break_pqjg",
-   "fieldtype": "Section Break"
+   "fieldname": "column_break_uwfi",
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "material_transfer",
-   "fieldtype": "Table",
-   "label": "Material Transfer",
-   "options": "Material Transfer Child",
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
    "reqd": 1
   },
   {
@@ -74,24 +61,15 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Naming Series"
-  },
-  {
-   "default": "0",
-   "depends_on": "readymade_production",
-   "fetch_from": "batch.ready_made_product",
-   "fieldname": "readymade_production",
-   "fieldtype": "Check",
-   "label": "Ready-Made Production",
-   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-20 15:49:24.320119",
+ "modified": "2024-04-20 16:22:58.549534",
  "modified_by": "Administrator",
  "module": "Mining",
- "name": "Material Transfer",
+ "name": "Ready-Made Production",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

@@ -29,6 +29,14 @@ class Batch(Document):
 		self.external_production_insights = []
 		self.quality_insights = []
 		self.delivery_insights = []
+		self.total_transferred_stock = 0
+		self.total_qc_rejected = 0
+		self.total_readymade_qty = 0
+		self.total_batch_stock = 0
+		self.qc_remaining_stock = 0
+		self.qc_accepted_stock = 0
+		self.packed_stock = 0
+		self.batch_transfer_insights = []
 
 	
 	def on_submit(self):

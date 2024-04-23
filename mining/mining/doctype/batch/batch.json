@@ -12,7 +12,6 @@
   "product_code",
   "quantity_per_container",
   "expected_dispatch_date",
-  "batch_stock",
   "column_break_dftq",
   "date",
   "party",
@@ -36,6 +35,7 @@
   "total_delivered_qty",
   "column_break_njyg",
   "total_transferred_stock",
+  "total_readymade_qty",
   "batch_stock_breakdown_section",
   "total_batch_stock",
   "qc_accepted_stock",
@@ -147,7 +147,7 @@
    "fieldname": "batch_state",
    "fieldtype": "Select",
    "label": "Batch State",
-   "options": "Created\nBlend Assigned\nProduction\nDelivered\nCancelled",
+   "options": "Created\nBlend Assigned\nProduction\nReady-Made Production\nDelivered\nCancelled",
    "read_only": 1
   },
   {
@@ -185,14 +185,6 @@
    "fieldname": "remarks",
    "fieldtype": "Small Text",
    "label": "Remarks"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval: doc.batch_stock > 0",
-   "fieldname": "batch_stock",
-   "fieldtype": "Data",
-   "label": "Batch Stock",
-   "read_only": 1
   },
   {
    "fieldname": "batch_insights_tab",
@@ -243,6 +235,7 @@
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval:doc.ready_made_product !== 1",
    "fieldname": "total_produced_qty",
    "fieldtype": "Float",
    "label": "Total Produced Qty",
@@ -418,6 +411,7 @@
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval:doc.ready_made_product !== 1",
    "fieldname": "qc_remaining_stock",
    "fieldtype": "Float",
    "label": "QC Remaining Stock",
@@ -425,6 +419,7 @@
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval:doc.ready_made_product !== 1",
    "fieldname": "total_qc_rejected",
    "fieldtype": "Float",
    "label": "Total QC Rejected Qty",
@@ -432,16 +427,25 @@
   },
   {
    "allow_on_submit": 1,
+   "depends_on": "eval:doc.ready_made_product !== 1",
    "fieldname": "total_transferred_stock",
    "fieldtype": "Float",
    "label": "Total Transferred Qty",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "ready_made_product",
+   "fieldname": "total_readymade_qty",
+   "fieldtype": "Float",
+   "label": "Total Ready-Made Qty",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-20 10:01:56.943325",
+ "modified": "2024-04-23 15:11:27.249170",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",

@@ -13,6 +13,9 @@ frappe.listview_settings['Batch'] = {
             if(doc.batch_state=="Production") {
                 indicator[1] = "purple";
             }
+            if(doc.batch_state=="Ready-Made Production") {
+                indicator[1] = "orange";
+            }
             if(doc.batch_state=="Delivered") {
                 indicator[1] = "green";
             }

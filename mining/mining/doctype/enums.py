@@ -15,6 +15,7 @@ class Stock_Purpose(Enum):
     MATERIAL_RETURN = "Material Returned To Store"
     BATCH_TRANSFER = "Batch Transfer"
     QUALITY_REJECTED = "Quality Rejected"
+    READY_MADE_PROD = "Ready-Made Production"
 
 class Warehouse(Enum):
     STORE = "Store"
@@ -37,6 +38,7 @@ class Batch_State(Enum):
     PRODUCTION = "Production"
     DELIVERED = "Delivered"
     CANCELLED = "Cancelled"
+    READY_MADE_PROD = "Ready-Made Production"
 
 class Material_Type(Enum):
     PRODUCT = "Product"
@@ -77,5 +79,6 @@ class BSB(Enum):
     TOTAL_DISPATCHED_STOCK = "total_delivered_qty"
     PALLET_CONSUMED_QTY = "pallet_consumed_qty"
     TOTAL_DISPATCHED_QTY = "total_delivered_qty"
+    TOTAL_READY_MADE_QTY = "total_readymade_qty"
 
     

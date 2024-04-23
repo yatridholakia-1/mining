@@ -6,7 +6,7 @@ frappe.ui.form.on("Batch Packing", {
         frm.set_query("batch", function() {
             return {
                 filters: [
-                    ["batch_state", "=", "Production"]
+                    ["batch_state", "in", ["Production", "Ready-Made Production"]]
                 ]
             }
         });
@@ -20,6 +20,18 @@ frappe.ui.form.on("Batch Packing", {
         });
 	},
     qc_accepted_qty(frm){
+        if (frm.doc.qc_accepted_qty) {
         frm.set_value("packing_quantity", frm.doc.qc_accepted_qty)
+        }
+    },
+    batch(frm){
+        if (frm.doc.readymade_batch){
+            frm.set_value("production_warehouse", "Ready-Made Warehouse")
+        }
+    },
+    pallet_required_qty(frm){
+        if(frm.doc.pallet_required_qty) {
+            frm.set_value("pallet_quantity", frm.doc.pallet_required_qty)
+        }
     }
 });
