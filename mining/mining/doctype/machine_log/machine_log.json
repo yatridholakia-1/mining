@@ -127,7 +127,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-03 14:10:16.446204",
+ "modified": "2024-04-24 15:37:34.829413",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Machine Log",
@@ -135,18 +135,34 @@
  "owner": "Administrator",
  "permissions": [
   {
-   "cancel": 1,
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Production Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Managing Director",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",
