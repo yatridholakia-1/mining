@@ -80,5 +80,7 @@ class BSB(Enum):
     PALLET_CONSUMED_QTY = "pallet_consumed_qty"
     TOTAL_DISPATCHED_QTY = "total_delivered_qty"
     TOTAL_READY_MADE_QTY = "total_readymade_qty"
+    TOTAL_DELIVERY_PROGRESS = "delivery_progress"
+    TOTAL_PRODUCTION_PROGRESS = "production_progress"
 
     

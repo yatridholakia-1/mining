@@ -74,6 +74,10 @@ frappe.ui.form.on("Batch", {
                     minDate: new Date(frappe.datetime.get_today())
                 });
         }
+    },
+    total_delivered_qty(frm){
+            let delivery_progress = (frm.doc.total_delivered_qty / frm.doc.total_required_qty) * 100;
+            frm.set_value("delivery_progress", delivery_progress)
     }
 });
 

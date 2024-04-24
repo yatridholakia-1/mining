@@ -33,9 +33,11 @@
   "column_break_wncr",
   "total_produced_qty",
   "total_delivered_qty",
+  "production_progress",
   "column_break_njyg",
   "total_transferred_stock",
   "total_readymade_qty",
+  "delivery_progress",
   "batch_stock_breakdown_section",
   "total_batch_stock",
   "qc_accepted_stock",
@@ -440,12 +442,28 @@
    "fieldtype": "Float",
    "label": "Total Ready-Made Qty",
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "15",
+   "fieldname": "production_progress",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Production Progress"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "7",
+   "fieldname": "delivery_progress",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Delivery Progress"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-23 15:11:27.249170",
+ "modified": "2024-04-23 16:35:10.555897",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",

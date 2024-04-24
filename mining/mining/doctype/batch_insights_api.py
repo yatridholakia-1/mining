@@ -246,10 +246,12 @@ def consume_material_for_production(doc, method):
                     doc_link = doc.name
                 )
         
-
+    
     if method == "on_submit":
         #batch_doc.total_produced_qty += production_qty
         update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCED_STOCK.value, production_qty)
+        prod_progress = (batch_doc.total_produced_qty / batch_doc.total_required_qty) * 100;
+        update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, prod_progress)
         update_batch_stock_breakdown(batch_doc, BSB.TOTAL_BATCH_STOCK.value, production_qty)
         update_batch_stock_breakdown(batch_doc, BSB.QC_REMAINING_STOCK.value, production_qty)
         if batch_doc.batch_state != Batch_State.PRODUCTION.value:
@@ -271,13 +273,13 @@ def consume_material_for_production(doc, method):
             doc.save()
         elif doc.external:
             doc.batch_insights_row = batchExternalProdInsights(batch_doc, doc.date, production_qty, doc.production_warehouse, blend_used)
-            frappe.msgprint(f"{doc.batch_insights_row}")
             doc.save()
-            frappe.msgprint(f"{doc.batch_insights_row}")
         
     elif method == "on_cancel":
         #batch_doc.total_produced_qty -= production_qty
         update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCED_STOCK.value, -production_qty)
+        prod_progress = (batch_doc.total_produced_qty / batch_doc.total_required_qty) * 100;
+        update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, -prod_progress)
         if batch_doc.total_produced_qty == 0:
             batch_doc.batch_state = Batch_State.BLEND_ASSIGNED.value
          #cancel stock entries:
@@ -365,6 +367,15 @@ def batchQualityInsights(batch, accepted_qty, rejected_qty, date, qty):
     row.rejected_qty =  rejected_qty
     row.save()
     return row.name
+
+def batchDispatchInsights(batch, date, qty):
+
+    row =  batch.append("delivery_insights", {})
+    row.delivery_date =  date
+    row.delivered_qty = qty
+    row.save()
+    return row.name
+
 
 def update_batch_stock_breakdown(batch, field_name, qty):
     batch.set(field_name, batch.get(field_name) + qty)
