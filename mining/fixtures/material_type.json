@@ -1,0 +1,37 @@
+[
+ {
+  "custom_material_type_name": "Product",
+  "docstatus": 0,
+  "doctype": "Material Type",
+  "modified": "2024-02-23 14:27:02.773493",
+  "name": "Product"
+ },
+ {
+  "custom_material_type_name": "Lumps",
+  "docstatus": 0,
+  "doctype": "Material Type",
+  "modified": "2024-02-23 14:26:40.240680",
+  "name": "Lumps"
+ },
+ {
+  "custom_material_type_name": "Polymer",
+  "docstatus": 0,
+  "doctype": "Material Type",
+  "modified": "2024-02-23 14:26:45.734871",
+  "name": "Polymer"
+ },
+ {
+  "custom_material_type_name": "Pallet",
+  "docstatus": 0,
+  "doctype": "Material Type",
+  "modified": "2024-02-23 14:26:31.582677",
+  "name": "Pallet"
+ },
+ {
+  "custom_material_type_name": "Bag",
+  "docstatus": 0,
+  "doctype": "Material Type",
+  "modified": "2024-02-23 14:26:26.035917",
+  "name": "Bag"
+ }
+]

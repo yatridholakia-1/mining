@@ -37,6 +37,8 @@ class Batch(Document):
 		self.qc_accepted_stock = 0
 		self.packed_stock = 0
 		self.batch_transfer_insights = []
+		self.production_progress = 0
+		self.delivery_progress = 0
 
 	
 	def on_submit(self):

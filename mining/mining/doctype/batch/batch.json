@@ -23,6 +23,7 @@
   "batch_materials_required",
   "section_break_pjjl",
   "is_label_required",
+  "attach_label",
   "remarks",
   "section_break_mgit",
   "amended_from",
@@ -102,6 +103,7 @@
    "in_list_view": 1,
    "label": "Product Code",
    "options": "Material",
+   "permlevel": 2,
    "reqd": 1
   },
   {
@@ -129,7 +131,9 @@
    "fieldname": "party",
    "fieldtype": "Link",
    "label": "Party",
-   "options": "Party"
+   "options": "Party",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "product_quantity",
@@ -189,6 +193,7 @@
    "label": "Remarks"
   },
   {
+   "depends_on": "eval:!frappe.user.has_role(\"System Manager\")",
    "fieldname": "batch_insights_tab",
    "fieldtype": "Tab Break",
    "label": "Batch Insights"
@@ -458,12 +463,18 @@
    "fieldtype": "Percent",
    "in_list_view": 1,
    "label": "Delivery Progress"
+  },
+  {
+   "depends_on": "is_label_required",
+   "fieldname": "attach_label",
+   "fieldtype": "Attach",
+   "label": "Attach Label"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-23 16:35:10.555897",
+ "modified": "2024-04-24 12:59:47.264748",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
@@ -481,6 +492,159 @@
    "role": "System Manager",
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Managing Director",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Production Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Assurance Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Packing and Dispatch Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Purchase Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Marketing Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Managing Director",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Managing Director",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Marketing Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Lab Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Manager",
+   "share": 1,
    "write": 1
   }
  ],

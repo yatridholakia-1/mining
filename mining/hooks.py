@@ -236,7 +236,11 @@ fixtures = [
     "Workflow",
     "Workflow State",
     "Workflow Action Master",
-    "Quality Reject Reason"
+    "Quality Reject Reason",
+    "Role",
+    "User",
+    "Material Type",
+    "Workspace"
     
 ]
 
