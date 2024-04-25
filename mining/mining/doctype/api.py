@@ -13,7 +13,7 @@ def create_stock_entry(**kwargs):
     stock_management.created_from_doc = kwargs.get('created_from_doc')
     stock_management.doc_link = kwargs.get('doc_link')
     stock_management.save(ignore_permissions=True)
-    stock_management.submit(ignore_permissions=True)
+    stock_management.submit()
     return stock_management
 
 def check_stock_balance(entry_for, entry_item, warehouse, check_for_quantity=None):
@@ -182,7 +182,7 @@ def generate_machine_log(machine, log_type, hours, ref_doc_name, ref_doc_link, b
         machine_log.downtime_reason = downtime_reason
     
     machine_log.save(ignore_permissions=True)
-    machine_log.submit(ignore_permissions=True)
+    machine_log.submit()
 
     return machine_log
 
