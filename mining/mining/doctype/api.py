@@ -12,8 +12,8 @@ def create_stock_entry(**kwargs):
     stock_management.quantity = kwargs.get('quantity')
     stock_management.created_from_doc = kwargs.get('created_from_doc')
     stock_management.doc_link = kwargs.get('doc_link')
-    stock_management.save()
-    stock_management.submit()
+    stock_management.save(ignore_permissions=True)
+    stock_management.submit(ignore_permissions=True)
     return stock_management
 
 def check_stock_balance(entry_for, entry_item, warehouse, check_for_quantity=None):
@@ -74,7 +74,7 @@ def update_blend_insigts(batch, blend, enabled=True, consumed_qty=None):
                     "enabled": enabled
                 })
     
-    batch_doc.save()
+    batch_doc.save(ignore_permissions=True)
 
 def update_polymer_insigts(batch, doc):
     batch_doc = frappe.get_doc("Batch", batch)
@@ -94,7 +94,7 @@ def update_polymer_insigts(batch, doc):
                     "enabled": doc.enabled
                 })
     
-    batch_doc.save()
+    batch_doc.save(ignore_permissions=True)
 
 def delete_blend_insigts(batch, blend):
     batch_doc = frappe.get_doc("Batch", batch)
@@ -112,7 +112,7 @@ def delete_polymer_insigts(batch, doc):
                 #frappe.msgprint(f" doc_item {doc_item.polymer}, polymer_insight {polymer_insight.polymer}, {doc_item.quantity}, {polymer_insight.required_qty}")
                 batch_doc.batch_polymer_insights.remove(polymer_insight)
     
-    batch_doc.save()
+    batch_doc.save(ignore_permissions=True)
 
 
 def update_batch_insights_from_material_transfer(doc, method=None):
@@ -144,13 +144,13 @@ def update_batch_insights_from_material_transfer(doc, method=None):
                      if polymer_row.polymer == material.material:
                          polymer_row.issued_qty -= material.quantity
     
-    batch_doc.save()
+    batch_doc.save(ignore_permissions=True)
 
 def stock_management_update_batch_insights(doc, method=None):
     if doc.stock_entry_for == "Blend":
         blend_doc = frappe.get_doc("Blend", doc.stock_entry_item)
         blend_doc.blend_stock = get_stock_balance("Blend", doc.stock_entry_item, "Blend Warehouse")
-        blend_doc.save()
+        blend_doc.save(ignore_permissions=True)
 		
 # def assign_blend_batch_insight(doc, method=None):
 #     blend_doc = frappe.get_doc("Blend", doc.blend)
@@ -181,8 +181,8 @@ def generate_machine_log(machine, log_type, hours, ref_doc_name, ref_doc_link, b
     if downtime_reason:
         machine_log.downtime_reason = downtime_reason
     
-    machine_log.save()
-    machine_log.submit()
+    machine_log.save(ignore_permissions=True)
+    machine_log.submit(ignore_permissions=True)
 
     return machine_log
 

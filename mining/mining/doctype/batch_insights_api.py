@@ -29,7 +29,7 @@ def update_batch_insights(batch, material_type, header_name, quantity, material_
     elif material_type == Material_Type.PALLET.value:
         update_pallet_insights(batch_doc, header_name, quantity)
 
-    batch_doc.save()
+    batch_doc.save(ignore_permissions=True)
 
     return "Batch insights updated successfully."
 
@@ -270,10 +270,10 @@ def consume_material_for_production(doc, method):
                 )
             #Generate Batch Insights
             doc.batch_insights_row = batchInternalProdInsights(batch_doc, doc.date, production_qty, doc.production_warehouse, doc.shift, blend_used)
-            doc.save()
+            doc.save(ignore_permissions=True)
         elif doc.external:
             doc.batch_insights_row = batchExternalProdInsights(batch_doc, doc.date, production_qty, doc.production_warehouse, blend_used)
-            doc.save()
+            doc.save(ignore_permissions=True)
         
     elif method == "on_cancel":
         #batch_doc.total_produced_qty -= production_qty
@@ -316,7 +316,7 @@ def consume_material_for_production(doc, method):
     #         except Exception as e:
     #             frappe.throw(f"Failed to cancel Stock Management Document: {e}")
     
-    batch_doc.save()
+    batch_doc.save(ignore_permissions=True)
     
 def calculate_blend_consumed(product_quantity):
     blend_consumed = product_quantity * (1 + LOSS_PERCENTAGE / 100)
@@ -335,7 +335,7 @@ def batchInternalProdInsights(batch_doc, date, qty, warehouse, shift, blend):
     row.warehouse = warehouse  
     row.shift =  shift
     row.blend_used =  blend
-    row.save()
+    row.save(ignore_permissions=True)
     return row.name
 
 def batchExternalProdInsights(batch_doc, date, qty, warehouse, blend):
@@ -345,7 +345,7 @@ def batchExternalProdInsights(batch_doc, date, qty, warehouse, blend):
     row.qty_produced= qty
     row.warehouse = warehouse  
     row.blend_used =  blend
-    row.save()
+    row.save(ignore_permissions=True)
     frappe.msgprint(f"row: {row}")
     return row.name
 
@@ -355,7 +355,7 @@ def batchTransferInsights(batch, stock_header, other_batch, date, qty):
     row.quantity = qty
     row.stock_in_out = stock_header
     row.from_to_batch =  other_batch
-    row.save()
+    row.save(ignore_permissions=True)
     return row.name
     
 def batchQualityInsights(batch, accepted_qty, rejected_qty, date, qty):
@@ -365,7 +365,7 @@ def batchQualityInsights(batch, accepted_qty, rejected_qty, date, qty):
     row.quantity = qty
     row.accepted_qty = accepted_qty
     row.rejected_qty =  rejected_qty
-    row.save()
+    row.save(ignore_permissions=True)
     return row.name
 
 def batchDispatchInsights(batch, date, qty):
@@ -373,7 +373,7 @@ def batchDispatchInsights(batch, date, qty):
     row =  batch.append("delivery_insights", {})
     row.delivery_date =  date
     row.delivered_qty = qty
-    row.save()
+    row.save(ignore_permissions=True)
     return row.name
 
 

@@ -91,8 +91,8 @@ def create_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
      stock_balance.warehouse = warehouse
      stock_balance.quantity = quantity
      stock_balance.rol = frappe.db.get_value("Material", entry_item, "rol_quantity") if entry_for == "Material" else 0
-     stock_balance.save()
-     stock_balance.submit()
+     stock_balance.save(ignore_permissions=True)
+     stock_balance.submit(ignore_permissions=True)
 
 
 def update_stock_balance(entry_for: str, entry_item: str, warehouse: str, quantity: int):
@@ -105,7 +105,7 @@ def update_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
                 'warehouse': warehouse,
                 'docstatus': 1,    
             },
-        )
+        ignore_permissions=True)
     #if it exists fetch and update
     if exists:
        stock_balance = frappe.get_doc("Stock Balance", {
@@ -122,7 +122,7 @@ def update_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
            
        stock_balance.quantity = new_quantity
        stock_balance.last_updated_on = now()
-       stock_balance.save()
+       stock_balance.save(ignore_permissions=True)
        
     #else create new entry   
     else:
