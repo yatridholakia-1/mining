@@ -92,7 +92,7 @@ def create_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
      stock_balance.quantity = quantity
      stock_balance.rol = frappe.db.get_value("Material", entry_item, "rol_quantity") if entry_for == "Material" else 0
      stock_balance.save(ignore_permissions=True)
-     stock_balance.submit(ignore_permissions=True)
+     stock_balance.submit()
 
 
 def update_stock_balance(entry_for: str, entry_item: str, warehouse: str, quantity: int):
