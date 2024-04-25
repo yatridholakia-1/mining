@@ -4,11 +4,363 @@
   "docstatus": 1,
   "doctype": "Stock Balance",
   "entry_for": "Material",
+  "entry_item": "B",
+  "last_updated_on": "2024-04-19 15:36:26.572545",
+  "modified": "2024-04-19 15:36:26.572821",
+  "name": "Material-B-Swell Well Warehouse",
+  "quantity": 161.0,
+  "rol": 0.0,
+  "warehouse": "Swell Well Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "M/1012",
+  "last_updated_on": "2024-04-18 17:46:32.638628",
+  "modified": "2024-04-18 17:46:32.638813",
+  "name": "Material-M/1012-Store",
+  "quantity": 118.0,
+  "rol": 0.0,
+  "warehouse": "Store"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Blend",
+  "entry_item": "EXP/1701-Blend",
+  "last_updated_on": "2024-04-23 16:57:52.794857",
+  "modified": "2024-04-23 16:57:52.795011",
+  "name": "Blend-EXP/1701-Blend-Blend Warehouse",
+  "quantity": 66.88,
+  "rol": 0.0,
+  "warehouse": "Blend Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "EXP/005",
+  "last_updated_on": "2024-03-27 18:12:48.528542",
+  "modified": "2024-03-27 18:12:48.531499",
+  "name": "Batch-EXP/005-Batch Warehouse",
+  "quantity": 10.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "DOM-TEST-1701",
+  "last_updated_on": "2024-04-10 15:49:35.543420",
+  "modified": "2024-04-10 15:49:35.543605",
+  "name": "Batch-DOM-TEST-1701-Batch Warehouse",
+  "quantity": 38.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "S3",
+  "last_updated_on": "2024-04-19 15:31:46.925757",
+  "modified": "2024-04-19 15:31:46.925874",
+  "name": "Material-S3-Store",
+  "quantity": 80.0,
+  "rol": 0.0,
+  "warehouse": "Store"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "S3",
+  "last_updated_on": "2024-04-23 16:57:52.835721",
+  "modified": "2024-04-23 16:57:52.835834",
+  "name": "Material-S3-Swell Well Warehouse",
+  "quantity": 267.98,
+  "rol": 0.0,
+  "warehouse": "Swell Well Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "TEST-2",
+  "last_updated_on": "2024-04-24 09:55:17.929110",
+  "modified": "2024-04-24 09:55:17.929302",
+  "name": "Batch-TEST-2-Batch Warehouse",
+  "quantity": 34.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "SWB001",
+  "last_updated_on": "2024-04-08 12:32:58.374853",
+  "modified": "2024-04-08 12:32:58.374963",
+  "name": "Material-SWB001-Guru Krupa Warehouse",
+  "quantity": 360.0,
+  "rol": 0.0,
+  "warehouse": "Guru Krupa Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "SWB002",
+  "last_updated_on": "2024-04-08 12:32:58.386481",
+  "modified": "2024-04-08 12:32:58.386595",
+  "name": "Material-SWB002-Guru Krupa Warehouse",
+  "quantity": 87.2,
+  "rol": 0.0,
+  "warehouse": "Guru Krupa Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "S3",
+  "last_updated_on": "2024-04-04 10:53:29.545132",
+  "modified": "2024-04-04 10:53:29.547658",
+  "name": "Material-S3-Guru Krupa Warehouse",
+  "quantity": 300.0,
+  "rol": 0.0,
+  "warehouse": "Guru Krupa Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "SWB001",
+  "last_updated_on": "2024-04-08 15:35:05.648216",
+  "modified": "2024-04-08 15:35:05.648348",
+  "name": "Material-SWB001-Om Industries",
+  "quantity": 680.0,
+  "rol": 0.0,
+  "warehouse": "Om Industries"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "SWB002",
+  "last_updated_on": "2024-04-08 15:35:05.660179",
+  "modified": "2024-04-08 15:35:05.660287",
+  "name": "Material-SWB002-Om Industries",
+  "quantity": 93.6,
+  "rol": 0.0,
+  "warehouse": "Om Industries"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "S3",
+  "last_updated_on": "2024-04-08 15:35:05.636008",
+  "modified": "2024-04-08 15:35:05.636146",
+  "name": "Material-S3-Om Industries",
+  "quantity": 296.94,
+  "rol": 0.0,
+  "warehouse": "Om Industries"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "S4",
+  "last_updated_on": "2024-04-08 12:32:58.362545",
+  "modified": "2024-04-08 12:32:58.362662",
+  "name": "Material-S4-Guru Krupa Warehouse",
+  "quantity": 483.68,
+  "rol": 0.0,
+  "warehouse": "Guru Krupa Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "S4",
+  "last_updated_on": "2024-04-04 12:08:28.259491",
+  "modified": "2024-04-04 12:08:28.259763",
+  "name": "Material-S4-Om Industries",
+  "quantity": 494.9,
+  "rol": 0.0,
+  "warehouse": "Om Industries"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Blend",
+  "entry_item": "NEW-BLEND-001-1",
+  "last_updated_on": "2024-04-04 15:59:11.741527",
+  "modified": "2024-04-04 15:59:11.743609",
+  "name": "Blend-NEW-BLEND-001-1-Blend Warehouse",
+  "quantity": 10.0,
+  "rol": 0.0,
+  "warehouse": "Blend Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "EXP/001",
+  "last_updated_on": "2024-04-10 15:49:35.485234",
+  "modified": "2024-04-10 15:49:35.485453",
+  "name": "Batch-EXP/001-Batch Warehouse",
+  "quantity": 6.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "TEST",
+  "last_updated_on": "2024-04-23 16:57:52.873833",
+  "modified": "2024-04-23 16:57:52.873947",
+  "name": "Batch-TEST-Batch Warehouse",
+  "quantity": 15.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "TEST-2",
+  "last_updated_on": "2024-04-18 18:10:34.154873",
+  "modified": "2024-04-18 18:10:34.155085",
+  "name": "Batch-TEST-2-Dead-Stock Warehouse",
+  "quantity": 0.0,
+  "rol": 0.0,
+  "warehouse": "Dead-Stock Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "EXP/004",
+  "last_updated_on": "2024-04-19 15:41:05.973127",
+  "modified": "2024-04-19 15:41:05.973292",
+  "name": "Batch-EXP/004-Batch Warehouse",
+  "quantity": 0.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "SWB001",
+  "last_updated_on": "2024-04-22 17:39:04.683680",
+  "modified": "2024-04-22 17:39:04.683825",
+  "name": "Material-SWB001-Ready-Made Warehouse",
+  "quantity": 1000.0,
+  "rol": 0.0,
+  "warehouse": "Ready-Made Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "SWB002",
+  "last_updated_on": "2024-04-22 17:39:04.696679",
+  "modified": "2024-04-22 17:39:04.696801",
+  "name": "Material-SWB002-Ready-Made Warehouse",
+  "quantity": 20.0,
+  "rol": 0.0,
+  "warehouse": "Ready-Made Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "B",
+  "last_updated_on": "2024-04-23 12:51:17.201899",
+  "modified": "2024-04-23 12:51:17.202025",
+  "name": "Material-B-Ready-Made Warehouse",
+  "quantity": 10.0,
+  "rol": 0.0,
+  "warehouse": "Ready-Made Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "Ready-Batch-001",
+  "last_updated_on": "2024-04-20 16:25:54.513127",
+  "modified": "2024-04-20 16:25:54.513316",
+  "name": "Batch-Ready-Batch-001-Batch Warehouse",
+  "quantity": 0.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Batch",
+  "entry_item": "Ready-Batch-002",
+  "last_updated_on": "2024-04-23 12:52:29.946377",
+  "modified": "2024-04-23 12:52:29.947280",
+  "name": "Batch-Ready-Batch-002-Batch Warehouse",
+  "quantity": 0.0,
+  "rol": 0.0,
+  "warehouse": "Batch Warehouse"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
+  "entry_item": "Test",
+  "last_updated_on": "2024-04-25 16:41:37.752799",
+  "modified": "2024-04-25 16:41:37.758247",
+  "name": "Material-Test-Store",
+  "quantity": 45.0,
+  "rol": 30.0,
+  "warehouse": "Store"
+ },
+ {
+  "amended_from": null,
+  "docstatus": 1,
+  "doctype": "Stock Balance",
+  "entry_for": "Material",
   "entry_item": "EXP-1334",
   "last_updated_on": "2024-03-21 17:42:14.664065",
   "modified": "2024-03-21 17:42:14.664405",
   "name": "Material-EXP-1334-Store",
   "quantity": 7.5,
+  "rol": 0.0,
   "warehouse": "Store"
  },
  {
@@ -21,6 +373,7 @@
   "modified": "2024-03-21 17:41:00.480840",
   "name": "Material-M/1004-Store",
   "quantity": 100.0,
+  "rol": 0.0,
   "warehouse": "Store"
  },
  {
@@ -33,6 +386,7 @@
   "modified": "2024-03-21 17:42:14.760445",
   "name": "Material-M/1011-Store",
   "quantity": 192.5,
+  "rol": 0.0,
   "warehouse": "Store"
  },
  {
@@ -45,6 +399,7 @@
   "modified": "2024-03-21 17:42:14.820132",
   "name": "Blend-120F rev 00 SW001-Blend Warehouse",
   "quantity": 10.0,
+  "rol": 0.0,
   "warehouse": "Blend Warehouse"
  },
  {
@@ -57,6 +412,7 @@
   "modified": "2024-04-11 11:36:06.743984",
   "name": "Material-SWB001-Store",
   "quantity": 99650.0,
+  "rol": 0.0,
   "warehouse": "Store"
  },
  {
@@ -69,6 +425,7 @@
   "modified": "2024-04-11 11:36:06.974682",
   "name": "Material-SWB002-Store",
   "quantity": 9965.0,
+  "rol": 0.0,
   "warehouse": "Store"
  },
  {
@@ -81,6 +438,7 @@
   "modified": "2024-04-11 11:16:22.637849",
   "name": "Material-B-Store",
   "quantity": 100000.0,
+  "rol": 0.0,
   "warehouse": "Store"
  },
  {
@@ -93,6 +451,7 @@
   "modified": "2024-04-11 11:36:07.191564",
   "name": "Material-S4-Store",
   "quantity": 99958.0,
+  "rol": 0.0,
   "warehouse": "Store"
  },
  {
@@ -105,6 +464,7 @@
   "modified": "2024-04-11 11:36:06.778756",
   "name": "Material-SWB001-Swell Well Warehouse",
   "quantity": 1400.0,
+  "rol": 0.0,
   "warehouse": "Swell Well Warehouse"
  },
  {
@@ -117,6 +477,7 @@
   "modified": "2024-04-11 11:36:07.014181",
   "name": "Material-SWB002-Swell Well Warehouse",
   "quantity": 35.0,
+  "rol": 0.0,
   "warehouse": "Swell Well Warehouse"
  },
  {
@@ -129,6 +490,7 @@
   "modified": "2024-04-11 11:36:07.250905",
   "name": "Material-S4-Swell Well Warehouse",
   "quantity": 42.0,
+  "rol": 0.0,
   "warehouse": "Swell Well Warehouse"
  }
 ]

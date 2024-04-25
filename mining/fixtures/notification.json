@@ -1,0 +1,42 @@
+[
+ {
+  "attach_print": 0,
+  "channel": "System Notification",
+  "condition": "doc.warehouse == \"Store\" and doc.quantity <= doc.rol and doc.rol != 0",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Stock Balance",
+  "enabled": 1,
+  "event": "Value Change",
+  "is_standard": 0,
+  "message": "",
+  "method": null,
+  "modified": "2024-04-25 16:46:05.956675",
+  "module": null,
+  "name": "ROL Quantity Reached",
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "ROL Quantity Reached",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "Purchase Manager"
+   }
+  ],
+  "send_system_notification": 0,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "{{ doc.name }} ROL Reached!",
+  "value_changed": "quantity"
+ }
+]

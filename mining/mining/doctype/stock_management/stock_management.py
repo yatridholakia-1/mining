@@ -82,13 +82,15 @@ def create_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
     
     if quantity < 0:
         frappe.throw(f"Creating Stock Balance: Quantity Cannot Be Less Than 0 for item {entry_item}!")
-        
+    
+
     else:
      stock_balance = frappe.new_doc("Stock Balance")
      stock_balance.entry_for = entry_for
      stock_balance.entry_item = entry_item
      stock_balance.warehouse = warehouse
      stock_balance.quantity = quantity
+     stock_balance.rol = frappe.db.get_value("Material", entry_item, "rol_quantity") if entry_for == "Material" else 0
      stock_balance.save()
      stock_balance.submit()
 

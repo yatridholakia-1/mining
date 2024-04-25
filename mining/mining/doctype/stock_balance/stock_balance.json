@@ -12,7 +12,8 @@
   "entry_item",
   "warehouse",
   "quantity",
-  "last_updated_on"
+  "last_updated_on",
+  "rol"
  ],
  "fields": [
   {
@@ -64,12 +65,17 @@
    "label": "Entry Item",
    "options": "entry_for",
    "read_only": 1
+  },
+  {
+   "fieldname": "rol",
+   "fieldtype": "Float",
+   "label": "ROL"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-24 15:32:51.846218",
+ "modified": "2024-04-25 13:02:16.689075",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Stock Balance",
