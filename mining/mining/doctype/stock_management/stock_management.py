@@ -104,8 +104,7 @@ def update_stock_balance(entry_for: str, entry_item: str, warehouse: str, quanti
                 'entry_item': entry_item,
                 'warehouse': warehouse,
                 'docstatus': 1,    
-            },
-        ignore_permissions=True)
+            })
     #if it exists fetch and update
     if exists:
        stock_balance = frappe.get_doc("Stock Balance", {
