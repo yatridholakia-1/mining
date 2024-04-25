@@ -240,7 +240,8 @@ fixtures = [
     "Role",
     "User",
     "Material Type",
-    "Workspace"
+    "Workspace",
+    "Stock Balance"
     
 ]
 
