@@ -241,8 +241,9 @@ fixtures = [
     "User",
     "Material Type",
     "Workspace",
-    "Stock Balance",
-    "Notification"
+    "Notification",
+    "Role Profile",
+    "Custom DocPerm"
     
 ]
 
