@@ -33,6 +33,7 @@
   {
    "fieldname": "entry_for",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Entry For",
    "options": "DocType",
    "read_only": 1
@@ -40,6 +41,7 @@
   {
    "fieldname": "warehouse",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Warehouse",
    "options": "Warehouse",
    "read_only": 1
@@ -62,11 +64,13 @@
   {
    "fieldname": "entry_item",
    "fieldtype": "Dynamic Link",
+   "in_standard_filter": 1,
    "label": "Entry Item",
    "options": "entry_for",
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "rol",
    "fieldtype": "Float",
    "label": "ROL"
@@ -75,7 +79,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-25 13:02:16.689075",
+ "modified": "2024-04-26 11:04:02.810986",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Stock Balance",
@@ -83,6 +87,7 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "create": 1,
    "delete": 1,
    "email": 1,
    "export": 1,
@@ -91,7 +96,9 @@
    "report": 1,
    "role": "System Manager",
    "select": 1,
-   "share": 1
+   "share": 1,
+   "submit": 1,
+   "write": 1
   },
   {
    "email": 1,

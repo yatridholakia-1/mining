@@ -44,13 +44,6 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:55:40.837382",
-  "name": "Material Inward",
-  "stock_entry_purpose_name": "Material Inward"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
   "modified": "2024-03-05 12:22:30.033994",
   "name": "Material Transfer For Manufacture",
   "stock_entry_purpose_name": "Material Transfer For Manufacture"
@@ -68,5 +61,12 @@
   "modified": "2024-02-29 10:55:54.401949",
   "name": "Material Consumed",
   "stock_entry_purpose_name": "Material Consumed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-02-29 10:55:40.837382",
+  "name": "Material Inward",
+  "stock_entry_purpose_name": "Material Inward"
  }
 ]

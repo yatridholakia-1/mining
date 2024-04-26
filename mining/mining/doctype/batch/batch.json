@@ -193,7 +193,7 @@
    "label": "Remarks"
   },
   {
-   "depends_on": "eval:!frappe.user.has_role(\"System Manager\")",
+   "depends_on": "eval:!frappe.user.has_role(\"Marketing Manager\")",
    "fieldname": "batch_insights_tab",
    "fieldtype": "Tab Break",
    "label": "Batch Insights"
@@ -209,6 +209,7 @@
    "fieldtype": "Table",
    "label": "Batch Bag Insights",
    "options": "Batch Bag Insights",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -222,6 +223,7 @@
    "fieldtype": "Table",
    "label": "Batch Polymer Insights",
    "options": "Batch Polymer Insights",
+   "permlevel": 3,
    "read_only": 1
   },
   {
@@ -234,6 +236,7 @@
    "fieldname": "total_required_qty",
    "fieldtype": "Float",
    "label": "Total Required Qty",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -246,6 +249,7 @@
    "fieldname": "total_produced_qty",
    "fieldtype": "Float",
    "label": "Total Produced Qty",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -257,6 +261,7 @@
    "fieldname": "total_delivered_qty",
    "fieldtype": "Float",
    "label": "Total Delivered Qty",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -270,6 +275,7 @@
    "fieldtype": "Table",
    "label": "Blend Insights",
    "options": "Blend Insights",
+   "permlevel": 3,
    "read_only": 1
   },
   {
@@ -283,6 +289,7 @@
    "fieldtype": "Link",
    "label": "Pallet Code",
    "options": "Material",
+   "permlevel": 5,
    "read_only": 1
   },
   {
@@ -290,6 +297,7 @@
    "fieldname": "pallet_consumed_qty",
    "fieldtype": "Int",
    "label": "Pallet Consumed Qty",
+   "permlevel": 5,
    "read_only": 1
   },
   {
@@ -301,6 +309,7 @@
    "fieldname": "pallet_required_qty",
    "fieldtype": "Int",
    "label": "Pallet Required Qty",
+   "permlevel": 5,
    "read_only": 1
   },
   {
@@ -308,6 +317,7 @@
    "fieldname": "pallet_remaining_qty",
    "fieldtype": "Int",
    "label": "Pallet Remaining Qty",
+   "permlevel": 5,
    "read_only": 1
   },
   {
@@ -319,6 +329,7 @@
    "fieldname": "pallet_issued_qty",
    "fieldtype": "Int",
    "label": "Pallet Issued Qty",
+   "permlevel": 5,
    "read_only": 1
   },
   {
@@ -332,6 +343,7 @@
    "fieldtype": "Table",
    "label": "Internal Production Insights",
    "options": "Batch Internal Production Insights",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -345,6 +357,7 @@
    "fieldtype": "Table",
    "label": "External Production Insights",
    "options": "Batch External Production Insights",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -358,6 +371,7 @@
    "fieldtype": "Table",
    "label": "Quality Insights",
    "options": "Batch Quality Test",
+   "permlevel": 5,
    "read_only": 1
   },
   {
@@ -371,6 +385,7 @@
    "fieldtype": "Table",
    "label": "Delivery Insights",
    "options": "Batch Delivery Insights",
+   "permlevel": 5,
    "read_only": 1
   },
   {
@@ -378,6 +393,7 @@
    "fieldname": "total_batch_stock",
    "fieldtype": "Float",
    "label": "Total Batch Stock",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -391,6 +407,7 @@
    "fieldtype": "Table",
    "label": "Batch Transfer Insights",
    "options": "Batch Transfer Insights",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -403,6 +420,7 @@
    "fieldname": "qc_accepted_stock",
    "fieldtype": "Float",
    "label": "QC Accepted Stock",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -410,6 +428,7 @@
    "fieldname": "packed_stock",
    "fieldtype": "Float",
    "label": "Packed Stock",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -422,6 +441,7 @@
    "fieldname": "qc_remaining_stock",
    "fieldtype": "Float",
    "label": "QC Remaining Stock",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -430,6 +450,7 @@
    "fieldname": "total_qc_rejected",
    "fieldtype": "Float",
    "label": "Total QC Rejected Qty",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -438,6 +459,7 @@
    "fieldname": "total_transferred_stock",
    "fieldtype": "Float",
    "label": "Total Transferred Qty",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -446,6 +468,7 @@
    "fieldname": "total_readymade_qty",
    "fieldtype": "Float",
    "label": "Total Ready-Made Qty",
+   "permlevel": 4,
    "read_only": 1
   },
   {
@@ -474,7 +497,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-24 12:59:47.264748",
+ "modified": "2024-04-26 15:09:01.811312",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",

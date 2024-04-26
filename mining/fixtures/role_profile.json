@@ -1,0 +1,137 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:39:42.316664",
+  "name": "Store Manager",
+  "role_profile": "Store Manager",
+  "roles": [
+   {
+    "parent": "Store Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Store Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:40:26.008895",
+  "name": "Stock Manager",
+  "role_profile": "Stock Manager",
+  "roles": [
+   {
+    "parent": "Stock Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Stock Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:40:41.410087",
+  "name": "Quality Assurance Manager",
+  "role_profile": "Quality Assurance Manager",
+  "roles": [
+   {
+    "parent": "Quality Assurance Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Quality Assurance Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:41:32.338223",
+  "name": "Production Manager",
+  "role_profile": "Production Manager",
+  "roles": [
+   {
+    "parent": "Production Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Production Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:41:47.246695",
+  "name": "Packing and Dispatch Manager",
+  "role_profile": "Packing and Dispatch Manager",
+  "roles": [
+   {
+    "parent": "Packing and Dispatch Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Packing and Dispatch Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:41:59.678484",
+  "name": "Marketing Manager",
+  "role_profile": "Marketing Manager",
+  "roles": [
+   {
+    "parent": "Marketing Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Marketing Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:42:31.470319",
+  "name": "Lab Manager",
+  "role_profile": "Lab Manager",
+  "roles": [
+   {
+    "parent": "Lab Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Lab Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 10:24:19.525368",
+  "name": "Purchase Manager",
+  "role_profile": "Purchase Manager",
+  "roles": [
+   {
+    "parent": "Purchase Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Purchase Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:42:11.246963",
+  "name": "Managing Director",
+  "role_profile": "Managing Director",
+  "roles": [
+   {
+    "parent": "Managing Director",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Managing Director"
+   }
+  ]
+ }
+]

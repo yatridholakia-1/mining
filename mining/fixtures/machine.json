@@ -61,5 +61,14 @@
   "machine_name": "3 R Packer",
   "modified": "2024-03-05 15:38:05.318235",
   "name": "3 R Packer"
+ },
+ {
+  "capacityin_hours": "4",
+  "docstatus": 0,
+  "doctype": "Machine",
+  "machine_code": "4R",
+  "machine_name": "4R",
+  "modified": "2024-04-11 13:03:46.421159",
+  "name": "4R"
  }
 ]
