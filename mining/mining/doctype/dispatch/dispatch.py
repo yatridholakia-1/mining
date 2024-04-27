@@ -43,14 +43,14 @@ class Dispatch(Document):
 
 		#Deduct Qty from Packed Stock
 		update_batch_stock_breakdown(batch_doc, BSB.PACKED_STOCK.value, -self.quantity)
-		batch_doc.save()
+		batch_doc.save(ignore_permissions=True)
 		delivery_progress = (batch_doc.total_delivered_qty / batch_doc.total_required_qty) * 100;
 		update_batch_stock_breakdown(batch_doc, BSB.TOTAL_DELIVERY_PROGRESS.value, delivery_progress)
-		batch_doc.save()
+		batch_doc.save(ignore_permissions=True)
 		#Total delivered qty == batch required, set batch status as delivered
 		if batch_doc.total_delivered_qty >= batch_doc.total_required_qty:
 			batch_doc.batch_state = Batch_State.DELIVERED.value
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)
 
 
 	def on_cancel(self):
@@ -67,7 +67,7 @@ class Dispatch(Document):
 				if entry.name == self.batch_insights_row:
 					batch_doc.delivery_insights.remove(entry)
 					break
-		batch_doc.save()
+		batch_doc.save(ignore_permissions=True)
 		if batch_doc.total_delivered_qty < batch_doc.total_required_qty:
 			batch_doc.batch_state = Batch_State.PRODUCTION.value
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)

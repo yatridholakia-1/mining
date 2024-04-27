@@ -29,14 +29,14 @@ class AssignBlend(Document):
 		batch = frappe.get_doc('Batch', self.batch)
 		if batch.batch_state == "Created":
 			batch.batch_state = "Blend Assigned"
-			batch.save()
+			batch.save(ignore_permissions=True)
 
 		#Disable Old Blend 
 		if self.reassigned_from:
 			old_blend_assignment = frappe.get_doc("Assign Blend", self.reassigned_from)
 			old_blend_assignment.enabled = 0
 			update_blend_insigts(batch=old_blend_assignment.batch, blend=old_blend_assignment.blend, enabled=old_blend_assignment.enabled)
-			old_blend_assignment.save()
+			old_blend_assignment.save(ignore_permissions=True)
 		
 	def before_cancel(self):
 		batch = frappe.get_doc('Batch', self.batch)
@@ -49,7 +49,7 @@ class AssignBlend(Document):
 				old_blend_assignment = frappe.get_doc("Assign Blend", self.reassigned_from)
 				old_blend_assignment.enabled = 1
 				update_blend_insigts(batch=old_blend_assignment.batch, blend=old_blend_assignment.blend, enabled=old_blend_assignment.enabled)
-				old_blend_assignment.save()
+				old_blend_assignment.save(ignore_permissions=True)
 
 		delete_blend_insigts(self.batch, self.blend)
 

@@ -43,7 +43,7 @@ class BatchQuality(Document):
                 )
 			update_batch_stock_breakdown(batch_doc, BSB.TOTAL_QC_REJECTED.value, self.rejected_quantity)
 			update_batch_stock_breakdown(batch_doc, BSB.TOTAL_BATCH_STOCK.value, -self.rejected_quantity)
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)
 
 
 		def on_cancel(self):
@@ -57,4 +57,4 @@ class BatchQuality(Document):
 			if self.rejected_quantity > 0:
 				update_batch_stock_breakdown(batch_doc, BSB.TOTAL_QC_REJECTED.value, -self.rejected_quantity)
 				update_batch_stock_breakdown(batch_doc, BSB.TOTAL_BATCH_STOCK.value, self.rejected_quantity)
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)

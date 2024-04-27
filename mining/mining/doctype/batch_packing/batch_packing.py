@@ -40,7 +40,7 @@ class BatchPacking(Document):
 		update_batch_stock_breakdown(batch_doc, BSB.QC_ACCEPTED_STOCK.value, -self.packing_quantity)
 		#Add QTY in Ready to dispatch Stock
 		update_batch_stock_breakdown(batch_doc, BSB.PACKED_STOCK.value, self.packing_quantity)
-		batch_doc.save()
+		batch_doc.save(ignore_permissions=True)
 
 	def on_cancel(self):
 		batch_doc = frappe.get_doc("Batch", self.batch)
@@ -50,4 +50,4 @@ class BatchPacking(Document):
 		update_batch_stock_breakdown(batch_doc, BSB.QC_ACCEPTED_STOCK.value, self.packing_quantity)
 		#Deduct Qty in ready to dispatch stock
 		update_batch_stock_breakdown(batch_doc, BSB.PACKED_STOCK.value, -self.packing_quantity)
-		batch_doc.save()
+		batch_doc.save(ignore_permissions=True)

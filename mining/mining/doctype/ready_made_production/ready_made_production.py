@@ -60,10 +60,10 @@ class ReadyMadeProduction(Document):
 			
 			#update batch state
 			batch_doc.batch_state = Batch_State.READY_MADE_PROD.value
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)
 			prod_progress = (batch_doc.total_readymade_qty / batch_doc.total_required_qty) * 100;
 			update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, prod_progress)
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)
 			
 
 		
@@ -82,12 +82,12 @@ class ReadyMadeProduction(Document):
 			update_batch_stock_breakdown(batch_doc, BSB.TOTAL_READY_MADE_QTY.value, -self.quantity)
 			prod_progress = (batch_doc.total_readymade_qty / batch_doc.total_required_qty) * 100;
 			update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, prod_progress)
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)
 			prod_progress = (batch_doc.total_readymade_qty / batch_doc.total_required_qty) * 100;
 			update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, -prod_progress)
-			batch_doc.save()
+			batch_doc.save(ignore_permissions=True)
 			if batch_doc.total_readymade_qty <= 0 :
 				batch_doc.batch_state = Batch_State.CREATED.value
-				batch_doc.save()
+				batch_doc.save(ignore_permissions=True)
 		
 		

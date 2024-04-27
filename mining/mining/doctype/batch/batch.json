@@ -473,17 +473,17 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "15",
    "fieldname": "production_progress",
    "fieldtype": "Percent",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Production Progress"
   },
   {
    "allow_on_submit": 1,
-   "default": "7",
    "fieldname": "delivery_progress",
    "fieldtype": "Percent",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Delivery Progress"
   },
@@ -497,7 +497,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-26 15:09:01.811312",
+ "modified": "2024-04-26 16:34:17.529916",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",

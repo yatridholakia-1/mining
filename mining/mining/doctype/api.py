@@ -102,7 +102,7 @@ def delete_blend_insigts(batch, blend):
         if blend == blend_insight.blend:
             batch_doc.blend_insights.remove(blend_insight)
             break
-    batch_doc.save()
+    batch_doc.save(ignore_permissions=True)
 
 def delete_polymer_insigts(batch, doc):
     batch_doc = frappe.get_doc("Batch", batch)

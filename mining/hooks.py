@@ -243,7 +243,8 @@ fixtures = [
     "Workspace",
     "Notification",
     "Role Profile",
-    "Custom DocPerm"
+    "Custom DocPerm",
+    "Report"
     
 ]
 
