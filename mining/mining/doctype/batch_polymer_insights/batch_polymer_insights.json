@@ -39,6 +39,7 @@
    "allow_on_submit": 1,
    "fieldname": "remaning_qty",
    "fieldtype": "Float",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Remaning Qty"
   },
@@ -61,7 +62,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-03-22 15:23:26.805017",
+ "modified": "2024-04-29 10:13:54.344493",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Polymer Insights",

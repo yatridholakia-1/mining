@@ -48,13 +48,15 @@ frappe.ui.form.on("Batch", {
             });
 
             //Add "Assign Blend" Custom Button
-            if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length === 0) {
-                frm.add_custom_button(__("Assign Blend"), function(){
-                    frappe.new_doc('Assign Blend', {
-                        'batch': frm.doc.batch_code
+            if(!frappe.user.has_role("Marketing Manager")){}
+                if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length === 0) {
+                    frm.add_custom_button(__("Assign Blend"), function(){
+                        frappe.new_doc('Assign Blend', {
+                            'batch': frm.doc.batch_code
+                        });
                     });
-                  });
-            }
+                }
+        }
 
             //Add "Assign Polymer" Custom Button
             if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0 && frm.doc.batch_polymer_insights.length === 0) {

@@ -47,6 +47,7 @@
    "allow_on_submit": 1,
    "fieldname": "remaining_qty",
    "fieldtype": "Int",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Remaining Qty"
   },
@@ -69,7 +70,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-03-27 16:39:59.987000",
+ "modified": "2024-04-29 10:13:41.665930",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Bag Insights",

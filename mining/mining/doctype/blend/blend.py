@@ -13,5 +13,6 @@ class Blend(Document):
 	
 	def after_insert(self):
 		self.date = nowdate()
+		self.blend_stock = 0
 		self.save()
 

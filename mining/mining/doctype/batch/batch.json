@@ -315,6 +315,7 @@
    "allow_on_submit": 1,
    "fieldname": "pallet_remaining_qty",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Pallet Remaining Qty",
    "permlevel": 5,
    "read_only": 1
@@ -472,7 +473,6 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "15",
    "fieldname": "production_progress",
    "fieldtype": "Percent",
    "hidden": 1,
@@ -481,7 +481,6 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "7",
    "fieldname": "delivery_progress",
    "fieldtype": "Percent",
    "hidden": 1,
@@ -498,7 +497,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-29 09:50:15.442466",
+ "modified": "2024-04-29 10:16:20.683410",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
