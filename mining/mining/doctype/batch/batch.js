@@ -48,7 +48,7 @@ frappe.ui.form.on("Batch", {
             });
 
             //Add "Assign Blend" Custom Button
-            if(!frappe.user.has_role("Marketing Manager")){}
+            if(frappe.user.has_role("System Manager") || frappe.user.has_role("Lab Manager") || frappe.user.has_role("Managing Director")){
                 if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length === 0) {
                     frm.add_custom_button(__("Assign Blend"), function(){
                         frappe.new_doc('Assign Blend', {
@@ -56,7 +56,6 @@ frappe.ui.form.on("Batch", {
                         });
                     });
                 }
-        }
 
             //Add "Assign Polymer" Custom Button
             if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0 && frm.doc.batch_polymer_insights.length === 0) {
@@ -66,6 +65,7 @@ frappe.ui.form.on("Batch", {
                     });
                     });
             }
+        }
 
             //Set Validations in Date Picker
             if (frm.doc.docstatus !== 1) {
