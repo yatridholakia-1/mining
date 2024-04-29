@@ -7,6 +7,13 @@
   "name": "Product"
  },
  {
+  "custom_material_type_name": "Lumps",
+  "docstatus": 0,
+  "doctype": "Material Type",
+  "modified": "2024-02-23 14:26:40.240680",
+  "name": "Lumps"
+ },
+ {
   "custom_material_type_name": "Polymer",
   "docstatus": 0,
   "doctype": "Material Type",
@@ -26,12 +33,5 @@
   "doctype": "Material Type",
   "modified": "2024-02-23 14:26:26.035917",
   "name": "Bag"
- },
- {
-  "custom_material_type_name": "Lumps",
-  "docstatus": 0,
-  "doctype": "Material Type",
-  "modified": "2024-02-23 14:26:40.240680",
-  "name": "Lumps"
  }
 ]
