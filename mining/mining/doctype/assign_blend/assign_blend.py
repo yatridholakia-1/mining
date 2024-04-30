@@ -42,7 +42,7 @@ class AssignBlend(Document):
 		batch = frappe.get_doc('Batch', self.batch)
 		if batch.batch_state == "Blend Assigned":
 			batch.batch_state = "Created"
-			batch.save()
+			batch.save(ignore_permissions=True)
 		
 		#Enable Old Blend 
 		if self.reassigned_from:
