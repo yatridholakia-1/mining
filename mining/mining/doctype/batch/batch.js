@@ -84,7 +84,7 @@ frappe.ui.form.on("Batch", {
                 }
 
                 //Show Production in Batch
-                if(frappe.user.has_role("System Manager") || frappe.user.has_role("Production Manager") || frappe.user.has_role("Managing Director")){
+                if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Production Manager")){
                     if(frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0){
                         frm.add_custom_button(__("Production"), function(){
                             frappe.new_doc('Production', {
