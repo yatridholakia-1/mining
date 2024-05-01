@@ -62,8 +62,8 @@ frappe.ui.form.on("Batch", {
                 frm.add_custom_button(__("Assign Polymer"), function(){
                     frappe.new_doc('Assign Polymer', {
                         'batch': frm.doc.batch_code
-                    }, __("Actions"));
                     });
+                    }, __("Actions"));
             }
         }
 
