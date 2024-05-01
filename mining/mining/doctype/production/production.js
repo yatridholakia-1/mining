@@ -22,26 +22,30 @@ frappe.ui.form.on("Production", {
             }
         });
         if (frm.doc.docstatus === 1) {
-            frm.add_custom_button(__("Machine Downtime"), function(){
+                frm.add_custom_button(__("Machine Downtime"), function(){
                 frappe.new_doc('Machine Downtime', {
                     
                 });
               });
         }
-	},
-    before_workflow_action: function (frm) {
+    },
+    before_workflow_action: async function(frm) {
         if (frm.selected_workflow_action === 'Cancel') {
-            frappe.confirm('Are you sure you want to cancel?',
-                () => {
-                    frm.doc.workflow_state = 'Cancelled';
-                    frm.save();
-                },
-                () => {
-                    frm.selected_workflow_action = null; 
-                    return false;
-                });
+            // Create a promise to handle the confirmation dialog
+            let promise = new Promise((resolve, reject) => {
+                frappe.dom.unfreeze()
+                frappe.confirm('Are you sure you want to cancel?',
+                    () => resolve(), // If 'Yes', resolve the promise
+                    () => reject()  // If 'No', reject the promise
+                );
+            });
+
+            // Await the promise and catch any rejection
+            await promise.catch(() => {
+                frm.selected_workflow_action = null;
+                frappe.msgprint('Cancellation aborted.');
+                throw new Error('User cancelled the workflow action.'); // Prevent the workflow action
+            });
         }
     }
-
-
 });
