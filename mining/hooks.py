@@ -249,7 +249,8 @@ fixtures = [
 
 doc_events = {
     "Material Transfer": {
-        "on_submit": "mining.mining.doctype.api.update_batch_insights_from_material_transfer"
+        "on_submit": "mining.mining.doctype.api.update_batch_insights_from_material_transfer",
+        "on_cancel": "mining.mining.doctype.api.update_batch_insights_from_material_transfer"
     },
     "Stock Management": {
         "on_submit": "mining.mining.doctype.api.stock_management_update_batch_insights",

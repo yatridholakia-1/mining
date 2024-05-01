@@ -118,7 +118,7 @@ def delete_polymer_insigts(batch, doc):
 def update_batch_insights_from_material_transfer(doc, method=None):
     batch_doc = frappe.get_doc("Batch", doc.batch)
     for material in doc.material_transfer:
-         if doc.type == "Material Issue":
+         if (doc.type == "Material Issue" and method == "on_submit") or (doc.type == "Material Return" and method == "on_cancel"):
             if material.material_type == "Bag":
                 for bag_row in batch_doc.batch_bag_insights:
                      if bag_row.bag == material.material:
@@ -130,7 +130,7 @@ def update_batch_insights_from_material_transfer(doc, method=None):
                 for polymer_row in batch_doc.batch_polymer_insights:
                      if polymer_row.polymer == material.material:
                          polymer_row.issued_qty += material.quantity
-         elif doc.type == "Material Return":
+         elif (doc.type == "Material Return" and method == "on_submit") or (doc.type == "Material Issue" and method == "on_cancel"):
              if material.material_type == "Bag":
                 for bag_row in batch_doc.batch_bag_insights:
                      if bag_row.bag == material.material:
