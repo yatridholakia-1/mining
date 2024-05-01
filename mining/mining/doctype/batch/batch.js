@@ -54,7 +54,7 @@ frappe.ui.form.on("Batch", {
                         frappe.new_doc('Assign Blend', {
                             'batch': frm.doc.batch_code
                         });
-                    });
+                    }, __("Actions"));
                 }
 
             //Add "Assign Polymer" Custom Button
@@ -62,10 +62,27 @@ frappe.ui.form.on("Batch", {
                 frm.add_custom_button(__("Assign Polymer"), function(){
                     frappe.new_doc('Assign Polymer', {
                         'batch': frm.doc.batch_code
-                    });
+                    }, __("Actions"));
                     });
             }
         }
+
+            //Show Material Transfer in Batch
+            if(frappe.user.has_role("System Manager") || frappe.user.has_role("Store Manager") || frappe.user.has_role("Managing Director")){
+                    frm.add_custom_button(__("Material Issue"), function(){
+                        frappe.new_doc('Material Transfer', {
+                            'batch': frm.doc.batch_code,
+                            'type': "Material Issue"
+                        });
+                    }, __("Actions"));
+                    frm.add_custom_button(__("Material Return"), function(){
+                        frappe.new_doc('Material Transfer', {
+                            'batch': frm.doc.batch_code,
+                            'type': "Material Return"
+                        });
+                    }, __("Actions"));
+                }
+
 
             //Set Validations in Date Picker
             if (frm.doc.docstatus !== 1) {
