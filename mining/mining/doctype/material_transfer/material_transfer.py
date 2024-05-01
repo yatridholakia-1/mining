@@ -60,10 +60,10 @@ def validate_transfer(batch, doc):
 	for item in doc.material_transfer:
 		found = False
 		for batch_item in batch_doc.batch_materials_required:
-			if item.material_type == batch_item.material_type and item.material_type != Material_Type.POLYMER.value:
+			if item.material_type == batch_item.material_type:
 				if item.material == batch_item.material:
 					found = True
-		if not found:
+		if not found and item.material_type != Material_Type.POLYMER.value:
 			frappe.throw(f"Material: {item.material} is not listed as required material in batch: {batch}")
 
 
