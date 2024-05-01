@@ -49,7 +49,7 @@ frappe.ui.form.on("Batch", {
 
             //Add "Assign Blend" Custom Button
             if(frappe.user.has_role("System Manager") || frappe.user.has_role("Lab Manager") || frappe.user.has_role("Managing Director")){
-                if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length === 0) {
+                if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length === 0 && !frm.doc.ready_made_product) {
                     frm.add_custom_button(__("Assign Blend"), function(){
                         frappe.new_doc('Assign Blend', {
                             'batch': frm.doc.batch_code
@@ -58,7 +58,7 @@ frappe.ui.form.on("Batch", {
                 }
 
             //Add "Assign Polymer" Custom Button
-            if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0 && frm.doc.batch_polymer_insights.length === 0) {
+            if (frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0 && frm.doc.batch_polymer_insights.length === 0 && !frm.doc.ready_made_product) {
                 frm.add_custom_button(__("Assign Polymer"), function(){
                     frappe.new_doc('Assign Polymer', {
                         'batch': frm.doc.batch_code
@@ -85,7 +85,7 @@ frappe.ui.form.on("Batch", {
 
                 //Show Production in Batch
                 if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Production Manager")){
-                    if(frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0){
+                    if(frm.doc.docstatus === 1){
                         if (!frm.doc.ready_made_product){
                                 frm.add_custom_button(__("Production"), function(){
                                     frappe.new_doc('Production', {
@@ -93,7 +93,7 @@ frappe.ui.form.on("Batch", {
                                     });
                                 }, __("Actions"));
                         }
-                        if (frm.doc.ready_made_product){
+                        if (frm.doc.ready_made_product && frm.doc.blend_insights.length !== 0){
                                 frm.add_custom_button(__("Ready-Made Production"), function(){
                                     frappe.new_doc('Ready-Made Production', {
                                         'batch': frm.doc.batch_code

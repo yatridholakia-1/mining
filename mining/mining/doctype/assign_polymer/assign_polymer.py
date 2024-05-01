@@ -22,7 +22,9 @@ class AssignPolymer(Document):
 		if batch_assignment_exists:
 			frappe.throw("Polymer is already assided to this batch!")
 
-
+		is_ready_batch = frappe.db.get_value("Batch", self.batch, "ready_made_product")
+		if is_ready_batch:
+			frappe.throw("Cannot Assign Polymer to Ready-Made Production Batch!")
 		#Disable Old Polymer Assignment 
 		if self.reassigned_from:
 			#Validate Re-Assign
@@ -35,7 +37,7 @@ class AssignPolymer(Document):
 			old_polymer_assignment.save()
 			update_polymer_insigts(batch=self.batch, doc=old_polymer_assignment)
 		
-	
+			
 	def on_submit(self):
 		update_polymer_insigts(self.batch, self)
 

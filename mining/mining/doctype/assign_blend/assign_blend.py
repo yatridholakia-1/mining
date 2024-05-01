@@ -27,6 +27,9 @@ class AssignBlend(Document):
 
 		#Change Status of Batch
 		batch = frappe.get_doc('Batch', self.batch)
+		if batch.ready_made_product:
+			frappe.throw("Cannot Assign Blend to Ready-Made Production Batch!")
+			
 		if batch.batch_state == "Created":
 			batch.batch_state = "Blend Assigned"
 			batch.save(ignore_permissions=True)
