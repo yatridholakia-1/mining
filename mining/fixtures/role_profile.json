@@ -47,21 +47,6 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2024-04-26 12:41:32.338223",
-  "name": "Production Manager",
-  "role_profile": "Production Manager",
-  "roles": [
-   {
-    "parent": "Production Manager",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Production Manager"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
   "modified": "2024-04-26 12:41:47.246695",
   "name": "Packing and Dispatch Manager",
   "role_profile": "Packing and Dispatch Manager",
@@ -131,6 +116,21 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Managing Director"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2024-04-26 12:41:32.338223",
+  "name": "Production Manager",
+  "role_profile": "Production Manager",
+  "roles": [
+   {
+    "parent": "Production Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Production Manager"
    }
   ]
  }

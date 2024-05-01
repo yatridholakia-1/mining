@@ -49,6 +49,7 @@
    "allow_on_submit": 1,
    "fieldname": "stock_entry",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Stock Entry",
    "options": "Stock Management"
   },
@@ -63,7 +64,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-03-18 15:28:26.500003",
+ "modified": "2024-05-01 10:40:13.506501",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material Transfer Child",

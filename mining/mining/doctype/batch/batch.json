@@ -222,7 +222,7 @@
    "fieldtype": "Table",
    "label": "Batch Polymer Insights",
    "options": "Batch Polymer Insights",
-   "permlevel": 3,
+   "permlevel": 6,
    "read_only": 1
   },
   {
@@ -497,7 +497,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-29 10:16:20.683410",
+ "modified": "2024-05-01 10:24:22.171616",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
