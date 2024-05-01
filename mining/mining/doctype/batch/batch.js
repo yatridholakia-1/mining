@@ -83,6 +83,22 @@ frappe.ui.form.on("Batch", {
                     }, __("Actions"));
                 }
 
+                //Show Production in Batch
+                if(frappe.user.has_role("System Manager") || frappe.user.has_role("Production Manager") || frappe.user.has_role("Managing Director")){
+                    if(frm.doc.docstatus === 1 && frm.doc.blend_insights.length !== 0){
+                        frm.add_custom_button(__("Production"), function(){
+                            frappe.new_doc('Production', {
+                                'batch': frm.doc.batch_code
+                            });
+                        }, __("Actions"));
+                        frm.add_custom_button(__("Ready-Made Production"), function(){
+                            frappe.new_doc('Ready-Made Production', {
+                                'batch': frm.doc.batch_code
+                            });
+                        }, __("Actions"));
+                    }
+                }
+
 
             //Set Validations in Date Picker
             if (frm.doc.docstatus !== 1) {
