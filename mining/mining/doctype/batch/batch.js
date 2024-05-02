@@ -103,6 +103,17 @@ frappe.ui.form.on("Batch", {
                     }
                 }
 
+                //Quality Test
+                if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Quality Assurance Manager")){
+                    if(frm.doc.qc_remaining_stock > 0){
+                        frm.add_custom_button(__("Quality Check"), function(){
+                            frappe.new_doc('Batch Quality', {
+                                'batch': frm.doc.batch_code
+                            });
+                        }, __("Actions"));
+                    }
+                }
+
 
             //Set Validations in Date Picker
             if (frm.doc.docstatus !== 1) {
