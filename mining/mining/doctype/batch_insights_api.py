@@ -345,14 +345,12 @@ def batchInternalProdInsights(batch_doc, date, qty, warehouse, shift, blend):
     return row.name
 
 def batchExternalProdInsights(batch_doc, date, qty, warehouse, blend):
-    frappe.msgprint(f"External Prod")
     row =  batch_doc.append("external_production_insights", {})
     row.date =  date
     row.qty_produced= qty
     row.warehouse = warehouse  
     row.blend_used =  blend
     row.save(ignore_permissions=True)
-    frappe.msgprint(f"row: {row}")
     return row.name
 
 def batchTransferInsights(batch, stock_header, other_batch, date, qty):
