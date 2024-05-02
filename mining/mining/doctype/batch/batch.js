@@ -114,6 +114,23 @@ frappe.ui.form.on("Batch", {
                     }
                 }
 
+                //Packing and Dispatch
+                if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Packing and Dispatch Manager")){
+                    if(frm.doc.qc_accepted_stock > 0){
+                        frm.add_custom_button(__("Pack"), function(){
+                            frappe.new_doc('Batch Packing', {
+                                'batch': frm.doc.batch_code
+                            });
+                        }, __("Actions"));
+                    }
+                    if(frm.doc.packed_stock > 0){
+                        frm.add_custom_button(__("Dispatch"), function(){
+                            frappe.new_doc('Dispatch', {
+                                'batch': frm.doc.batch_code
+                            });
+                        }, __("Actions"));
+                    }
+                }
 
             //Set Validations in Date Picker
             if (frm.doc.docstatus !== 1) {
