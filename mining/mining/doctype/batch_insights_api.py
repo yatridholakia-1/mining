@@ -251,9 +251,11 @@ def consume_material_for_production(doc, method):
         #batch_doc.total_produced_qty += production_qty
         update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCED_STOCK.value, production_qty)
         prod_progress = (batch_doc.total_produced_qty / batch_doc.total_required_qty) * 100;
-        update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, prod_progress)
+        #update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, prod_progress)
         update_batch_stock_breakdown(batch_doc, BSB.TOTAL_BATCH_STOCK.value, production_qty)
         update_batch_stock_breakdown(batch_doc, BSB.QC_REMAINING_STOCK.value, production_qty)
+        batch_doc.save(ignore_permissions=True)
+        batch_doc.production_progress = prod_progress
         if batch_doc.batch_state != Batch_State.PRODUCTION.value:
             batch_doc.batch_state = Batch_State.PRODUCTION.value
         if not doc.external:
@@ -279,9 +281,11 @@ def consume_material_for_production(doc, method):
         #batch_doc.total_produced_qty -= production_qty
         update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCED_STOCK.value, -production_qty)
         prod_progress = (batch_doc.total_produced_qty / batch_doc.total_required_qty) * 100;
-        update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, -prod_progress)
+        #update_batch_stock_breakdown(batch_doc, BSB.TOTAL_PRODUCTION_PROGRESS.value, -prod_progress)
         update_batch_stock_breakdown(batch_doc, BSB.TOTAL_BATCH_STOCK.value, -production_qty)
         update_batch_stock_breakdown(batch_doc, BSB.QC_REMAINING_STOCK.value, -production_qty)
+        batch_doc.save(ignore_permissions=True)
+        batch_doc.production_progress = prod_progress
         if batch_doc.total_produced_qty == 0:
             batch_doc.batch_state = Batch_State.BLEND_ASSIGNED.value
          #cancel stock entries:
