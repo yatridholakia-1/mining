@@ -126,7 +126,8 @@ frappe.ui.form.on("Batch", {
                     if(frm.doc.packed_stock > 0){
                         frm.add_custom_button(__("Dispatch"), function(){
                             frappe.new_doc('Dispatch', {
-                                'batch': frm.doc.batch_code
+                                'batch': frm.doc.batch_code,
+                                'party': frm.doc.party
                             });
                         }, __("Actions"));
                     }
