@@ -23,11 +23,21 @@ frappe.ui.form.on("Material Transfer", {
         frm.set_query("batch", function() {
             return {
                 filters: [
-                    ["batch_state", "in", ["Created", "Production", "Blend Assigned"]],
+                    ["batch_state", "in", ["Created", "Production", "Ready-Made Production", "Blend Assigned"]],
                     ["batch_state", "!=", "Delivered"]
                 ]
             }
         });
+
+        if (frm.doc.type){
+            clear_child_table(frm)
+            if (frm.doc.type == "Material Issue") {
+                production_warehouse_filter(frm, "target_warehouse")
+            }
+            else if (frm.doc.type == "Material Return") {
+                production_warehouse_filter(frm, "source_warehouse")
+            }
+        }
 
          //Filter in Child Table Materils Required
          frm.set_query("material_type", "material_transfer", function(doc, cdt, cdn) {
