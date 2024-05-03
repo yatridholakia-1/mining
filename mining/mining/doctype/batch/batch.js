@@ -68,7 +68,7 @@ frappe.ui.form.on("Batch", {
         }
 
             //Show Material Transfer in Batch
-            if(frappe.user.has_role("System Manager") || frappe.user.has_role("Store Manager") || frappe.user.has_role("Managing Director")){
+            if(frm.doc.docstatus === 1 && (frappe.user.has_role("System Manager") || frappe.user.has_role("Store Manager") || frappe.user.has_role("Managing Director"))){
                     frm.add_custom_button(__("Material Issue"), function(){
                         frappe.new_doc('Material Transfer', {
                             'batch': frm.doc.batch_code,
