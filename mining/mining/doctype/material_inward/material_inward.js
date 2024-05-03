@@ -14,7 +14,9 @@ const filter_material_type = (frm) => {
 }
 frappe.ui.form.on("Material Inward", {
         refresh(frm) {
-            filter_material_type(frm)
+            if(!frm.is_new()){
+                filter_material_type(frm)
+            }
         },
         material_type(frm) {
             frm.set_value("material", "")
