@@ -208,8 +208,7 @@
    "fieldtype": "Table",
    "label": "Batch Bag Insights",
    "options": "Batch Bag Insights",
-   "permlevel": 4,
-   "read_only": 1
+   "permlevel": 7
   },
   {
    "fieldname": "polymer_section",
@@ -475,7 +474,6 @@
    "allow_on_submit": 1,
    "fieldname": "production_progress",
    "fieldtype": "Percent",
-   "hidden": 1,
    "in_list_view": 1,
    "label": "Production Progress"
   },
@@ -483,7 +481,6 @@
    "allow_on_submit": 1,
    "fieldname": "delivery_progress",
    "fieldtype": "Percent",
-   "hidden": 1,
    "in_list_view": 1,
    "label": "Delivery Progress"
   },
@@ -497,7 +494,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-01 10:24:22.171616",
+ "modified": "2024-05-02 16:30:36.782989",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
