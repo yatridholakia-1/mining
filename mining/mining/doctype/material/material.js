@@ -6,7 +6,7 @@ frappe.ui.form.on("Material", {
         if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Purchase Manager")){
                 frm.add_custom_button(__("Material Inward"), function(){
                     frappe.new_doc('Material Inward', {
-                        'material_code': frm.doc.material,
+                        'material': frm.doc.material_code,
                         'material_type': frm.doc.material_type
                     });
                 }, __("Actions"));
