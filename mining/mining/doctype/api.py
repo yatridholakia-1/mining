@@ -1,5 +1,5 @@
 import frappe
-from .enums import Material_Type
+from .enums import Material_Type, Stock, Stock_Purpose, Warehouse
 
 def create_stock_entry(**kwargs):
     stock_management = frappe.new_doc("Stock Management")

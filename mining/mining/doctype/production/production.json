@@ -16,6 +16,7 @@
   "shift",
   "external",
   "naming_series",
+  "is_production_planning_required",
   "finish_production_section",
   "actual_hours",
   "actual_quantity",
@@ -92,7 +93,6 @@
    "options": "Scheduled\nFinished\nCancelled"
   },
   {
-   "depends_on": "eval: doc.external == 0",
    "fieldname": "machines_required",
    "fieldtype": "Table",
    "label": "Machines Required",
@@ -130,7 +130,6 @@
    "reqd": 1
   },
   {
-   "depends_on": "eval: doc.external == 0",
    "fieldname": "machines_used",
    "fieldtype": "Table",
    "label": "Machines Used",
@@ -168,12 +167,19 @@
   {
    "fieldname": "column_break_voaj",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_production_planning_required",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Production Planning Required?"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-01 14:32:09.837770",
+ "modified": "2024-05-03 15:09:43.558432",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Production",
