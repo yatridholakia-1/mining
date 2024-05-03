@@ -30,7 +30,6 @@ frappe.ui.form.on("Material Transfer", {
         });
 
         if (frm.doc.type){
-            clear_child_table(frm)
             if (frm.doc.type == "Material Issue") {
                 production_warehouse_filter(frm, "target_warehouse")
             }
