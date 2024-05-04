@@ -93,6 +93,7 @@
    "options": "Scheduled\nFinished\nCancelled"
   },
   {
+   "depends_on": "eval:!doc.external",
    "fieldname": "machines_required",
    "fieldtype": "Table",
    "label": "Machines Required",
@@ -130,6 +131,7 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:!doc.external",
    "fieldname": "machines_used",
    "fieldtype": "Table",
    "label": "Machines Used",
@@ -179,7 +181,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-03 15:09:43.558432",
+ "modified": "2024-05-04 10:48:25.566840",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Production",
