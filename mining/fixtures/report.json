@@ -5,6 +5,97 @@
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Machine Log Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Machine Log Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "shift",
+    "fieldtype": "Link",
+    "label": "Shift",
+    "mandatory": 0,
+    "options": "Shift",
+    "parent": "Machine Log Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "log_type",
+    "fieldtype": "Select",
+    "label": "Log Type",
+    "mandatory": 0,
+    "options": "\nProduction\nDowntime",
+    "parent": "Machine Log Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-05-04 13:04:41.456429",
+  "module": "Mining",
+  "name": "Machine Log Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Machine Log",
+  "reference_report": null,
+  "report_name": "Machine Log Report",
+  "report_script": "from_date = filters.get(\"from_date\")\nto_date = filters.get(\"to_date\")\nshift = filters.get(\"shift\")\nlog_type = filters.get(\"log_type\")\n\ncolumns = [\n    {\"label\": _(\"<b>Machine</b>\"), \"fieldname\": \"machine\", \"fieldtype\": \"Link\", \"options\":\"Machine\", \"width\": 200},\n    {\"label\": _(\"<b>Date</b>\"), \"fieldname\": \"date\", \"fieldtype\": \"Date\", \"width\": 130},\n    {\"label\": _(\"<b>Shift</b>\"), \"fieldname\": \"shift\", \"fieldtype\": \"Link\", \"options\":\"Shift\", \"width\": 110, \"align\":\"left\"},\n    {\"label\": _(\"<b>Batch</b>\"), \"fieldname\": \"batch\", \"fieldtype\": \"Link\", \"options\":\"Batch\", \"width\": 170, \"align\":\"left\"},\n    {\"label\": _(\"<b>Batch Quantity</b>\"), \"fieldname\": \"quantity\", \"fieldtype\": \"float\", \"width\": 150},\n    {\"label\": _(\"<b>Hours</b>\"), \"fieldname\": \"hours\", \"fieldtype\": \"float\", \"width\": 100},\n    {\"label\": _(\"<b>Log Type</b>\"), \"fieldname\": \"log_type\", \"fieldtype\": \"Data\", \"width\": 120},\n    {\"label\": _(\"<b>Downtime Reason</b>\"), \"fieldname\": \"downtime_reason\", \"fieldtype\": \"Data\", \"width\": 220}\n]\n\nfilters = {}\nif from_date and to_date:\n    filters[\"date\"] = [\"between\", [from_date, to_date]]\nif shift:\n    filters[\"shift\"] = shift\nif log_type:\n    filters[\"log_type\"] = log_type\n    \ndata = frappe.get_list(\n    \"Machine Log\",\n    fields=[\"machine\",\"date\", \"shift\", \"batch\", \"quantity\", \"hours\", \"log_type\", \"downtime_reason\"],\n    filters=filters\n)\n\nfor item in data:\n    log_type_value = item.get(\"log_type\", \"\")\n    log_type_color = \"green\" if log_type_value == \"Production\" else \"red\"\n    log_type_html = f\"<span style='color:{log_type_color}'>{log_type_value}</span>\"\n    item[\"log_type\"] = log_type_html\n\ndata =columns, data",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Machine Log Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Managing Director"
+   },
+   {
+    "parent": "Machine Log Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Machine Log Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Production Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
   "filters": [],
   "is_standard": "Yes",
   "javascript": null,
@@ -142,7 +233,7 @@
   "javascript": "frappe.query_reports['Stock Balance Report'] = {\n    filters: [{\n        fieldname: 'entry_item',\n        label: __('Item'),\n        fieldtype: 'Data'\n    }]\n};\n\nif (frappe.user.has_role('Production Manager')|| frappe.user.has_role('Store Manager')) {\n\n   var warehouse_filter = {\n        fieldname: 'warehouse',\n        label: __('Warehouse'),\n        fieldtype: 'Link',\n        options: 'Warehouse'\n    };\n\n    // Add get_query function only if the user has the 'Production Manager' role\n    if (frappe.user.has_role('Production Manager')) {\n        warehouse_filter.get_query = function() {\n            return {\n                filters: [\n                    ['Warehouse', 'warehouse_name', 'not in', ['Blend Warehouse', 'Batch Warehouse', 'Store']]\n                ]\n            };\n        };\n    }\n\n    frappe.query_reports['Stock Balance Report'].filters.push(warehouse_filter);\n}\n\n",
   "json": null,
   "letter_head": null,
-  "modified": "2024-04-30 14:56:11.946838",
+  "modified": "2024-05-04 14:50:26.346560",
   "module": "Mining",
   "name": "Stock Balance Report",
   "prepared_report": 0,
@@ -150,7 +241,7 @@
   "ref_doctype": "Stock Balance",
   "reference_report": null,
   "report_name": "Stock Balance Report",
-  "report_script": "# Get filter values\nitem = filters.get(\"entry_item\")\nwarehouse = filters.get(\"warehouse\")\n\n# Get user profile\nprofile = frappe.db.get_value(\"User\", frappe.session.user, \"role_profile_name\")\n\n# Initialize filters\ndefault_filters = {}\n\n# Apply profile-specific filters\nif profile == \"Purchase Manager\":\n    default_filters = {\n        \"entry_for\": \"Material\",\n        \"warehouse\": \"Store\"\n    }\nelif profile == \"Production Manager\":\n    default_filters = {\n        \"warehouse\": [\"not in\", [\"Blend Warehouse\", \"Batch Warehouse\", \"Store\"]]\n    }\nelif profile == \"Lab Manager\":\n    default_filters = {\n        \"warehouse\": \"Blend Warehouse\",\n        \"entry_for\": \"Blend\"\n    }\n\n# Update filters with user inputs\nif item:\n    default_filters[\"entry_item\"] = item\nif warehouse:\n    default_filters[\"warehouse\"] = warehouse\n\n# Retrieve data based on profile and filters\ndata = frappe.db.get_list(\"Stock Balance\", fields=[\"entry_for\", \"entry_item\", \"warehouse\", \"quantity\", \"rol\"], filters=default_filters)\n\n# Format quantity field based on ROL\nif profile == \"Purchase Manager\":\n    for d in data:\n        quantity_color = \"red\" if (d.get('rol') > 0.0 and d.get('quantity') <= d.get('rol')) else \"green\"\n        quantity_html = f\"<span style='color:{quantity_color}; font-weight:bold'>{d.get('quantity')}</span>\"\n        d['quantity'] = quantity_html\n\n# Define columns for the report\ncolumns = [\n    {\"label\": _(\"<b>Item Type</b>\"), \"fieldname\": \"entry_for\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Item</b>\"), \"fieldname\": \"entry_item\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Warehouse</b>\"), \"fieldname\": \"warehouse\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Quantity</b>\"), \"fieldname\": \"quantity\", \"fieldtype\": \"float\", \"width\": 150}\n]\n\n# Return columns and data\ndata = columns, data\n",
+  "report_script": "# Define columns for the report\ncolumns = [\n    {\"label\": _(\"<b>Item Type</b>\"), \"fieldname\": \"entry_for\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Item</b>\"), \"fieldname\": \"entry_item\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Warehouse</b>\"), \"fieldname\": \"warehouse\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Quantity</b>\"), \"fieldname\": \"quantity\", \"fieldtype\": \"float\", \"width\": 150}\n]\n# Get filter values\nitem = filters.get(\"entry_item\")\nwarehouse = filters.get(\"warehouse\")\n\n# Get user profile\nprofile = frappe.db.get_value(\"User\", frappe.session.user, \"role_profile_name\")\n\n# Initialize filters\ndefault_filters = {}\n\n# Apply profile-specific filters\nif profile == \"Purchase Manager\":\n    default_filters = {\n        \"entry_for\": \"Material\",\n        \"warehouse\": \"Store\"\n    }\nelif profile == \"Production Manager\":\n    default_filters = {\n        \"warehouse\": [\"not in\", [\"Blend Warehouse\", \"Batch Warehouse\", \"Store\"]]\n    }\nelif profile == \"Lab Manager\":\n    default_filters = {\n        \"warehouse\": \"Blend Warehouse\",\n        \"entry_for\": \"Blend\"\n    }\n\n# Update filters with user inputs\nif item:\n    default_filters[\"entry_item\"] = item\nif warehouse:\n    default_filters[\"warehouse\"] = warehouse\n\n# Retrieve data based on profile and filters\ndata = frappe.db.get_list(\"Stock Balance\", fields=[\"entry_for\", \"entry_item\", \"warehouse\", \"quantity\", \"rol\"], filters=default_filters)\n\n# Format quantity field based on ROL\nif profile == \"Purchase Manager\":\n    columns.append({\"label\": _(\"<b>ROL</b>\"), \"fieldname\": \"rol\", \"fieldtype\": \"float\", \"width\": 150}) # Corrected this line\n    for d in data:\n        quantity_color = \"red\" if (d.get('rol') > 0.0 and d.get('quantity') <= d.get('rol')) else \"green\"\n        quantity_html = f\"<span style='color:{quantity_color}; font-weight:bold'>{d.get('quantity')}</span>\"\n        d['quantity'] = quantity_html\n\n# Return columns and data\ndata = columns, data\n",
   "report_type": "Script Report",
   "roles": [
    {
