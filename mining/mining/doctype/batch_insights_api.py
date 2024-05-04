@@ -265,6 +265,7 @@ def consume_material_for_production(doc, method):
                     machine=machine.machine,
                     log_type=Machine_Log_Type.PRODUCTION.value,
                     hours=doc.actual_hours,
+                    shift=doc.shift,
                     ref_doc_name=Machine_Log_Type.PRODUCTION.value,
                     ref_doc_link=doc,
                     batch=doc.batch,

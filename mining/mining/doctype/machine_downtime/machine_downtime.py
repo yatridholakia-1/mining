@@ -15,6 +15,7 @@ class MachineDowntime(Document):
 			log_type=Machine_Log_Type.DOWNTIME.value,
 			hours=self.downtime_hours,
 			ref_doc_name="Machine Downtime",
+			shift=self.shift,
 			ref_doc_link=self,
 			downtime_reason=self.downtime_reason
 		)

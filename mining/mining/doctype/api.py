@@ -167,11 +167,12 @@ def stock_management_update_batch_insights(doc, method=None):
 #                     "enabled": doc.enabled
 #                 })
 
-def generate_machine_log(machine, log_type, hours, ref_doc_name, ref_doc_link, batch=None, quantity=None, downtime_reason=None):
+def generate_machine_log(machine, log_type, hours, ref_doc_name, ref_doc_link, shift, batch=None, quantity=None, downtime_reason=None):
     machine_log = frappe.new_doc("Machine Log")
     machine_log.machine = machine
     machine_log.log_type = log_type
     machine_log.hours = hours
+    machine_log.shift = shift
     machine_log.reference_doc_name = ref_doc_name
     machine_log.reference_doc_link = ref_doc_link
     if batch:
