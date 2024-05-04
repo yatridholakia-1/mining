@@ -105,7 +105,7 @@ frappe.ui.form.on("Batch", {
 
                 //Quality Test
                 if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Quality Assurance Manager")){
-                    if(frm.doc.qc_remaining_stock > 0){
+                    if(frm.doc.docstatus === 1 && frm.doc.qc_remaining_stock > 0){
                         frm.add_custom_button(__("Quality Check"), function(){
                             frappe.new_doc('Batch Quality', {
                                 'batch': frm.doc.batch_code
@@ -114,16 +114,28 @@ frappe.ui.form.on("Batch", {
                     }
                 }
 
+
+                //Batch Transfer
+                if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Production Manager")){
+                    if(frm.doc.docstatus === 1){
+                        frm.add_custom_button(__("Batch Transfer"), function(){
+                            frappe.new_doc('Batch Transfer', {
+                                'to_batch': frm.doc.batch_code
+                            });
+                        }, __("Actions"));
+                    }
+                }
+
                 //Packing and Dispatch
                 if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Packing and Dispatch Manager")){
-                    if(frm.doc.qc_accepted_stock > 0){
+                    if(frm.doc.docstatus === 1 && frm.doc.qc_accepted_stock > 0){
                         frm.add_custom_button(__("Pack"), function(){
                             frappe.new_doc('Batch Packing', {
                                 'batch': frm.doc.batch_code
                             });
                         }, __("Actions"));
                     }
-                    if(frm.doc.packed_stock > 0){
+                    if(frm.doc.docstatus === 1 && frm.doc.packed_stock > 0){
                         frm.add_custom_button(__("Dispatch"), function(){
                             frappe.new_doc('Dispatch', {
                                 'batch': frm.doc.batch_code,
