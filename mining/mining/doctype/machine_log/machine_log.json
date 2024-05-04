@@ -16,6 +16,7 @@
   "hours",
   "amended_from",
   "reference_doc_link",
+  "shift",
   "production_section",
   "batch",
   "column_break_vasm",
@@ -122,12 +123,18 @@
    "fieldtype": "Dynamic Link",
    "label": "Reference Doc Link",
    "options": "reference_doc_name"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-24 15:37:34.829413",
+ "modified": "2024-05-04 10:19:57.585565",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Machine Log",
