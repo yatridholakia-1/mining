@@ -14,12 +14,18 @@ frappe.ui.form.on("Batch Quality", {
 	},
     accepted_quantity(frm){
         let new_rejected_quantity = frm.doc.for_quantity - frm.doc.accepted_quantity;
+        if (new_rejected_quantity < 0){
+            frappe.throw("Accepted Quantity cannot be more than: " + frm.doc.for_quantity, title="Error")
+        }
         if (frm.doc.rejected_quantity !== new_rejected_quantity) {
             frm.set_value("rejected_quantity", new_rejected_quantity);
         }
     },
     rejected_quantity(frm){
         let new_accepted_quantity = frm.doc.for_quantity - frm.doc.rejected_quantity;
+        if (new_accepted_quantity < 0){
+            frappe.throw("Rejected Quantity cannot be more than: " + frm.doc.for_quantity, title="Error")
+        }
         if (frm.doc.accepted_quantity !== new_accepted_quantity) {
             frm.set_value("accepted_quantity", new_accepted_quantity);
         }
