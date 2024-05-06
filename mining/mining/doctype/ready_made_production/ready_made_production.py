@@ -16,6 +16,8 @@ class ReadyMadeProduction(Document):
 		
 		def on_submit(self):
 			batch_doc = frappe.get_doc("Batch", self.batch)
+			if not batch_doc.ready_made_product:
+				frappe.throw(f"Batch: {self.batch} is not a Ready-Made Batch. Navigate Here: <a href='/app/production'>Production</a>", title="Error")
 			#If qty is more than required qty, show a waring
 			if batch_doc.total_required_qty < (self.quantity + batch_doc.total_readymade_qty):
 				frappe.msgprint("Quanitity Exceeding Total Required Quantity!", title="Warning")

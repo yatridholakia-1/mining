@@ -12,6 +12,11 @@ frappe.ui.form.on("Batch Quality", {
             }
         });
 	},
+    for_quantity(frm){
+        frm.set_value("accepted_quantity", "");
+        frm.set_value("rejected_quantity", "");
+        frm.set_value("quality_reject_reason", "");
+    },
     accepted_quantity(frm){
         let new_rejected_quantity = frm.doc.for_quantity - frm.doc.accepted_quantity;
         if (new_rejected_quantity < 0){

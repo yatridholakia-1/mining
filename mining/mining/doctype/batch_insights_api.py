@@ -141,11 +141,14 @@ def consume_material_for_production(doc, method):
     if method == "on_submit" and doc.status != "Finished":
         frappe.throw("Finish Production to Submit.")
 
+    
     batch = doc.batch
     production_qty = doc.actual_quantity
     batch_doc = frappe.get_doc("Batch", batch)
     blend_used = ""
-    
+    if method == "on_submit" and batch_doc.ready_made_product:
+        frappe.throw(f"Cannot Create Production of Ready-Made Batch. Navigate Here: <a href='/app/ready-made-production'>Ready-Made Production</a>", title='Error')
+
     #Consume Blend
     for blend in batch_doc.blend_insights:
         if blend.enabled:

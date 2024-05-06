@@ -16,6 +16,12 @@ class BatchQuality(Document):
 		def on_submit(self):
 			#Batch Insights
 			batch_doc = frappe.get_doc("Batch", self.batch)
+			if batch_doc.ready_made_product:
+				frappe.throw(f"Cannot Check Quality of Ready-Made Batch.", title='Error')
+
+			if self.for_quantity <=0:
+				frappe.throw(f"Quantity Should be Greater than 0!", title='Error')
+
 			self.batch_insights_row = batchQualityInsights(
 				batch=batch_doc,
 				accepted_qty=self.accepted_quantity,
