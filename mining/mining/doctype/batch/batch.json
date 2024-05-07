@@ -54,10 +54,9 @@
   "pallet_section",
   "pallet_code",
   "pallet_consumed_qty",
+  "pallet_remaining_qty",
   "column_break_ypcd",
   "pallet_required_qty",
-  "pallet_remaining_qty",
-  "column_break_qgqd",
   "pallet_issued_qty",
   "internal_production_section",
   "internal_production_insights",
@@ -320,10 +319,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_qgqd",
-   "fieldtype": "Column Break"
-  },
-  {
    "allow_on_submit": 1,
    "fieldname": "pallet_issued_qty",
    "fieldtype": "Int",
@@ -474,15 +469,19 @@
    "allow_on_submit": 1,
    "fieldname": "production_progress",
    "fieldtype": "Percent",
+   "hidden": 1,
    "in_list_view": 1,
-   "label": "Production Progress"
+   "label": "Production Progress",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "delivery_progress",
    "fieldtype": "Percent",
+   "hidden": 1,
    "in_list_view": 1,
-   "label": "Delivery Progress"
+   "label": "Delivery Progress",
+   "read_only": 1
   },
   {
    "depends_on": "is_label_required",
@@ -493,8 +492,37 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-05-02 16:30:36.782989",
+ "links": [
+  {
+   "link_doctype": "Assign Blend",
+   "link_fieldname": "batch"
+  },
+  {
+   "link_doctype": "Assign Polymer",
+   "link_fieldname": "batch"
+  },
+  {
+   "link_doctype": "Material Transfer",
+   "link_fieldname": "batch"
+  },
+  {
+   "link_doctype": "Production",
+   "link_fieldname": "batch"
+  },
+  {
+   "link_doctype": "Batch Quality",
+   "link_fieldname": "batch"
+  },
+  {
+   "link_doctype": "Batch Packing",
+   "link_fieldname": "batch"
+  },
+  {
+   "link_doctype": "Dispatch",
+   "link_fieldname": "batch"
+  }
+ ],
+ "modified": "2024-05-06 17:11:55.890412",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
@@ -668,6 +696,7 @@
    "write": 1
   }
  ],
+ "search_fields": "total_batch_stock",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

@@ -63,14 +63,8 @@
   },
   {
    "fieldname": "opening_stock",
-   "fieldtype": "Data",
-   "label": "Opening Stock",
-   "set_only_once": 1
-  },
-  {
-   "fieldname": "rol_quantity",
-   "fieldtype": "Data",
-   "label": "ROL Quantity"
+   "fieldtype": "Float",
+   "label": "Opening Stock"
   },
   {
    "fieldname": "column_break_ruzi",
@@ -89,11 +83,21 @@
    "fieldname": "bag_size",
    "fieldtype": "Float",
    "label": "Bag Size (In KG)"
+  },
+  {
+   "fieldname": "rol_quantity",
+   "fieldtype": "Float",
+   "label": "ROL Quantity"
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-04-24 15:45:01.949060",
+ "links": [
+  {
+   "link_doctype": "Material Inward",
+   "link_fieldname": "material"
+  }
+ ],
+ "modified": "2024-05-03 17:27:19.075583",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material",
