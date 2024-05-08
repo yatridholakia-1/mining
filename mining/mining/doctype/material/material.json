@@ -64,7 +64,8 @@
   {
    "fieldname": "opening_stock",
    "fieldtype": "Float",
-   "label": "Opening Stock"
+   "label": "Opening Stock",
+   "set_only_once": 1
   },
   {
    "fieldname": "column_break_ruzi",
@@ -87,7 +88,8 @@
   {
    "fieldname": "rol_quantity",
    "fieldtype": "Float",
-   "label": "ROL Quantity"
+   "label": "ROL Quantity",
+   "set_only_once": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -97,7 +99,7 @@
    "link_fieldname": "material"
   }
  ],
- "modified": "2024-05-03 17:27:19.075583",
+ "modified": "2024-05-07 15:52:19.723811",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material",

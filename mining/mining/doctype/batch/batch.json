@@ -53,11 +53,11 @@
   "blend_insights",
   "pallet_section",
   "pallet_code",
-  "pallet_consumed_qty",
+  "pallet_issued_qty",
   "pallet_remaining_qty",
   "column_break_ypcd",
   "pallet_required_qty",
-  "pallet_issued_qty",
+  "pallet_consumed_qty",
   "internal_production_section",
   "internal_production_insights",
   "external_production_section",
@@ -520,9 +520,13 @@
   {
    "link_doctype": "Dispatch",
    "link_fieldname": "batch"
+  },
+  {
+   "link_doctype": "Bag Damage",
+   "link_fieldname": "batch"
   }
  ],
- "modified": "2024-05-06 17:11:55.890412",
+ "modified": "2024-05-07 17:25:34.735088",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",
