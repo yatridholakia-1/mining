@@ -20,22 +20,7 @@ frappe.listview_settings['Batch'] = {
                 indicator[1] = "green";
             }
             return indicator;
-    },
-    refresh: function(listview) {
-        listview.$page.find('.list-row-container .list-row').each(function() {
-          // Assuming 'production_progress' and 'delivery_progress' are data-fieldnames for the progress bars
-          var productionProgress = $(this).find('[data-fieldname="production_progress"] .progress-bar');
-          var deliveryProgress = $(this).find('[data-fieldname="delivery_progress"] .progress-bar');
-          
-          // Set the progress bar color based on the field value
-          if (productionProgress.length) {
-            productionProgress.css('background-color', '#2063FE'); // Replace with your color code
-          }
-          if (deliveryProgress.length && deliveryProgress.text().trim() === 'Delivery') {
-            deliveryProgress.css('background-color', '#FE7B20'); // Replace with your color code
-          }
-        });
-      }
+    }
 };
 
 // frappe.listview_settings['Batch'] = {
