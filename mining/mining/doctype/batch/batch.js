@@ -189,7 +189,7 @@ frappe.ui.form.on('Batch Materials Required', {
 		if(row.bag_size && frm.doc.product_quantity){
             bag_size_in_mt = row.bag_size / KILO_TO_MT_CONVERSTION_FACTOR;
             estimated_bag_qt =  frm.doc.product_quantity / bag_size_in_mt;
-            row.quantity = estimated_bag_qt
+            row.quantity = Math.ceil(estimated_bag_qt)
             frm.refresh_field("batch_materials_required")
         }
 	}
