@@ -16,6 +16,29 @@ const clear_child_table = (frm) => {
     frm.refresh_field('material_transfer');
 }
 
+const auto_fill_child_table = (frm) => {
+    if(frm.doc.batch && frm.doc.type === "Material Issue"){
+        frappe.call({
+            method: 'mining.mining.doctype.api.get_materials_required',
+            args: {
+                batch_name: frm.doc.batch
+            },
+            callback: function(r) {
+                if (r.message) {
+                    $.each(r.message, function(i, d) {
+                        let row = frm.add_child('material_transfer');
+                        row.material_type = d.material_type;
+                        row.material = d.material;
+                        row.quantity = d.quantity;
+                        row.source_warehouse = "Store"
+                    });
+                    frm.refresh_field('material_transfer');
+                }
+            }
+        });
+        
+    }
+}
 
 frappe.ui.form.on("Material Transfer", {
 	refresh(frm) {
@@ -61,6 +84,7 @@ frappe.ui.form.on("Material Transfer", {
         clear_child_table(frm)
         if (frm.doc.type == "Material Issue") {
             production_warehouse_filter(frm, "target_warehouse")
+            auto_fill_child_table(frm)
         }
         else if (frm.doc.type == "Material Return") {
             production_warehouse_filter(frm, "source_warehouse")
@@ -70,6 +94,7 @@ frappe.ui.form.on("Material Transfer", {
 
     batch: function(frm) {
         clear_child_table(frm)
+        auto_fill_child_table(frm)
         // if (frm.doc.batch) {
         //     frappe.model.with_doc('Batch', frm.doc.batch, function() {
         //         let batch_doc = locals['Batch'][frm.doc.batch]

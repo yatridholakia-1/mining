@@ -20,6 +20,14 @@ frappe.ui.form.on("Assign Blend", {
                     'reassigned_from': frm.doc.name
                 });
               });
+
+              
+            frm.add_custom_button(__("Assign Polymer"), function(){
+                    frappe.new_doc('Assign Polymer', {
+                        'batch': frm.doc.batch
+                });
+            });
+            
         }
 	},
 });

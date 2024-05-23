@@ -50,8 +50,7 @@
    "allow_on_submit": 1,
    "fieldname": "quantity",
    "fieldtype": "Float",
-   "label": "Quantity",
-   "read_only": 1
+   "label": "Quantity"
   },
   {
    "allow_on_submit": 1,
@@ -80,7 +79,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-06 15:20:00.629906",
+ "modified": "2024-05-13 14:09:53.539738",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Stock Balance",

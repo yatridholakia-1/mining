@@ -88,8 +88,7 @@
   {
    "fieldname": "rol_quantity",
    "fieldtype": "Float",
-   "label": "ROL Quantity",
-   "set_only_once": 1
+   "label": "ROL Quantity"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -99,7 +98,7 @@
    "link_fieldname": "material"
   }
  ],
- "modified": "2024-05-07 15:52:19.723811",
+ "modified": "2024-05-08 15:55:41.303643",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Material",

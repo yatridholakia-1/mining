@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "transfer_type",
   "section_break_tvvd",
   "from_batch",
   "quantity",
@@ -87,12 +88,18 @@
    "hidden": 1,
    "label": "To Insights Row",
    "read_only": 1
+  },
+  {
+   "fieldname": "transfer_type",
+   "fieldtype": "Select",
+   "label": "Transfer Type",
+   "options": "Batch To Batch\nDead-Stock To Batch"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-24 15:38:02.077664",
+ "modified": "2024-05-13 10:42:57.815693",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch Transfer",

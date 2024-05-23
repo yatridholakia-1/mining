@@ -7,12 +7,14 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_sdor",
+  "batch_type",
   "batch_code",
   "order_date",
   "product_code",
   "quantity_per_container",
   "expected_dispatch_date",
   "column_break_dftq",
+  "batch_number",
   "date",
   "party",
   "product_quantity",
@@ -88,6 +90,7 @@
    "fieldname": "batch_code",
    "fieldtype": "Data",
    "label": "Batch Code",
+   "read_only": 1,
    "reqd": 1,
    "unique": 1
   },
@@ -488,6 +491,19 @@
    "fieldname": "attach_label",
    "fieldtype": "Attach",
    "label": "Attach Label"
+  },
+  {
+   "fieldname": "batch_type",
+   "fieldtype": "Select",
+   "label": "Batch Type",
+   "options": "\nEXP/\nDOM/",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch_number",
+   "fieldtype": "Data",
+   "label": "Batch Number",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -526,7 +542,7 @@
    "link_fieldname": "batch"
   }
  ],
- "modified": "2024-05-07 17:25:34.735088",
+ "modified": "2024-05-22 15:15:46.023794",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Batch",

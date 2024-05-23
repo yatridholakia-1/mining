@@ -14,6 +14,12 @@ const update_batch_state = (frm) => {
     }
 }
 
+const generate_batch_code = (frm) => {
+    if (frm.doc.batch_type && frm.doc.batch_number){
+        frm.set_value("batch_code", frm.doc.batch_type + frm.doc.batch_number)
+    }
+}
+
 frappe.ui.form.on("Batch", {
     
         refresh: function(frm){
@@ -84,21 +90,25 @@ frappe.ui.form.on("Batch", {
                 }
 
                 //Show Production in Batch
-                if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Production Manager")){
+                
                     if(frm.doc.docstatus === 1){
-                        if (!frm.doc.ready_made_product && frm.doc.blend_insights.length !== 0){
-                                frm.add_custom_button(__("Production"), function(){
-                                    frappe.new_doc('Production', {
-                                        'batch': frm.doc.batch_code
-                                    });
-                                }, __("Actions"));
+                        if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Production Manager")){
+                            if (!frm.doc.ready_made_product && frm.doc.blend_insights.length !== 0){
+                                    frm.add_custom_button(__("Production"), function(){
+                                        frappe.new_doc('Production', {
+                                            'batch': frm.doc.batch_code
+                                        });
+                                    }, __("Actions"));
+                            }
                         }
-                        if (frm.doc.ready_made_product){
-                                frm.add_custom_button(__("Ready-Made Production"), function(){
-                                    frappe.new_doc('Ready-Made Production', {
-                                        'batch': frm.doc.batch_code
-                                    });
-                                }, __("Actions"));
+                        if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Store Manager"))
+                            if (frm.doc.ready_made_product){
+                                    frm.add_custom_button(__("Ready-Made Production"), function(){
+                                        frappe.new_doc('Ready-Made Production', {
+                                            'batch': frm.doc.batch_code
+                                        });
+                                    }, __("Actions"));
+                            }
                         }
                     }
                 }
@@ -158,6 +168,12 @@ frappe.ui.form.on("Batch", {
     total_delivered_qty(frm){
             let delivery_progress = (frm.doc.total_delivered_qty / frm.doc.total_required_qty) * 100;
             frm.set_value("delivery_progress", delivery_progress)
+    },
+    batch_type(frm){
+        generate_batch_code(frm)
+    },
+    batch_number(frm){
+        generate_batch_code(frm)
     }
 });
 

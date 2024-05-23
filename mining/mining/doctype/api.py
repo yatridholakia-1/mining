@@ -208,3 +208,11 @@ def validate_issue(batch, material_type, material, qty_to_check):
 #     stock_list = frappe.get_list("Stock Management", filters={"created_from_doc": "Production", "doc_link": prod_doc})
 #     frappe.throw(f"{stock_list}")
     
+@frappe.whitelist()
+def get_materials_required(batch_name):
+    materials_required = frappe.get_all(
+        'Batch Materials Required',
+        filters={'parent': batch_name},
+        fields=['material_type', 'material', 'quantity']
+    )
+    return materials_required

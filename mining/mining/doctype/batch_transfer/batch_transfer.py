@@ -72,7 +72,7 @@ def create_stock_entries(doc):
 			stock_entry_item = doc.from_batch,
 			stock_entry_type = Stock.STOCK_OUT.value,
 			stock_entry_purpose = Stock_Purpose.BATCH_TRANSFER.value, 
-			source_warehouse = Warehouse.BATCH_WAREHOUSE.value,
+			source_warehouse = Warehouse.BATCH_WAREHOUSE.value if doc.transfer_type == "Batch To Batch" else Warehouse.DEAD_STOCK_WAREHOUSE.value,
 			quantity = doc.quantity,
 			created_from_doc = "Batch Transfer",
 			doc_link = doc.name

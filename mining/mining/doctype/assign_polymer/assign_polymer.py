@@ -15,10 +15,9 @@ class AssignPolymer(Document):
                 'batch': self.batch,
                 'docstatus': 1,
 				'enabled': 1 ,
-				'reassigned_from': ""
+				'reassigned_from': None
             },
         )
-		
 		if batch_assignment_exists:
 			frappe.throw("Polymer is already assided to this batch!")
 
