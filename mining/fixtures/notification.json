@@ -13,7 +13,7 @@
   "is_standard": 0,
   "message": "",
   "method": null,
-  "modified": "2024-04-25 16:46:05.956675",
+  "modified": "2024-05-09 15:06:32.405499",
   "module": null,
   "name": "ROL Quantity Reached",
   "print_format": null,
@@ -28,6 +28,16 @@
     "parenttype": "Notification",
     "receiver_by_document_field": null,
     "receiver_by_role": "Purchase Manager"
+   },
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "ROL Quantity Reached",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": null,
+    "receiver_by_role": "Managing Director"
    }
   ],
   "send_system_notification": 0,
@@ -36,7 +46,7 @@
   "sender_email": null,
   "set_property_after_alert": null,
   "slack_webhook_url": null,
-  "subject": "{{ doc.name }} ROL Reached!",
+  "subject": "{{ doc.entry_item }} ROL Reached!",
   "value_changed": "quantity"
  }
 ]

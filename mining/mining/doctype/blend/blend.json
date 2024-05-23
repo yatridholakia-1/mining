@@ -83,6 +83,7 @@
    "allow_on_submit": 1,
    "fieldname": "blend_stock",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Blend Stock",
    "read_only": 1
   }
@@ -90,7 +91,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-24 15:21:35.195315",
+ "modified": "2024-05-09 11:01:35.792784",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Blend",

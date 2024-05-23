@@ -38,19 +38,19 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-04-08 10:06:10.186684",
-  "name": "Scheduled",
-  "style": "Primary",
-  "workflow_state_name": "Scheduled"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "question-sign",
   "modified": "2024-04-08 10:49:11.130206",
   "name": "Pending",
   "style": "Warning",
   "workflow_state_name": "Pending"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-08 10:06:10.186684",
+  "name": "Scheduled",
+  "style": "Primary",
+  "workflow_state_name": "Scheduled"
  }
 ]

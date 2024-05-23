@@ -2,13 +2,6 @@
  {
   "docstatus": 0,
   "doctype": "Downtime Reason",
-  "downtime_reason_name": "Electricital Maintenance",
-  "modified": "2024-02-22 15:34:38.559291",
-  "name": "Electricital Maintenance"
- },
- {
-  "docstatus": 0,
-  "doctype": "Downtime Reason",
   "downtime_reason_name": "Breakdown",
   "modified": "2024-04-05 10:19:29.300211",
   "name": "Breakdown"

@@ -1974,7 +1974,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-01-02 15:39:13.811700",
+  "modified": "2024-05-09 14:39:57.015877",
   "module": "Core",
   "name": "Users",
   "number_cards": [],
@@ -3087,10 +3087,10 @@
   "hide_custom": 0,
   "icon": "retail",
   "indicator_color": "orange",
-  "is_hidden": 0,
+  "is_hidden": 1,
   "label": "Store Management",
   "links": [],
-  "modified": "2024-05-08 15:03:51.654677",
+  "modified": "2024-05-09 10:04:09.090311",
   "module": null,
   "name": "Store Management",
   "number_cards": [],
@@ -3113,6 +3113,12 @@
     "parentfield": "roles",
     "parenttype": "Workspace",
     "role": "Store Manager"
+   },
+   {
+    "parent": "Store Management",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
    }
   ],
   "sequence_id": 30.0,
@@ -3121,7 +3127,521 @@
  },
  {
   "charts": [],
-  "content": "[{\"id\":\"7DBlSCkVa9\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Lab Manager</span>\",\"col\":12}},{\"id\":\"C71CNB2iWw\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Open Batches\",\"col\":4}},{\"id\":\"jE8q0jU5wD\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Batches With Assigned Blend\",\"col\":3}},{\"id\":\"C_CpSErWZY\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Open Batches\",\"col\":6}},{\"id\":\"Wezy33oxDv\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Batches w/t Blend Assigned\",\"col\":6}},{\"id\":\"O1Pi3DEkVn\",\"type\":\"card\",\"data\":{\"card_name\":\"Blend\",\"col\":4}},{\"id\":\"WqzvWlc0wv\",\"type\":\"card\",\"data\":{\"card_name\":\"Batch Assignment\",\"col\":4}}]",
+  "content": "[{\"id\":\"2mVNkLLXid\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Marketing Manager</span>\",\"col\":12}},{\"id\":\"B8hvlubqsz\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Batches Created Today\",\"col\":4}}]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "expenses",
+  "indicator_color": "",
+  "is_hidden": 1,
+  "label": "Marketing",
+  "links": [],
+  "modified": "2024-05-08 17:54:47.110001",
+  "module": null,
+  "name": "Marketing",
+  "number_cards": [
+   {
+    "label": "Batches Created Today",
+    "number_card_name": "Batches Created Today",
+    "parent": "Marketing",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": null,
+  "roles": [
+   {
+    "parent": "Marketing",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Marketing Manager"
+   },
+   {
+    "parent": "Marketing",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
+   }
+  ],
+  "sequence_id": 32.0,
+  "shortcuts": [],
+  "title": "Marketing"
+ },
+ {
+  "charts": [],
+  "content": "[{\"id\":\"nVD1usIKkF\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Production Manager</span>\",\"col\":12}},{\"id\":\"WjpODynsBA\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Batch</span>\",\"col\":9}},{\"id\":\"RJb9OCKVaA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Batches In Production\",\"col\":4}},{\"id\":\"xotnGiTUe5\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Batches With Assigned Blend\",\"col\":4}},{\"id\":\"7WWgGjpNhg\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Production</span>\",\"col\":12}},{\"id\":\"TS3m8O-r6k\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today's Production Hours\",\"col\":4}},{\"id\":\"bp5rNQ7cTS\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Internal Production\",\"col\":4}},{\"id\":\"79aPRXzqEO\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total External Production\",\"col\":4}},{\"id\":\"_StmiJTjLV\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Machine Log</span>\",\"col\":9}},{\"id\":\"YWYOl1b4NH\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today's Production Hours\",\"col\":4}},{\"id\":\"fnpz3Z8v5b\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today's Downtime Hours\",\"col\":4}},{\"id\":\"GBkA3G_CN0\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Bag Damage</span>\",\"col\":12}},{\"id\":\"2kbP9V3L6l\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Bag Damage\",\"col\":4}}]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "equity",
+  "indicator_color": "",
+  "is_hidden": 0,
+  "label": "Production Management",
+  "links": [],
+  "modified": "2024-05-09 10:04:34.328590",
+  "module": null,
+  "name": "Production Management",
+  "number_cards": [
+   {
+    "label": "Batches In Production",
+    "number_card_name": "Batches In Production",
+    "parent": "Production Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Today's Downtime Hours",
+    "number_card_name": "Today's Downtime Hours",
+    "parent": "Production Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Bag Damage",
+    "number_card_name": "Total Bag Damage",
+    "parent": "Production Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Today's Production Hours",
+    "number_card_name": "Today's Production Hours",
+    "parent": "Production Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Batches With Assigned Blend",
+    "number_card_name": "Batches With Assigned Blend",
+    "parent": "Production Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Internal Production",
+    "number_card_name": "Total Internal Production",
+    "parent": "Production Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total External Production",
+    "number_card_name": "Total External Production",
+    "parent": "Production Management",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": null,
+  "roles": [
+   {
+    "parent": "Production Management",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Production Management",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Production Manager"
+   }
+  ],
+  "sequence_id": 33.0,
+  "shortcuts": [],
+  "title": "Production Management"
+ },
+ {
+  "charts": [],
+  "content": "[{\"id\":\"c4BSHv6BvA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Purchase Manager</span>\",\"col\":12}},{\"id\":\"vF1H7iO41i\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Lumps Inward\",\"col\":4}},{\"id\":\"AFr0j5MEde\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Pallet Inward\",\"col\":4}},{\"id\":\"SHKyJc6goe\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Polymer Inward\",\"col\":4}},{\"id\":\"KfZrLyuhy2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Bag Inward\",\"col\":4}},{\"id\":\"c5pJruQyQ0\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"EHn5FkVlIz\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Material Inward\",\"col\":7}},{\"id\":\"ML8xhPXRAg\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Material\",\"col\":5}}]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "income",
+  "indicator_color": "",
+  "is_hidden": 0,
+  "label": "Purchase",
+  "links": [],
+  "modified": "2024-05-09 10:03:11.693971",
+  "module": null,
+  "name": "Purchase",
+  "number_cards": [
+   {
+    "label": "Total Pallet Inward",
+    "number_card_name": "Total Pallet Inward",
+    "parent": "Purchase",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Polymer Inward",
+    "number_card_name": "Total Polymer Inward",
+    "parent": "Purchase",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Lumps Inward",
+    "number_card_name": "Total Lumps Inward",
+    "parent": "Purchase",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Bag Inward",
+    "number_card_name": "Total Bag Inward",
+    "parent": "Purchase",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [
+   {
+    "document_type": "Material Inward",
+    "label": "Material Inward",
+    "parent": "Purchase",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
+    "document_type": "Material",
+    "label": "Material",
+    "parent": "Purchase",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[[\"Material\",\"enabled\",\"=\",1,false]]"
+   }
+  ],
+  "restrict_to_domain": null,
+  "roles": [
+   {
+    "parent": "Purchase",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Purchase",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Purchase Manager"
+   }
+  ],
+  "sequence_id": 34.0,
+  "shortcuts": [],
+  "title": "Purchase"
+ },
+ {
+  "charts": [],
+  "content": "[{\"id\":\"t7LN4gHuy8\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Packing and Dispatch</span>\",\"col\":12}},{\"id\":\"f_umT7tmoc\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Packing Pending\",\"col\":4}},{\"id\":\"HSczBC6Kn6\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Packed Qty\",\"col\":4}},{\"id\":\"EKqoH8t6ae\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Pallet Consumption\",\"col\":4}},{\"id\":\"0YpW7qWgY8\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"VcrdpNfc7u\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Batch Packing\",\"col\":6}},{\"id\":\"SGf4s3MXxW\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Dispatch\",\"col\":6}}]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "stock",
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Packing and Dispatch",
+  "links": [],
+  "modified": "2024-05-09 10:03:41.067151",
+  "module": null,
+  "name": "Packing and Dispatch",
+  "number_cards": [
+   {
+    "label": "Packing Pending",
+    "number_card_name": "Packing Pending",
+    "parent": "Packing and Dispatch",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Packed Qty",
+    "number_card_name": "Total Packed Qty",
+    "parent": "Packing and Dispatch",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Pallet Consumption",
+    "number_card_name": "Total Pallet Consumption",
+    "parent": "Packing and Dispatch",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [
+   {
+    "document_type": "Batch Packing",
+    "label": "Batch Packing",
+    "parent": "Packing and Dispatch",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   },
+   {
+    "document_type": "Dispatch",
+    "label": "Dispatch",
+    "parent": "Packing and Dispatch",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[]"
+   }
+  ],
+  "restrict_to_domain": null,
+  "roles": [
+   {
+    "parent": "Packing and Dispatch",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Packing and Dispatch",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Packing and Dispatch Manager"
+   }
+  ],
+  "sequence_id": 35.0,
+  "shortcuts": [],
+  "title": "Packing and Dispatch"
+ },
+ {
+  "charts": [],
+  "content": "[{\"id\":\"Tbe7na0zNM\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Quality Check</span>\",\"col\":12}},{\"id\":\"MlLm0jcF1x\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total QC's Pending\",\"col\":3}},{\"id\":\"_wrgxuaJ7t\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total QC's Performed\",\"col\":3}},{\"id\":\"VXtdar07-X\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Accepted Qty\",\"col\":3}},{\"id\":\"X2vErAFtb7\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Rejected Qty\",\"col\":3}},{\"id\":\"G2OeM52QHk\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"NMmYUbqALg\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Batch Quality\",\"col\":5}}]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "milestone",
+  "indicator_color": "",
+  "is_hidden": 0,
+  "label": "Quality Check",
+  "links": [],
+  "modified": "2024-05-09 10:04:46.787591",
+  "module": null,
+  "name": "Quality Check",
+  "number_cards": [
+   {
+    "label": "Total QC's Pending",
+    "number_card_name": "Total QC's Pending",
+    "parent": "Quality Check",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Accepted Qty",
+    "number_card_name": "Total Accepted Qty",
+    "parent": "Quality Check",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total QC's Performed",
+    "number_card_name": "Total QC's Performed",
+    "parent": "Quality Check",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Rejected Qty",
+    "number_card_name": "Total Rejected Qty",
+    "parent": "Quality Check",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [
+   {
+    "document_type": "Batch Quality",
+    "label": "Batch Quality",
+    "parent": "Quality Check",
+    "parentfield": "quick_lists",
+    "parenttype": "Workspace",
+    "quick_list_filter": "[[\"Batch Quality\",\"docstatus\",\"!=\",\"2\",false]]"
+   }
+  ],
+  "restrict_to_domain": null,
+  "roles": [
+   {
+    "parent": "Quality Check",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Quality Check",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Quality Assurance Manager"
+   }
+  ],
+  "sequence_id": 36.0,
+  "shortcuts": [],
+  "title": "Quality Check"
+ },
+ {
+  "charts": [],
+  "content": "[{\"id\":\"W4xaX8QApb\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Swell Well Dashboard</span>\",\"col\":12}},{\"id\":\"oFtd6U5wfg\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\" style=\\\"\\\"><a href=\\\"http://146.190.167.246/app/batch\\\">Batch</a></span>\",\"col\":12}},{\"id\":\"iZvrR-9jAa\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Open Batches\",\"col\":4}},{\"id\":\"L0vFc6ZuxY\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Batches With Assigned Blend\",\"col\":4}},{\"id\":\"a_zKJfAKgw\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Batches In Production\",\"col\":4}},{\"id\":\"EMNHUEMTCZ\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Delivered Batches\",\"col\":4}},{\"id\":\"Kujp7UEy9l\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Ready-Made Batches\",\"col\":4}},{\"id\":\"IlKwPMiYq2\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\" style=\\\"\\\"><a href=\\\"http://146.190.167.246/app/production\\\">Production</a></span>\",\"col\":12}},{\"id\":\"Cv_LnknDu_\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Internal Production\",\"col\":4}},{\"id\":\"CuRuXiHSOm\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total External Production\",\"col\":4}},{\"id\":\"7n6tMvtI_N\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\" style=\\\"\\\"><a href=\\\"http://146.190.167.246/app/batch-quality\\\">Batch Quality</a></span>\",\"col\":12}},{\"id\":\"50vG4uOJ38\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total QC's Pending\",\"col\":3}},{\"id\":\"4IeINiFhSs\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total QC's Performed\",\"col\":3}},{\"id\":\"otZtjR9jFZ\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Accepted Qty\",\"col\":3}},{\"id\":\"RqFcuco6Nh\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Rejected Qty\",\"col\":3}},{\"id\":\"tCzfbiO3kc\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\" style=\\\"\\\"><a href=\\\"http://146.190.167.246/app/machine-log\\\">Machine Log</a></span>\",\"col\":12}},{\"id\":\"dWhMcJJe3Z\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today's Downtime Hours\",\"col\":4}},{\"id\":\"PnuqeG-leX\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today's Production Hours\",\"col\":4}},{\"id\":\"2tz6wgnwAN\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\" style=\\\"\\\"><a href=\\\"http://146.190.167.246/app/bag-damage\\\" draggable=\\\"false\\\">Bag Damage</a></span>\",\"col\":12}},{\"id\":\"dJPTlBQMO_\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Bag Damage\",\"col\":4}},{\"id\":\"PJ2J0nQd6W\",\"type\":\"spacer\",\"data\":{\"col\":12}}]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "website",
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Swell Well Dashboard",
+  "links": [],
+  "modified": "2024-05-08 18:01:39.865131",
+  "module": null,
+  "name": "Swell Well Dashboard",
+  "number_cards": [
+   {
+    "label": "Batches In Production",
+    "number_card_name": "Batches In Production",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Internal Production",
+    "number_card_name": "Total Internal Production",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Open Batches",
+    "number_card_name": "Open Batches",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Delivered Batches",
+    "number_card_name": "Delivered Batches",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total QC's Pending",
+    "number_card_name": "Total QC's Pending",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Today's Downtime Hours",
+    "number_card_name": "Today's Downtime Hours",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Bag Damage",
+    "number_card_name": "Total Bag Damage",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Ready-Made Batches",
+    "number_card_name": "Ready-Made Batches",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Today's Production Hours",
+    "number_card_name": "Today's Production Hours",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Batches With Assigned Blend",
+    "number_card_name": "Batches With Assigned Blend",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total External Production",
+    "number_card_name": "Total External Production",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total QC's Performed",
+    "number_card_name": "Total QC's Performed",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Accepted Qty",
+    "number_card_name": "Total Accepted Qty",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   },
+   {
+    "label": "Total Rejected Qty",
+    "number_card_name": "Total Rejected Qty",
+    "parent": "Swell Well Dashboard",
+    "parentfield": "number_cards",
+    "parenttype": "Workspace"
+   }
+  ],
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": null,
+  "roles": [
+   {
+    "parent": "Swell Well Dashboard",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "Managing Director"
+   },
+   {
+    "parent": "Swell Well Dashboard",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
+   }
+  ],
+  "sequence_id": 37.0,
+  "shortcuts": [],
+  "title": "Swell Well Dashboard"
+ },
+ {
+  "charts": [],
+  "content": "[{\"id\":\"7DBlSCkVa9\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Lab Manager</span>\",\"col\":12}},{\"id\":\"C71CNB2iWw\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Open Batches\",\"col\":6}},{\"id\":\"jE8q0jU5wD\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Batches With Assigned Blend\",\"col\":6}},{\"id\":\"C_CpSErWZY\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Open Batches\",\"col\":6}},{\"id\":\"Wezy33oxDv\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Batches w/t Blend Assigned\",\"col\":6}},{\"id\":\"O1Pi3DEkVn\",\"type\":\"card\",\"data\":{\"card_name\":\"Blend\",\"col\":6}},{\"id\":\"WqzvWlc0wv\",\"type\":\"card\",\"data\":{\"card_name\":\"Batch Assignment\",\"col\":6}}]",
   "custom_blocks": [],
   "docstatus": 0,
   "doctype": "Workspace",
@@ -3185,7 +3705,7 @@
    },
    {
     "dependencies": null,
-    "description": null,
+    "description": "Blend Doctype",
     "hidden": 0,
     "icon": null,
     "is_query_report": 0,
@@ -3252,7 +3772,7 @@
     "type": "Link"
    }
   ],
-  "modified": "2024-05-08 15:27:22.083337",
+  "modified": "2024-05-09 10:04:21.352681",
   "module": null,
   "name": "Lab Management",
   "number_cards": [
@@ -3298,140 +3818,16 @@
     "parentfield": "roles",
     "parenttype": "Workspace",
     "role": "Lab Manager"
+   },
+   {
+    "parent": "Lab Management",
+    "parentfield": "roles",
+    "parenttype": "Workspace",
+    "role": "System Manager"
    }
   ],
   "sequence_id": 31.0,
   "shortcuts": [],
   "title": "Lab Management"
- },
- {
-  "charts": [],
-  "content": "[{\"id\":\"2mVNkLLXid\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Marketing Manager</span>\",\"col\":12}}]",
-  "custom_blocks": [],
-  "docstatus": 0,
-  "doctype": "Workspace",
-  "for_user": "",
-  "hide_custom": 0,
-  "icon": "expenses",
-  "indicator_color": "",
-  "is_hidden": 0,
-  "label": "Marketing",
-  "links": [],
-  "modified": "2024-05-08 15:12:35.939487",
-  "module": null,
-  "name": "Marketing",
-  "number_cards": [],
-  "parent_page": "",
-  "public": 1,
-  "quick_lists": [],
-  "restrict_to_domain": null,
-  "roles": [],
-  "sequence_id": 32.0,
-  "shortcuts": [],
-  "title": "Marketing"
- },
- {
-  "charts": [],
-  "content": "[{\"id\":\"nVD1usIKkF\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Production Manager</span>\",\"col\":12}}]",
-  "custom_blocks": [],
-  "docstatus": 0,
-  "doctype": "Workspace",
-  "for_user": "",
-  "hide_custom": 0,
-  "icon": "equity",
-  "indicator_color": "",
-  "is_hidden": 0,
-  "label": "Production Management",
-  "links": [],
-  "modified": "2024-05-08 15:12:22.836252",
-  "module": null,
-  "name": "Production Management",
-  "number_cards": [],
-  "parent_page": "",
-  "public": 1,
-  "quick_lists": [],
-  "restrict_to_domain": null,
-  "roles": [],
-  "sequence_id": 33.0,
-  "shortcuts": [],
-  "title": "Production Management"
- },
- {
-  "charts": [],
-  "content": "[{\"id\":\"c4BSHv6BvA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Purchase Manager</span>\",\"col\":12}}]",
-  "custom_blocks": [],
-  "docstatus": 0,
-  "doctype": "Workspace",
-  "for_user": "",
-  "hide_custom": 0,
-  "icon": "income",
-  "indicator_color": "",
-  "is_hidden": 0,
-  "label": "Purchase",
-  "links": [],
-  "modified": "2024-05-08 15:11:57.477790",
-  "module": null,
-  "name": "Purchase",
-  "number_cards": [],
-  "parent_page": "",
-  "public": 1,
-  "quick_lists": [],
-  "restrict_to_domain": null,
-  "roles": [],
-  "sequence_id": 34.0,
-  "shortcuts": [],
-  "title": "Purchase"
- },
- {
-  "charts": [],
-  "content": "[{\"id\":\"t7LN4gHuy8\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Packing and Dispatch</span>\",\"col\":12}}]",
-  "custom_blocks": [],
-  "docstatus": 0,
-  "doctype": "Workspace",
-  "for_user": "",
-  "hide_custom": 0,
-  "icon": "stock",
-  "indicator_color": "green",
-  "is_hidden": 0,
-  "label": "Packing and Dispatch",
-  "links": [],
-  "modified": "2024-05-08 15:09:46.811933",
-  "module": null,
-  "name": "Packing and Dispatch",
-  "number_cards": [],
-  "parent_page": "",
-  "public": 1,
-  "quick_lists": [],
-  "restrict_to_domain": null,
-  "roles": [],
-  "sequence_id": 35.0,
-  "shortcuts": [],
-  "title": "Packing and Dispatch"
- },
- {
-  "charts": [],
-  "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Quality Check\"}}]",
-  "custom_blocks": [],
-  "docstatus": 0,
-  "doctype": "Workspace",
-  "for_user": "",
-  "hide_custom": 0,
-  "icon": "milestone",
-  "indicator_color": "",
-  "is_hidden": 0,
-  "label": "Quality Check",
-  "links": [],
-  "modified": "2024-05-08 15:10:32.539977",
-  "module": null,
-  "name": "Quality Check",
-  "number_cards": [],
-  "parent_page": "",
-  "public": 1,
-  "quick_lists": [],
-  "restrict_to_domain": null,
-  "roles": [],
-  "sequence_id": 36.0,
-  "shortcuts": [],
-  "title": "Quality Check"
  }
 ]

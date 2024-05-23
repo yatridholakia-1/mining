@@ -229,96 +229,6 @@
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
-  "is_standard": "No",
-  "javascript": "frappe.query_reports['Stock Balance Report'] = {\n    filters: [{\n        fieldname: 'entry_item',\n        label: __('Item'),\n        fieldtype: 'Data'\n    }]\n};\n\nif (frappe.user.has_role('Production Manager')|| frappe.user.has_role('Store Manager')) {\n\n   var warehouse_filter = {\n        fieldname: 'warehouse',\n        label: __('Warehouse'),\n        fieldtype: 'Link',\n        options: 'Warehouse'\n    };\n\n    // Add get_query function only if the user has the 'Production Manager' role\n    if (frappe.user.has_role('Production Manager')) {\n        warehouse_filter.get_query = function() {\n            return {\n                filters: [\n                    ['Warehouse', 'warehouse_name', 'not in', ['Blend Warehouse', 'Batch Warehouse', 'Store']]\n                ]\n            };\n        };\n    }\n\n    frappe.query_reports['Stock Balance Report'].filters.push(warehouse_filter);\n}\n\n",
-  "json": null,
-  "letter_head": null,
-  "modified": "2024-05-04 14:50:26.346560",
-  "module": "Mining",
-  "name": "Stock Balance Report",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Stock Balance",
-  "reference_report": null,
-  "report_name": "Stock Balance Report",
-  "report_script": "# Define columns for the report\ncolumns = [\n    {\"label\": _(\"<b>Item Type</b>\"), \"fieldname\": \"entry_for\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Item</b>\"), \"fieldname\": \"entry_item\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Warehouse</b>\"), \"fieldname\": \"warehouse\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Quantity</b>\"), \"fieldname\": \"quantity\", \"fieldtype\": \"float\", \"width\": 150}\n]\n# Get filter values\nitem = filters.get(\"entry_item\")\nwarehouse = filters.get(\"warehouse\")\n\n# Get user profile\nprofile = frappe.db.get_value(\"User\", frappe.session.user, \"role_profile_name\")\n\n# Initialize filters\ndefault_filters = {}\n\n# Apply profile-specific filters\nif profile == \"Purchase Manager\":\n    default_filters = {\n        \"entry_for\": \"Material\",\n        \"warehouse\": \"Store\"\n    }\nelif profile == \"Production Manager\":\n    default_filters = {\n        \"warehouse\": [\"not in\", [\"Blend Warehouse\", \"Batch Warehouse\", \"Store\"]]\n    }\nelif profile == \"Lab Manager\":\n    default_filters = {\n        \"warehouse\": \"Blend Warehouse\",\n        \"entry_for\": \"Blend\"\n    }\n\n# Update filters with user inputs\nif item:\n    default_filters[\"entry_item\"] = item\nif warehouse:\n    default_filters[\"warehouse\"] = warehouse\n\n# Retrieve data based on profile and filters\ndata = frappe.db.get_list(\"Stock Balance\", fields=[\"entry_for\", \"entry_item\", \"warehouse\", \"quantity\", \"rol\"], filters=default_filters)\n\n# Format quantity field based on ROL\nif profile == \"Purchase Manager\":\n    columns.append({\"label\": _(\"<b>ROL</b>\"), \"fieldname\": \"rol\", \"fieldtype\": \"float\", \"width\": 150}) # Corrected this line\n    for d in data:\n        quantity_color = \"red\" if (d.get('rol') > 0.0 and d.get('quantity') <= d.get('rol')) else \"green\"\n        quantity_html = f\"<span style='color:{quantity_color}; font-weight:bold'>{d.get('quantity')}</span>\"\n        d['quantity'] = quantity_html\n\n# Return columns and data\ndata = columns, data\n",
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Stock Balance Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Stock Balance Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock Manager"
-   },
-   {
-    "parent": "Stock Balance Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Purchase Manager"
-   },
-   {
-    "parent": "Stock Balance Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Lab Manager"
-   },
-   {
-    "parent": "Stock Balance Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Production Manager"
-   },
-   {
-    "parent": "Stock Balance Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Store Manager"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": "{\"add_total_row\": 0, \"sort_by\": \"DocShare.modified\", \"sort_order\": \"desc\", \"sort_by_next\": null, \"filters\": [], \"sort_order_next\": \"desc\", \"columns\": [[\"name\", \"DocShare\"], [\"user\", \"DocShare\"], [\"share_doctype\", \"DocShare\"], [\"share_name\", \"DocShare\"], [\"read\", \"DocShare\"], [\"write\", \"DocShare\"], [\"share\", \"DocShare\"]]}",
-  "letter_head": null,
-  "modified": "2017-02-24 20:01:16.232286",
-  "module": "Core",
-  "name": "Document Share Report",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "DocShare",
-  "reference_report": null,
-  "report_name": "Document Share Report",
-  "report_script": null,
-  "report_type": "Report Builder",
-  "roles": [
-   {
-    "parent": "Document Share Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
   "is_standard": "Yes",
   "javascript": null,
   "json": null,
@@ -397,6 +307,319 @@
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
+  "is_standard": "No",
+  "javascript": "frappe.query_reports[\"Stock Entries Report\"] = {\n    \"filters\": [\n        {\n            \"fieldname\": \"from_date\",\n            \"label\": __(\"From Date\"),\n            \"fieldtype\": \"Date\",\n        },\n        {\n            \"fieldname\": \"to_date\",\n            \"label\": __(\"To Date\"),\n            \"fieldtype\": \"Date\",\n        },\n        {\n            \"fieldname\": \"purpose\",\n            \"label\": __(\"Purpose\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Stock Entry Purpose\",\n        },\n        {\n            \"fieldname\": \"entry_for\",\n            \"label\": __(\"Entry For\"),\n            \"fieldtype\": \"Data\",\n        },\n        {\n            \"fieldname\": \"entry_item\",\n            \"label\": __(\"Entry Item\"),\n            \"fieldtype\": \"Data\"\n        },\n        {\n            \"fieldname\": \"source\",\n            \"label\": __(\"Source Warehouse\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Warehouse\",\n        },\n        {\n            \"fieldname\": \"target\",\n            \"label\": __(\"Target Warehouse\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Warehouse\",\n        },\n        {\n            \"fieldname\": \"type\",\n            \"label\": __(\"Entry Type\"),\n            \"fieldtype\": \"Select\",\n            \"options\": \" \\nStock In\\nStock Out\\nStock Transfer\"  // Four options separated by newline\n        }\n    ]\n};\n",
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-05-09 14:23:51.208080",
+  "module": "Mining",
+  "name": "Stock Entries Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Management",
+  "reference_report": null,
+  "report_name": "Stock Entries Report",
+  "report_script": "entry_type_styles = {\n    \"Stock In\": \"color: #0A6847\",\n    \"Stock Out\": \"color: orange\",\n    \"Stock Transfer\": \"color: #596FB7\"\n}\n\ncolumns = [\n    {\"fieldname\": \"date\", \"label\": \"Date\", \"fieldtype\": \"Date\", \"width\": 120},\n    {\"fieldname\": \"stock_entry_type\", \"label\": \"Entry Type\", \"fieldtype\": \"Data\", \"width\": 130},\n    {\"fieldname\": \"stock_entry_for\", \"label\": \"Entry For\", \"fieldtype\": \"Data\", \"width\": 150},\n    {\"fieldname\": \"stock_entry_item\", \"label\": \"Entry Item\", \"fieldtype\": \"Data\", \"width\": 150},\n    {\"fieldname\": \"stock_entry_purpose\", \"label\": \"Purpose\", \"fieldtype\": \"Data\", \"options\": \"Stock Entry Purpose\", \"width\": 200},\n    {\"fieldname\": \"source_warehouse\", \"label\": \"Source Warehouse\", \"fieldtype\": \"Link\", \"options\": \"Warehouse\", \"width\": 150},\n    {\"fieldname\": \"target_warehouse\", \"label\": \"Target Warehouse\", \"fieldtype\": \"Link\", \"options\": \"Warehouse\", \"width\": 150},\n    {\"fieldname\": \"quantity\", \"label\": \"Quantity\", \"fieldtype\": \"Data\", \"width\": 120}\n]\n\nprofile = frappe.db.get_value(\"User\", frappe.session.user, \"role_profile_name\")\n# Initialize filters\ndefault_filters = {\"docstatus\": 1}\n\n# Apply profile-specific filters\nif profile == \"Purchase Manager\":\n    default_filters = {\n        \"stock_entry_for\": \"Material\",\n    }\nelif profile == \"Production Manager\":\n    default_filters = {\n        \"stock_entry_for\": [\"in\", [\"Batch\", \"Material\"]]\n    }\nelif profile == \"Lab Manager\":\n    default_filters = {\n        \"stock_entry_for\": \"Blend\"\n    }\nif profile == \"Store Manager\":\n    default_filters = {\n        \"stock_entry_for\": \"Material\"\n    }\n\n# Apply additional filters\nif filters.get(\"from_date\"):\n    default_filters[\"date\"] = (\">=\", filters.get(\"from_date\"))\nif filters.get(\"to_date\"):\n    default_filters[\"date\"] = (\"<=\", filters.get(\"to_date\"))\nif filters.get(\"purpose\"):\n    default_filters[\"stock_entry_purpose\"] = filters.get(\"purpose\")\nif filters.get(\"entry_for\"):\n    default_filters[\"stock_entry_for\"] = filters.get(\"entry_for\")\nif filters.get(\"entry_item\"):\n    default_filters[\"stock_entry_item\"] = filters.get(\"entry_item\")\nif filters.get(\"source\"):\n    default_filters[\"source_warehouse\"] = filters.get(\"source\")\nif filters.get(\"target\"):\n    default_filters[\"target_warehouse\"] = filters.get(\"target\")\nif filters.get(\"type\"):\n    default_filters[\"stock_entry_type\"] = filters.get(\"type\")\n\ndata = frappe.db.get_list(\"Stock Management\", fields=[\"date\", \"stock_entry_type\", \"stock_entry_for\", \"stock_entry_item\", \"stock_entry_purpose\", \"source_warehouse\", \"target_warehouse\", \"quantity\"], filters=default_filters,order_by=\"creation desc\")\n\nfor entry in data:\n    entry_type = entry[\"stock_entry_type\"]\n    entry[\"stock_entry_type\"] = f'<span style=\"{entry_type_styles.get(entry_type, \"\")}\"><strong>{entry_type}</strong></span>'\n    entry[\"quantity\"] = f'<span style=\"{entry_type_styles.get(entry_type, \"\")}\"><strong>{entry[\"quantity\"]}</strong></span>'\n\n    \ndata = columns, data\n",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Managing Director"
+   },
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Store Manager"
+   },
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Production Manager"
+   },
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Quality Assurance Manager"
+   },
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Packing and Dispatch Manager"
+   },
+   {
+    "parent": "Stock Entries Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Lab Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 1,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": "frappe.query_reports[\"Stock Entries Report2\"] = {\n    \"filters\": [\n        {\n            \"fieldname\": \"from_date\",\n            \"label\": __(\"From Date\"),\n            \"fieldtype\": \"Date\",\n        },\n        {\n            \"fieldname\": \"to_date\",\n            \"label\": __(\"To Date\"),\n            \"fieldtype\": \"Date\",\n        },\n        {\n            \"fieldname\": \"purpose\",\n            \"label\": __(\"Purpose\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Stock Entry Purpose\",\n        },\n        {\n            \"fieldname\": \"entry_for\",\n            \"label\": __(\"Entry For\"),\n            \"fieldtype\": \"Data\",\n        },\n        {\n            \"fieldname\": \"entry_item\",\n            \"label\": __(\"Entry Item\"),\n            \"fieldtype\": \"Data\"\n        },\n        {\n            \"fieldname\": \"source\",\n            \"label\": __(\"Source Warehouse\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Warehouse\",\n        },\n        {\n            \"fieldname\": \"target\",\n            \"label\": __(\"Target Warehouse\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Warehouse\",\n        },\n        {\n            \"fieldname\": \"type\",\n            \"label\": __(\"Entry Type\"),\n            \"fieldtype\": \"Select\",\n            \"options\": \" \\nStock In\\nStock Out\\nStock Transfer\"  // Four options separated by newline\n        }\n    ]\n};\n",
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-05-09 16:39:22.560647",
+  "module": "Mining",
+  "name": "Stock Entries Report2",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Management",
+  "reference_report": null,
+  "report_name": "Stock Entries Report2",
+  "report_script": "entry_type_styles = {\n    \"Stock In\": \"color: #0A6847\",\n    \"Stock Out\": \"color: orange\",\n    \"Stock Transfer\": \"color: #596FB7\"\n}\n\ncolumns = [\n    {\"fieldname\": \"date\", \"label\": \"Date\", \"fieldtype\": \"Date\", \"width\": 120},\n    {\"fieldname\": \"stock_entry_type\", \"label\": \"Entry Type\", \"fieldtype\": \"Data\", \"width\": 130},\n    {\"fieldname\": \"stock_entry_for\", \"label\": \"Entry For\", \"fieldtype\": \"Data\", \"width\": 150},\n    {\"fieldname\": \"stock_entry_item\", \"label\": \"Entry Item\", \"fieldtype\": \"Data\", \"width\": 150},\n    {\"fieldname\": \"stock_entry_purpose\", \"label\": \"Purpose\", \"fieldtype\": \"Data\", \"options\": \"Stock Entry Purpose\", \"width\": 200},\n    {\"fieldname\": \"source_warehouse\", \"label\": \"Source Warehouse\", \"fieldtype\": \"Link\", \"options\": \"Warehouse\", \"width\": 150},\n    {\"fieldname\": \"target_warehouse\", \"label\": \"Target Warehouse\", \"fieldtype\": \"Link\", \"options\": \"Warehouse\", \"width\": 150},\n    {\"fieldname\": \"quantity\", \"label\": \"Quantity\", \"fieldtype\": \"Data\", \"width\": 120},\n    {\"fieldname\": \"current_stock\", \"label\": \"Current Stock\", \"fieldtype\": \"Data\", \"width\": 120}\n]\n\nprofile = frappe.db.get_value(\"User\", frappe.session.user, \"role_profile_name\")\n# Initialize filters\ndefault_filters = {\"docstatus\": 1}\n\n# Apply profile-specific filters\nif profile == \"Purchase Manager\":\n    default_filters = {\n        \"stock_entry_for\": \"Material\",\n    }\nelif profile == \"Production Manager\":\n    default_filters = {\n        \"stock_entry_for\": [\"in\", [\"Batch\", \"Material\"]]\n    }\nelif profile == \"Lab Manager\":\n    default_filters = {\n        \"stock_entry_for\": \"Blend\"\n    }\nif profile == \"Store Manager\":\n    default_filters = {\n        \"stock_entry_for\": \"Material\"\n    }\n\n# Apply additional filters\nif filters.get(\"from_date\"):\n    default_filters[\"date\"] = (\">=\", filters.get(\"from_date\"))\nif filters.get(\"to_date\"):\n    default_filters[\"date\"] = (\"<=\", filters.get(\"to_date\"))\nif filters.get(\"purpose\"):\n    default_filters[\"stock_entry_purpose\"] = filters.get(\"purpose\")\nif filters.get(\"entry_for\"):\n    default_filters[\"stock_entry_for\"] = filters.get(\"entry_for\")\nif filters.get(\"entry_item\"):\n    default_filters[\"stock_entry_item\"] = filters.get(\"entry_item\")\nif filters.get(\"source\"):\n    default_filters[\"source_warehouse\"] = filters.get(\"source\")\nif filters.get(\"target\"):\n    default_filters[\"target_warehouse\"] = filters.get(\"target\")\nif filters.get(\"type\"):\n    default_filters[\"stock_entry_type\"] = filters.get(\"type\")\n\ndata = frappe.db.get_list(\"Stock Management\", fields=[\"date\", \"stock_entry_type\", \"stock_entry_for\", \"stock_entry_item\", \"stock_entry_purpose\", \"source_warehouse\", \"target_warehouse\", \"quantity\"], filters=default_filters,order_by=\"creation desc\")\n\n\n\nfor entry in data:\n    entry_type = entry[\"stock_entry_type\"]\n    entry[\"stock_entry_type\"] = f'<span style=\"{entry_type_styles.get(entry_type, \"\")}\"><strong>{entry_type}</strong></span>'\n    entry[\"quantity\"] = f'<span style=\"{entry_type_styles.get(entry_type, \"\")}\"><strong>{entry[\"quantity\"]}</strong></span>'\n\nstock_balance_data = frappe.db.get_list(\"Stock Balance\", fields=[\"entry_item\", \"warehouse\", \"quantity\"])\n\n# Merge Data with Stock Entry Data\nmerged_data = []\nfor entry in data:\n    for balance in stock_balance_data:\n        if entry[\"stock_entry_item\"] == balance[\"entry_item\"] and entry[\"source_warehouse\"] == balance[\"warehouse\"]:\n            entry[\"current_stock\"] = balance[\"quantity\"]\n            merged_data.append(entry)\n        \n# Adjust Report Columns and Structure\n\n    \ndata = columns, merged_data\n",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Managing Director"
+   },
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Store Manager"
+   },
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Production Manager"
+   },
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Quality Assurance Manager"
+   },
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Packing and Dispatch Manager"
+   },
+   {
+    "parent": "Stock Entries Report2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Lab Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 1,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": "frappe.query_reports['Stock Balance Report'] = {\n    filters: [{\n        fieldname: 'entry_item',\n        label: __('Item'),\n        fieldtype: 'Data'\n    }]\n};\n\nif (frappe.user.has_role('Production Manager')|| frappe.user.has_role('Store Manager')) {\n\n   var warehouse_filter = {\n        fieldname: 'warehouse',\n        label: __('Warehouse'),\n        fieldtype: 'Link',\n        options: 'Warehouse'\n    };\n\n    // Add get_query function only if the user has the 'Production Manager' role\n    if (frappe.user.has_role('Production Manager')) {\n        warehouse_filter.get_query = function() {\n            return {\n                filters: [\n                    ['Warehouse', 'warehouse_name', 'not in', ['Blend Warehouse', 'Batch Warehouse', 'Store']]\n                ]\n            };\n        };\n    }\n\n    frappe.query_reports['Stock Balance Report'].filters.push(warehouse_filter);\n}\n\n",
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-05-22 17:21:37.931895",
+  "module": "Mining",
+  "name": "Stock Balance Report 1",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Balance",
+  "reference_report": null,
+  "report_name": "Stock Balance Report 1",
+  "report_script": "# Define columns for the report\ncolumns = [\n    {\"label\": _(\"<b>Item Type</b>\"), \"fieldname\": \"entry_for\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Item</b>\"), \"fieldname\": \"entry_item\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Material Type</b>\"), \"fieldname\": \"material_type\", \"fieldtype\": \"float\", \"width\": 150},\n    {\"label\": _(\"<b>Warehouse</b>\"), \"fieldname\": \"warehouse\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Quantity</b>\"), \"fieldname\": \"quantity\", \"fieldtype\": \"float\", \"width\": 150},\n   \n]\n# Get filter values\nitem = filters.get(\"entry_item\")\nwarehouse = filters.get(\"warehouse\")\n\n# Get user profile\nprofile = frappe.db.get_value(\"User\", frappe.session.user, \"role_profile_name\")\n\n# Initialize filters\ndefault_filters = {}\n\n# Apply profile-specific filters\nif profile == \"Purchase Manager\":\n    default_filters = {\n        \"entry_for\": \"Material\",\n        \"warehouse\": \"Store\"\n    }\nelif profile == \"Production Manager\":\n    default_filters = {\n        \"warehouse\": [\"not in\", [\"Blend Warehouse\", \"Batch Warehouse\", \"Store\"]]\n    }\nelif profile == \"Lab Manager\":\n    default_filters = {\n        \"entry_for\": [\"in\", [\"Blend\",\"Material\"]],\n    }\n\n        \nif profile == \"Store Manager\":\n    default_filters = {\n        \"entry_for\": \"Material\"\n    }\n\n# Update filters with user inputs\nif item:\n    default_filters[\"entry_item\"] = item\nif warehouse:\n    default_filters[\"warehouse\"] = warehouse\n\n   \ndata = frappe.db.get_list(\"Stock Balance\", fields=[\"entry_for\", \"entry_item\", \"warehouse\", \"quantity\", \"rol\"], filters=default_filters)\n\nfor d in data:\n    if d[\"entry_for\"] == \"Material\":\n        material_type = frappe.db.get_value(\"Material\", d.get(\"entry_item\"), \"material_type\")\n        d[\"material_type\"] = material_type\n    else:\n        d[\"material_type\"] = \"\"\n\nif profile == \"Lab Manager\":\n   data = [d for d in data if d[\"material_type\"] in [\"Lumps\", \"Polymer\",\"\"]]\n   \nif profile == \"Marketing Manager\":\n   data = [d for d in data if d[\"material_type\"] in [\"Bag\", \"Damage\"]]\n\n    \n# Format quantity field based on ROL\nif profile == \"Purchase Manager\":\n    columns.append({\"label\": _(\"<b>ROL</b>\"), \"fieldname\": \"rol\", \"fieldtype\": \"float\", \"width\": 150}) # Corrected this line\n    for d in data:\n        quantity_color = \"red\" if (d.get('rol') > 0.0 and d.get('quantity') <= d.get('rol')) else \"green\"\n        quantity_html = f\"<span style='color:{quantity_color}; font-weight:bold'>{d.get('quantity')}</span>\"\n        d['quantity'] = quantity_html\n\n# Return columns and data\ndata = columns, data\n",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Lab Manager"
+   },
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Production Manager"
+   },
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Store Manager"
+   },
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Managing Director"
+   },
+   {
+    "parent": "Stock Balance Report 1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Marketing Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": null,
+    "fieldname": "batch",
+    "fieldtype": "Link",
+    "label": "Batch",
+    "mandatory": 0,
+    "options": "Batch",
+    "parent": "Dead-Stock Warehouse Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-05-23 15:55:43.555256",
+  "module": "Mining",
+  "name": "Dead-Stock Warehouse Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Balance",
+  "reference_report": "",
+  "report_name": "Dead-Stock Warehouse Report",
+  "report_script": "# Define columns for the report\ncolumns = [\n    {\"label\": _(\"<b>Batch</b>\"), \"fieldname\": \"entry_item\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Quantity</b>\"), \"fieldname\": \"quantity\", \"fieldtype\": \"float\", \"width\": 150},\n    {\"label\": _(\"<b>Warehouse</b>\"), \"fieldname\": \"warehouse\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Bags Used</b>\"), \"fieldname\": \"bags_used\", \"fieldtype\": \"Data\", \"width\": 250}\n]\n# Get filter values\nitem = filters.get(\"batch\")\n\ndefault_filters = {}\n\n# Update filters with user inputs\nif item:\n    default_filters[\"entry_item\"] = item\n\ndefault_filters[\"warehouse\"] = \"Dead-Stock Warehouse\" \ndefault_filters[\"entry_for\"] = \"Batch\" \ndata = frappe.db.get_list(\"Stock Balance\", fields=[\"entry_item\", \"warehouse\", \"quantity\"], filters=default_filters)\n\nfor d in data:\n    bags_used = frappe.get_all(\n        \"Batch Bag Insights\",\n        filters={'parent': d[\"entry_item\"]},\n        fields=['bag']\n    )\n    # Extract the bag values into a list\n    bags_used_list = [bag['bag'] for bag in bags_used]\n    d[\"bags_used\"] = \", \".join(bags_used_list)\n\n# Return columns and data\ndata = columns, data\n",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Dead-Stock Warehouse Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Dead-Stock Warehouse Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Dead-Stock Warehouse Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Production Manager"
+   },
+   {
+    "parent": "Dead-Stock Warehouse Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Store Manager"
+   },
+   {
+    "parent": "Dead-Stock Warehouse Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Managing Director"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{\"add_total_row\": 0, \"sort_by\": \"DocShare.modified\", \"sort_order\": \"desc\", \"sort_by_next\": null, \"filters\": [], \"sort_order_next\": \"desc\", \"columns\": [[\"name\", \"DocShare\"], [\"user\", \"DocShare\"], [\"share_doctype\", \"DocShare\"], [\"share_name\", \"DocShare\"], [\"read\", \"DocShare\"], [\"write\", \"DocShare\"], [\"share\", \"DocShare\"]]}",
+  "letter_head": null,
+  "modified": "2017-02-24 20:01:16.232286",
+  "module": "Core",
+  "name": "Document Share Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "DocShare",
+  "reference_report": null,
+  "report_name": "Document Share Report",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Document Share Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
   "is_standard": "Yes",
   "javascript": null,
   "json": null,
@@ -417,6 +640,78 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": "frappe.query_reports['Stock Balance Report'] = {\n    filters: [{\n        fieldname: 'entry_item',\n        label: __('Item'),\n        fieldtype: 'Data'\n    }]\n};\n\nif (frappe.user.has_role('Production Manager')|| frappe.user.has_role('Store Manager')) {\n\n   var warehouse_filter = {\n        fieldname: 'warehouse',\n        label: __('Warehouse'),\n        fieldtype: 'Link',\n        options: 'Warehouse'\n    };\n\n    // Add get_query function only if the user has the 'Production Manager' role\n    if (frappe.user.has_role('Production Manager')) {\n        warehouse_filter.get_query = function() {\n            return {\n                filters: [\n                    ['Warehouse', 'warehouse_name', 'not in', ['Blend Warehouse', 'Batch Warehouse', 'Store']]\n                ]\n            };\n        };\n    }\n\n    frappe.query_reports['Stock Balance Report'].filters.push(warehouse_filter);\n}\n\n",
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-05-22 17:42:18.096143",
+  "module": "Mining",
+  "name": "Stock Balance Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Balance",
+  "reference_report": null,
+  "report_name": "Stock Balance Report",
+  "report_script": "# Define columns for the report\ncolumns = [\n    {\"label\": _(\"<b>Item Type</b>\"), \"fieldname\": \"entry_for\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Item</b>\"), \"fieldname\": \"entry_item\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Material Type</b>\"), \"fieldname\": \"material_type\", \"fieldtype\": \"float\", \"width\": 150},\n    {\"label\": _(\"<b>Warehouse</b>\"), \"fieldname\": \"warehouse\", \"fieldtype\": \"Data\", \"width\": 200},\n    {\"label\": _(\"<b>Quantity</b>\"), \"fieldname\": \"quantity\", \"fieldtype\": \"float\", \"width\": 150},\n   \n]\n# Get filter values\nitem = filters.get(\"entry_item\")\nwarehouse = filters.get(\"warehouse\")\n\n# Get user profile\nprofile = frappe.db.get_value(\"User\", frappe.session.user, \"role_profile_name\")\n\n# Initialize filters\ndefault_filters = {}\n\n# Apply profile-specific filters\nif profile == \"Purchase Manager\":\n    default_filters = {\n        \"entry_for\": \"Material\",\n        \"warehouse\": \"Store\"\n    }\nelif profile == \"Production Manager\":\n    default_filters = {\n        \"warehouse\": [\"not in\", [\"Blend Warehouse\", \"Batch Warehouse\", \"Store\"]]\n    }\nelif profile == \"Lab Manager\":\n    default_filters = {\n        \"entry_for\": [\"in\", [\"Blend\",\"Material\"]],\n    }\n\n        \nif profile == \"Store Manager\":\n    default_filters = {\n        \"entry_for\": \"Material\"\n    }\n\n# Update filters with user inputs\nif item:\n    default_filters[\"entry_item\"] = item\nif warehouse:\n    default_filters[\"warehouse\"] = warehouse\n\n   \ndata = frappe.db.get_list(\"Stock Balance\", fields=[\"entry_for\", \"entry_item\", \"warehouse\", \"quantity\", \"rol\"], filters=default_filters)\n\nfor d in data:\n    if d[\"entry_for\"] == \"Material\":\n        material_type = frappe.db.get_value(\"Material\", d.get(\"entry_item\"), \"material_type\")\n        d[\"material_type\"] = material_type\n    else:\n        d[\"material_type\"] = \"\"\n\nif profile == \"Lab Manager\":\n   data = [d for d in data if d[\"material_type\"] in [\"Lumps\", \"Polymer\",\"\"]]\n   \nif profile == \"Marketing Manager\":\n   data = [d for d in data if d[\"material_type\"] in [\"Bag\", \"Pallet\"]]\n\n    \n# Format quantity field based on ROL\nif profile == \"Purchase Manager\":\n    columns.append({\"label\": _(\"<b>ROL</b>\"), \"fieldname\": \"rol\", \"fieldtype\": \"float\", \"width\": 150}) # Corrected this line\n    for d in data:\n        quantity_color = \"red\" if (d.get('rol') > 0.0 and d.get('quantity') <= d.get('rol')) else \"green\"\n        quantity_html = f\"<span style='color:{quantity_color}; font-weight:bold'>{d.get('quantity')}</span>\"\n        d['quantity'] = quantity_html\n\n# Return columns and data\ndata = columns, data\n",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Lab Manager"
+   },
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Production Manager"
+   },
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Store Manager"
+   },
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Managing Director"
+   },
+   {
+    "parent": "Stock Balance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Marketing Manager"
    }
   ]
  }

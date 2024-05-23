@@ -2,13 +2,6 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:56:57.920703",
-  "name": "Delivery",
-  "stock_entry_purpose_name": "Delivery"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
   "modified": "2024-04-10 15:48:51.303236",
   "name": "Batch Transfer",
   "stock_entry_purpose_name": "Batch Transfer"
@@ -16,44 +9,9 @@
  {
   "docstatus": 0,
   "doctype": "Stock Entry Purpose",
-  "modified": "2024-04-18 17:54:08.603734",
-  "name": "Quality Rejected",
-  "stock_entry_purpose_name": "Quality Rejected"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
   "modified": "2024-04-20 14:58:30.985885",
   "name": "Ready-Made Production",
   "stock_entry_purpose_name": "Ready-Made Production"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:56:13.572337",
-  "name": "Manufacture",
-  "stock_entry_purpose_name": "Manufacture"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:55:54.401949",
-  "name": "Material Consumed",
-  "stock_entry_purpose_name": "Material Consumed"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
-  "modified": "2024-02-29 10:55:40.837382",
-  "name": "Material Inward",
-  "stock_entry_purpose_name": "Material Inward"
- },
- {
-  "docstatus": 0,
-  "doctype": "Stock Entry Purpose",
-  "modified": "2024-03-05 12:22:30.033994",
-  "name": "Material Transfer For Manufacture",
-  "stock_entry_purpose_name": "Material Transfer For Manufacture"
  },
  {
   "docstatus": 0,
@@ -68,5 +26,47 @@
   "modified": "2024-03-05 12:24:18.051602",
   "name": "Material Returned To Store",
   "stock_entry_purpose_name": "Material Returned To Store"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-02-29 10:56:57.920703",
+  "name": "Delivery",
+  "stock_entry_purpose_name": "Delivery"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-04-18 17:54:08.603734",
+  "name": "Quality Rejected",
+  "stock_entry_purpose_name": "Quality Rejected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-02-29 10:56:13.572337",
+  "name": "Manufacture",
+  "stock_entry_purpose_name": "Manufacture"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-02-29 10:55:40.837382",
+  "name": "Material Inward",
+  "stock_entry_purpose_name": "Material Inward"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-02-29 10:55:54.401949",
+  "name": "Material Consumed",
+  "stock_entry_purpose_name": "Material Consumed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stock Entry Purpose",
+  "modified": "2024-03-05 12:22:30.033994",
+  "name": "Material Transfer For Manufacture",
+  "stock_entry_purpose_name": "Material Transfer For Manufacture"
  }
 ]
