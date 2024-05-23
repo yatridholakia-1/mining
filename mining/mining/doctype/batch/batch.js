@@ -101,7 +101,7 @@ frappe.ui.form.on("Batch", {
                                     }, __("Actions"));
                             }
                         }
-                        if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Store Manager"))
+                        if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Store Manager")){
                             if (frm.doc.ready_made_product){
                                     frm.add_custom_button(__("Ready-Made Production"), function(){
                                         frappe.new_doc('Ready-Made Production', {
@@ -111,7 +111,7 @@ frappe.ui.form.on("Batch", {
                             }
                         }
                     }
-                }
+        
 
                 //Quality Test
                 if(frappe.user.has_role("System Manager") || frappe.user.has_role("Managing Director") || frappe.user.has_role("Quality Assurance Manager")){
