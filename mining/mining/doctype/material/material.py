@@ -9,7 +9,7 @@ from ..enums import Warehouse, Stock, Stock_Purpose
 
 class Material(Document):
     def after_insert(self):
-    	if self.opening_stock > 0:
+    	if self.opening_stock and self.opening_stock > 0:
         	create_stock_entry(
             	stock_entry_for = "Material",
                     stock_entry_item = self.material_code,
