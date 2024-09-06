@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "User",
+  "enabled": 1,
+  "modified": "2024-09-06 15:26:56.824884",
+  "module": "Mining",
+  "name": "Hide User Fields",
+  "script": "frappe.ui.form.on('User', {\n\trefresh(frm) {\n        frm.set_df_property(\"desk_settings_section\", \"hidden\", 1);  \n        frm.set_df_property(\"document_follow_notifications_section\", \"hidden\", 1); \n        frm.set_df_property(\"email_settings\", \"hidden\", 1);  \n        frm.set_df_property(\"workspace_section\", \"hidden\", 1); \n        frm.set_df_property(\"app_section\", \"hidden\", 1); \n        frm.set_df_property(\"third_party_authentication\", \"hidden\", 1); \n        frm.set_df_property(\"api_access\", \"hidden\", 1);\n        frm.set_df_property(\"change_password\", \"collapsible\", 0);\n        \n\t}\n})",
+  "view": "Form"
+ }
+]

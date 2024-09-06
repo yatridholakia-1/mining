@@ -243,7 +243,8 @@ fixtures = [
     "Notification",
     "Role Profile",
     "Custom DocPerm",
-    "Report"
+    "Report",
+    "Client Script"
     
 ]
 

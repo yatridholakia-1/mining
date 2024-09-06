@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"pb6FAlj-Ch\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Swell Well Space</span>\",\"col\":12}},{\"id\":\"-bWFbH9O33\",\"type\":\"card\",\"data\":{\"card_name\":\"Batch\",\"col\":4}},{\"id\":\"8h4P2MR1KY\",\"type\":\"card\",\"data\":{\"card_name\":\"Material\",\"col\":4}},{\"id\":\"n7bbsd3NgD\",\"type\":\"card\",\"data\":{\"card_name\":\"Production\",\"col\":4}},{\"id\":\"CzjVgftea_\",\"type\":\"card\",\"data\":{\"card_name\":\"Stock\",\"col\":4}},{\"id\":\"oQwMquTdKP\",\"type\":\"card\",\"data\":{\"card_name\":\"QC, Packing and Dispatch\",\"col\":4}},{\"id\":\"WYFeXDi6br\",\"type\":\"card\",\"data\":{\"card_name\":\"Other Masters\",\"col\":4}}]",
- "creation": "2024-03-21 16:05:35.280869",
+ "content": "[{\"id\":\"pb6FAlj-Ch\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Swell Well Space</span>\",\"col\":12}},{\"id\":\"-bWFbH9O33\",\"type\":\"card\",\"data\":{\"card_name\":\"Batch\",\"col\":4}},{\"id\":\"8h4P2MR1KY\",\"type\":\"card\",\"data\":{\"card_name\":\"Material\",\"col\":4}},{\"id\":\"n7bbsd3NgD\",\"type\":\"card\",\"data\":{\"card_name\":\"Production\",\"col\":4}},{\"id\":\"CzjVgftea_\",\"type\":\"card\",\"data\":{\"card_name\":\"Stock\",\"col\":4}},{\"id\":\"oQwMquTdKP\",\"type\":\"card\",\"data\":{\"card_name\":\"QC, Packing and Dispatch\",\"col\":4}},{\"id\":\"WYFeXDi6br\",\"type\":\"card\",\"data\":{\"card_name\":\"Other Masters\",\"col\":4}},{\"id\":\"17lbhLuWDx\",\"type\":\"card\",\"data\":{\"card_name\":\"User\",\"col\":4}}]",
+ "creation": "2024-09-06 12:34:24.825598",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -366,9 +366,28 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User Profile",
+   "link_count": 0,
+   "link_to": "User",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-04-24 14:53:04.360838",
+ "modified": "2024-09-06 14:29:13.672800",
  "modified_by": "Administrator",
  "module": "Mining",
  "name": "Swell Well Space",
